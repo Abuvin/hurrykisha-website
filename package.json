@@ -1,0 +1,14 @@
+{
+  "name": "hurrykisha-website",
+  "version": "1.0.0",
+  "description": "HurryKisha AI Systems — official website",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "build": "echo 'Static site — no build step required'",
+    "preview": "npx serve . -p 4000"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

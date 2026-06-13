@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23D4A84B'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%2306060A' stroke-width='3' stroke-dasharray='12 40'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="canonical" href="https://hurrykisha.ai/case-studies">
+  <meta property="og:site_name" content="HurryKisha AI Systems">
+  <meta property="og:url" content="https://hurrykisha.ai/case-studies">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hurrykisha">
+  <meta name="theme-color" content="#D4A84B">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — HurryKisha AI Systems</title>
+<meta name="description" content="Real results from real operations teams. See how Insurance, Manufacturing, Finance and Logistics companies automated with HurryKisha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-void:#06060A;--bg-surface:#0D0D14;--bg-elevated:#13131E;--bg-overlay:#1A1A28;--bg-border:#242436;--bg-border-strong:#363650;--gold:#D4A84B;--gold-bright:#E8C06A;--gold-dim:#9A7A34;--gold-glow:rgba(212,168,75,0.12);--gold-glow-strong:rgba(212,168,75,0.25);--text-primary:#F0EFEA;--text-secondary:#8C8CA0;--text-muted:#52525F;--success:#3BB07A;--danger:#E05252;--info:#5B8FE8;--font-display:'Sora',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:20px;--radius-pill:100px;--nav-height:68px;--max-w:1200px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-void);color:var(--text-primary);font-family:var(--font-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-void)}::-webkit-scrollbar-thumb{background:var(--bg-border-strong);border-radius:2px}
+::selection{background:var(--gold-glow-strong);color:var(--gold-bright)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15;letter-spacing:-0.02em;color:var(--text-primary)}
+h1{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem)}
+h3{font-size:clamp(1.2rem,2vw,1.5rem)}
+h4{font-size:1.0625rem;font-weight:600}
+p{color:var(--text-secondary);font-size:1.0625rem}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold-bright)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-height);display:flex;align-items:center;background:rgba(6,6,10,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--bg-border)}
+.nav__inner{max-width:var(--max-w);width:100%;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nav__logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--text-primary);letter-spacing:-.03em;text-decoration:none}
+.nav__logo-mark{width:30px;height:30px;background:var(--gold);border-radius:var(--radius-sm);position:relative;overflow:hidden}
+.nav__logo-mark::after{content:'';position:absolute;top:50%;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border:2.5px solid var(--bg-void);border-right-color:transparent;border-radius:50%;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nav__links{display:flex;align-items:center;gap:.25rem;list-style:none}
+.nav__links a{color:var(--text-secondary);font-size:.9375rem;padding:.4rem .75rem;border-radius:var(--radius-md);transition:color .2s,background .2s;text-decoration:none}
+.nav__links a:hover,.nav__links a.active{color:var(--text-primary);background:var(--bg-elevated)}
+.nav__actions{display:flex;align-items:center;gap:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-body);font-size:.9375rem;font-weight:500;border-radius:var(--radius-md);padding:.625rem 1.375rem;border:1px solid transparent;cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap}
+.btn--primary{background:var(--gold);color:var(--bg-void);border-color:var(--gold);font-weight:600}
+.btn--primary:hover{background:var(--gold-bright);color:var(--bg-void)}
+.btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--bg-border-strong)}
+.btn--secondary:hover{background:var(--bg-elevated);color:var(--text-primary)}
+.btn--sm{font-size:.875rem;padding:.4rem 1rem}
+.btn--lg{font-size:1.0625rem;padding:.875rem 2rem;border-radius:var(--radius-lg)}
+.arrow-icon{width:16px;height:16px;transition:transform .2s}
+.btn:hover .arrow-icon{transform:translateX(3px)}
+
+/* PAGE HERO */
+.page-hero{padding:calc(var(--nav-height) + 5rem) 2rem 5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero__orb{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(80px);background:radial-gradient(circle,rgba(212,168,75,.09) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.8125rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;padding:.375rem .875rem;border:1px solid rgba(212,168,75,.25);border-radius:var(--radius-pill);margin-bottom:1.75rem;background:rgba(212,168,75,.05)}
+.eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+
+/* FILTER BAR */
+.filter-bar{padding:2rem 0;border-bottom:1px solid var(--bg-border);background:var(--bg-surface);position:sticky;top:var(--nav-height);z-index:100}
+.filter-bar__inner{display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+.filter-btn{font-size:.875rem;font-weight:400;color:var(--text-muted);padding:.4rem 1rem;border:1px solid var(--bg-border);border-radius:var(--radius-pill);background:transparent;cursor:pointer;transition:all .18s;font-family:var(--font-body)}
+.filter-btn:hover{color:var(--text-secondary);border-color:var(--bg-border-strong)}
+.filter-btn.active{color:var(--gold);border-color:rgba(212,168,75,.4);background:var(--gold-glow)}
+
+/* FEATURED CASE STUDY */
+.featured-case{padding:5rem 0;border-bottom:1px solid var(--bg-border)}
+.featured-case__inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.featured-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.6875rem;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem;border:1px solid rgba(212,168,75,.3);border-radius:var(--radius-pill);background:var(--gold-glow);margin-bottom:1.25rem}
+.featured-case__industry{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem}
+.featured-case__title{margin-bottom:1.25rem}
+.featured-case__title span{color:var(--gold)}
+.featured-case__desc{font-size:1.0625rem;line-height:1.75;margin-bottom:2.5rem}
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem}
+.result-card{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.25rem;text-align:center}
+.result-card__num{font-family:var(--font-display);font-size:2rem;font-weight:700;line-height:1;letter-spacing:-.04em;color:var(--text-primary)}
+.result-card__num span{color:var(--gold)}
+.result-card__label{font-size:.8125rem;color:var(--text-muted);margin-top:.375rem;line-height:1.4}
+.featured-case__quote{background:var(--bg-elevated);border:1px solid var(--bg-border);border-left:3px solid var(--gold);border-radius:0 var(--radius-lg) var(--radius-lg) 0;padding:1.5rem 1.75rem;position:relative}
+.featured-case__quote-mark{font-family:var(--font-display);font-size:4rem;line-height:.75;color:var(--gold-dim);position:absolute;top:1rem;left:1.25rem;opacity:.4}
+.featured-case__quote-text{font-size:1.125rem;color:var(--text-secondary);line-height:1.7;font-style:italic;margin-bottom:1.25rem}
+.featured-case__quote-author{display:flex;align-items:center;gap:.875rem}
+.quote-avatar{width:44px;height:44px;border-radius:50%;background:var(--bg-overlay);border:1px solid var(--bg-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.875rem;font-weight:600;color:var(--gold);flex-shrink:0}
+.quote-author-name{font-weight:600;font-size:.9375rem;color:var(--text-primary)}
+.quote-author-role{font-size:.8125rem;color:var(--text-muted)}
+
+/* CASE STUDY VISUAL — Timeline */
+.timeline{display:flex;flex-direction:column;gap:0}
+.timeline-item{display:flex;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--bg-border)}
+.timeline-item:last-child{border-bottom:none}
+.timeline-marker{display:flex;flex-direction:column;align-items:center;gap:0;flex-shrink:0;width:40px}
+.timeline-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--gold-dim);background:var(--bg-void);flex-shrink:0}
+.timeline-dot.done{background:var(--gold);border-color:var(--gold)}
+.timeline-line{width:1px;flex:1;background:var(--bg-border);margin:.25rem 0}
+.timeline-content{}
+.timeline-week{font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem}
+.timeline-title{font-family:var(--font-display);font-size:.9375rem;font-weight:600;color:var(--text-primary);margin-bottom:.25rem}
+.timeline-desc{font-size:.875rem;color:var(--text-muted);line-height:1.55}
+
+/* CASE CARDS GRID */
+.cases-section{padding:5rem 0}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.case-card{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);overflow:hidden;transition:border-color .2s,transform .2s;cursor:pointer;text-decoration:none;display:block}
+.case-card:hover{border-color:rgba(212,168,75,.3);transform:translateY(-3px)}
+.case-card__header{padding:1.75rem 1.75rem 1.25rem;border-bottom:1px solid var(--bg-border)}
+.case-card__industry-tag{display:inline-flex;align-items:center;gap:.375rem;font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;padding:.25rem .625rem;border-radius:var(--radius-pill);margin-bottom:1rem;font-weight:500}
+.tag--insurance{color:#5B8FE8;background:rgba(91,143,232,.1);border:1px solid rgba(91,143,232,.2)}
+.tag--manufacturing{color:#E8936A;background:rgba(232,147,106,.1);border:1px solid rgba(232,147,106,.2)}
+.tag--finance{color:var(--gold);background:var(--gold-glow);border:1px solid rgba(212,168,75,.2)}
+.tag--legal{color:#A78BFA;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2)}
+.tag--logistics{color:var(--success);background:rgba(59,176,122,.1);border:1px solid rgba(59,176,122,.2)}
+.tag--healthcare{color:#F472B6;background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.2)}
+.case-card__title{font-family:var(--font-display);font-size:1.0625rem;font-weight:600;color:var(--text-primary);line-height:1.35;margin-bottom:.5rem}
+.case-card__company{font-size:.875rem;color:var(--text-muted)}
+.case-card__results{padding:1.25rem 1.75rem;display:flex;gap:1.5rem}
+.case-result-mini{flex:1}
+.case-result-mini__num{font-family:var(--font-display);font-size:1.375rem;font-weight:700;letter-spacing:-.04em;color:var(--text-primary)}
+.case-result-mini__num span{color:var(--gold)}
+.case-result-mini__label{font-size:.75rem;color:var(--text-muted);line-height:1.4;margin-top:.125rem}
+.case-card__footer{padding:.875rem 1.75rem;border-top:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between}
+.case-card__product{font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted)}
+.case-card__link{font-size:.8125rem;color:var(--gold);display:flex;align-items:center;gap:.375rem}
+.case-card:hover .case-card__link .arrow-icon{transform:translateX(3px)}
+
+/* MODAL OVERLAY */
+.modal-overlay{position:fixed;inset:0;background:rgba(6,6,10,.92);backdrop-filter:blur(12px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);max-width:720px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s cubic-bezier(.16,1,.3,1)}
+@keyframes modalIn{from{transform:scale(.96) translateY(12px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.modal__close{position:sticky;top:0;display:flex;justify-content:flex-end;padding:1rem 1.25rem .5rem;background:var(--bg-surface);z-index:1;border-bottom:1px solid var(--bg-border)}
+.modal__close-btn{background:var(--bg-elevated);border:1px solid var(--bg-border);color:var(--text-muted);width:32px;height:32px;border-radius:var(--radius-md);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .18s}
+.modal__close-btn:hover{color:var(--text-primary);border-color:var(--bg-border-strong)}
+.modal__content{padding:2rem 2.5rem 2.5rem}
+.modal__industry-tag{margin-bottom:1rem}
+.modal__title{font-size:1.75rem;margin-bottom:.5rem}
+.modal__company{font-size:.9375rem;color:var(--text-muted);margin-bottom:2rem}
+.modal__results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem}
+.modal-result{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.125rem;text-align:center}
+.modal-result__num{font-family:var(--font-display);font-size:1.75rem;font-weight:700;letter-spacing:-.04em;color:var(--text-primary)}
+.modal-result__num span{color:var(--gold)}
+.modal-result__label{font-size:.75rem;color:var(--text-muted);margin-top:.25rem}
+.modal__section-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:.75rem;margin-top:1.75rem;display:block}
+.modal__body-text{font-size:.9875rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1rem}
+.modal__quote{background:var(--bg-elevated);border-left:3px solid var(--gold);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:1.25rem 1.5rem;font-size:1rem;color:var(--text-secondary);font-style:italic;line-height:1.7;margin-top:1.5rem}
+.modal__quote-author{font-style:normal;font-size:.875rem;color:var(--text-muted);margin-top:.75rem}
+.modal__products{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem}
+.product-tag{font-family:var(--font-mono);font-size:.6875rem;padding:.25rem .625rem;border:1px solid var(--bg-border);border-radius:var(--radius-pill);color:var(--text-muted)}
+
+/* CTA BAND */
+.cta-band{padding:6rem 0;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:400px;background:radial-gradient(ellipse,rgba(212,168,75,.07) 0%,transparent 60%);pointer-events:none}
+.cta-band__content{position:relative;z-index:1}
+.cta-band p{max-width:480px;margin:.75rem auto 2.5rem}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(1){transition-delay:0ms}.fade-up:nth-child(2){transition-delay:80ms}.fade-up:nth-child(3){transition-delay:160ms}.fade-up:nth-child(4){transition-delay:240ms}.fade-up:nth-child(5){transition-delay:320ms}.fade-up:nth-child(6){transition-delay:400ms}
+
+/* FOOTER */
+.footer{background:var(--bg-surface);border-top:1px solid var(--bg-border);padding:3rem 0}
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer__copy{font-size:.875rem;color:var(--text-muted)}
+.footer__links-row{display:flex;gap:1.5rem}
+.footer__links-row a{font-size:.875rem;color:var(--text-muted);text-decoration:none}
+.footer__links-row a:hover{color:var(--text-secondary)}
+
+@media(max-width:960px){.featured-case__inner,.cases-grid{grid-template-columns:1fr}.cases-grid{grid-template-columns:repeat(2,1fr)}.results-grid,.modal__results-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cases-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}.modal__content{padding:1.5rem}.container{padding:0 1.25rem}.page-hero{padding-top:calc(var(--nav-height) + 3rem)}.nav__links,.nav__actions{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.fade-up{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><div class="nav__logo-mark" aria-hidden="true"></div>HurryKisha</a>
+    <ul class="nav__links">
+      <li><a href="/products">Products</a></li>
+      <li><a href="/case-studies" class="active">Case Studies</a></li>
+      <li><a href="/roi-calculator">ROI Calculator</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="/#contact" class="btn btn--secondary btn--sm">Contact Sales</a>
+      <a href="/#demo" class="btn btn--primary btn--sm">Try Live Demo <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto">
+    <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Case Studies</div>
+    <h1>Skeptics become advocates.<br>Numbers don't lie.</h1>
+    <p style="font-size:1.2rem;max-width:560px;margin:1.25rem auto 0">Real operations teams. Real process changes. Real ROI. Every case study below shows the before, the implementation, and the measurable after.</p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" role="navigation" aria-label="Filter case studies">
+  <div class="filter-bar__inner">
+    <span style="font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);margin-right:.5rem">Filter:</span>
+    <button class="filter-btn active" onclick="filterCases('all',this)">All Industries</button>
+    <button class="filter-btn" onclick="filterCases('insurance',this)">Insurance</button>
+    <button class="filter-btn" onclick="filterCases('manufacturing',this)">Manufacturing</button>
+    <button class="filter-btn" onclick="filterCases('finance',this)">Finance</button>
+    <button class="filter-btn" onclick="filterCases('legal',this)">Legal</button>
+    <button class="filter-btn" onclick="filterCases('logistics',this)">Logistics</button>
+    <button class="filter-btn" onclick="filterCases('healthcare',this)">Healthcare</button>
+  </div>
+</div>
+
+<!-- FEATURED CASE STUDY -->
+<section class="featured-case">
+  <div class="container">
+    <div class="featured-case__inner">
+      <div class="fade-up">
+        <div class="featured-badge">⭐ Featured Case Study</div>
+        <div class="featured-case__industry">Insurance · Nairobi, Kenya</div>
+        <h2 class="featured-case__title">How Pinnacle Insurance cut claims <span>processing time by 71%</span> in 90 days</h2>
+        <p class="featured-case__desc">Pinnacle Insurance Group was processing 400+ insurance documents per week manually. Each policy renewal required a senior analyst to read every clause, extract key data, and validate against underwriting rules — taking 45 minutes per document. Document AI changed all of that.</p>
+        <div class="results-grid">
+          <div class="result-card"><div class="result-card__num"><span>71</span>%</div><div class="result-card__label">Reduction in processing time per document</div></div>
+          <div class="result-card"><div class="result-card__num"><span>$2</span>M</div><div class="result-card__label">Policy error caught in first week of use</div></div>
+          <div class="result-card"><div class="result-card__num"><span>12</span>min</div><div class="result-card__label">Avg document processing (was 45 min)</div></div>
+        </div>
+        <a href="#" onclick="openModal('pinnacle');return false;" class="btn btn--primary btn--lg">Read Full Case Study <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="fade-up">
+        <div class="timeline" aria-label="Pinnacle Insurance implementation timeline">
+          <div class="timeline-item">
+            <div class="timeline-marker"><div class="timeline-dot done"></div><div class="timeline-line"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-week">Week 1</div>
+              <div class="timeline-title">Integration & Setup</div>
+              <div class="timeline-desc">Connected Document AI to Pinnacle's document storage and configured extraction schemas for their 14 document types.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"><div class="timeline-dot done"></div><div class="timeline-line"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-week">Week 2–3</div>
+              <div class="timeline-title">Training & Validation</div>
+              <div class="timeline-desc">Ran 500 historical documents through the system. Tuned extraction rules. Achieved 99.2% accuracy on the test set.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"><div class="timeline-dot done"></div><div class="timeline-line"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-week">Week 4</div>
+              <div class="timeline-title">Live — First Error Caught</div>
+              <div class="timeline-desc">In the first week of live operation, Document AI flagged a $2M policy renewal with an incorrect exclusion clause that would have been missed.</div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"><div class="timeline-dot done"></div></div>
+            <div class="timeline-content">
+              <div class="timeline-week">Month 3</div>
+              <div class="timeline-title">Full Automation — 400 docs/week on autopilot</div>
+              <div class="timeline-desc">All 400+ weekly documents processed overnight. Analysts review flagged exceptions only — 94% require no human touch.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES GRID -->
+<section class="cases-section">
+  <div class="container">
+    <div class="cases-grid" id="casesGrid">
+
+      <div class="case-card fade-up" data-industry="manufacturing" onclick="openModal('meridian')">
+        <div class="case-card__header">
+          <div class="case-card__industry-tag tag--manufacturing">⚙️ Manufacturing</div>
+          <div class="case-card__title">Meridian Manufacturing eliminated 6 hours of Monday morning report-building</div>
+          <div class="case-card__company">Meridian Manufacturing · Lagos, Nigeria</div>
+        </div>
+        <div class="case-card__results">
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>6</span>hrs</div><div class="case-result-mini__label">Saved per week per analyst</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>100</span>%</div><div class="case-result-mini__label">Report accuracy</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>3×</span></div><div class="case-result-mini__label">More exec reports/month</div></div>
+        </div>
+        <div class="case-card__footer">
+          <span class="case-card__product">Report Intelligence</span>
+          <span class="case-card__link">Read more <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="case-card fade-up" data-industry="finance" onclick="openModal('westbridge')">
+        <div class="case-card__header">
+          <div class="case-card__industry-tag tag--finance">💰 Finance</div>
+          <div class="case-card__title">Westbridge Capital grew pipeline 31% by freeing sales from quotation work</div>
+          <div class="case-card__company">Westbridge Capital · Johannesburg, SA</div>
+        </div>
+        <div class="case-card__results">
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>+31</span>%</div><div class="case-result-mini__label">Pipeline growth Q1</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>10</span>s</div><div class="case-result-mini__label">Avg quote time</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>3×</span></div><div class="case-result-mini__label">More quotes per rep/day</div></div>
+        </div>
+        <div class="case-card__footer">
+          <span class="case-card__product">Quotation Engine</span>
+          <span class="case-card__link">Read more <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="case-card fade-up" data-industry="legal" onclick="openModal('hartmann')">
+        <div class="case-card__header">
+          <div class="case-card__industry-tag tag--legal">⚖️ Legal</div>
+          <div class="case-card__title">Hartmann & Partners cut due diligence review time from 3 days to 4 hours</div>
+          <div class="case-card__company">Hartmann & Partners LLP · Accra, Ghana</div>
+        </div>
+        <div class="case-card__results">
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>94</span>%</div><div class="case-result-mini__label">Time reduction on DD</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>2×</span></div><div class="case-result-mini__label">More deals reviewed/month</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>0</span></div><div class="case-result-mini__label">Missed clauses since go-live</div></div>
+        </div>
+        <div class="case-card__footer">
+          <span class="case-card__product">Document AI + Decision Assistant</span>
+          <span class="case-card__link">Read more <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="case-card fade-up" data-industry="logistics" onclick="openModal('swiftfreight')">
+        <div class="case-card__header">
+          <div class="case-card__industry-tag tag--logistics">🚚 Logistics</div>
+          <div class="case-card__title">Swift Freight automated 800 monthly carrier invoices with zero manual entry</div>
+          <div class="case-card__company">Swift Freight East Africa · Mombasa, Kenya</div>
+        </div>
+        <div class="case-card__results">
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>800</span></div><div class="case-result-mini__label">Invoices/month automated</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>-82</span>%</div><div class="case-result-mini__label">Invoice processing cost</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>$180K</span></div><div class="case-result-mini__label">Annual savings</div></div>
+        </div>
+        <div class="case-card__footer">
+          <span class="case-card__product">Document AI + Workflow Automation</span>
+          <span class="case-card__link">Read more <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="case-card fade-up" data-industry="healthcare" onclick="openModal('medix')">
+        <div class="case-card__header">
+          <div class="case-card__industry-tag tag--healthcare">🏥 Healthcare</div>
+          <div class="case-card__title">Medix Clinics used Insight Mining to reduce patient billing disputes by 67%</div>
+          <div class="case-card__company">Medix Clinics Network · Kampala, Uganda</div>
+        </div>
+        <div class="case-card__results">
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>-67</span>%</div><div class="case-result-mini__label">Billing disputes</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>+24</span>%</div><div class="case-result-mini__label">Collections rate</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>4</span>wks</div><div class="case-result-mini__label">Time to full deployment</div></div>
+        </div>
+        <div class="case-card__footer">
+          <span class="case-card__product">Insight Mining + Report Intelligence</span>
+          <span class="case-card__link">Read more <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <div class="case-card fade-up" data-industry="insurance" onclick="openModal('savanna')">
+        <div class="case-card__header">
+          <div class="case-card__industry-tag tag--insurance">🛡️ Insurance</div>
+          <div class="case-card__title">Savanna Re connected 6 systems and eliminated the weekly data reconciliation meeting</div>
+          <div class="case-card__company">Savanna Reinsurance · Cape Town, SA</div>
+        </div>
+        <div class="case-card__results">
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>6</span></div><div class="case-result-mini__label">Systems unified in one view</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>8hrs</span></div><div class="case-result-mini__label">Weekly meeting time eliminated</div></div>
+          <div class="case-result-mini"><div class="case-result-mini__num"><span>Real-time</span></div><div class="case-result-mini__label">Data across all systems</div></div>
+        </div>
+        <div class="case-card__footer">
+          <span class="case-card__product">Insight Mining + Workflow Automation</span>
+          <span class="case-card__link">Read more <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-band__content">
+      <div class="eyebrow" style="justify-content:center"><span class="eyebrow-dot" aria-hidden="true"></span>Your industry is here</div>
+      <h2>What would your case study say?</h2>
+      <p>Every team above started with a 30-minute demo call. That's where we map the specific processes we'd automate and show you a real ROI estimate.</p>
+      <div class="cta-actions">
+        <a href="/roi-calculator" class="btn btn--primary btn--lg">Calculate Your ROI <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="/#contact" class="btn btn--secondary btn--lg">Book a Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2025 HurryKisha AI Systems</span>
+      <div class="footer__links-row">
+        <a href="/">Home</a><a href="/products">Products</a><a href="/roi-calculator">ROI Calculator</a><a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal__close"><button class="modal__close-btn" onclick="closeModalDirect()" aria-label="Close">✕</button></div>
+    <div class="modal__content" id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+const cases = {
+  pinnacle:{
+    industry:'insurance',tag:'tag--insurance',tagLabel:'🛡️ Insurance',
+    title:'How Pinnacle Insurance cut claims processing time by 71%',
+    company:'Pinnacle Insurance Group · Nairobi, Kenya',
+    results:[{num:'71%',label:'Reduction in processing time'},{num:'$2M',label:'Policy error caught week 1'},{num:'12min',label:'Avg document time (was 45min)'}],
+    products:['Document AI'],
+    challenge:'Pinnacle was processing 400+ insurance documents per week, each requiring a senior analyst to manually read every clause, extract key data, validate against underwriting rules, and flag anomalies. At 45 minutes per document with a 5-person team, this consumed the entire analysis capacity of the department. Errors were inevitable — and expensive.',
+    solution:'We deployed Document AI with custom extraction schemas for Pinnacle\'s 14 document types: policy renewals, claims forms, reinsurance treaties, and premium schedules. The system was trained on 500 historical documents in the first two weeks, achieving 99.2% extraction accuracy before going live.',
+    outcome:'In the first week of live operation, Document AI flagged a $2M policy renewal with an incorrect exclusion clause — a gap that would have created an uncovered liability. The analysts now spend their time reviewing the 6% of documents flagged for exception, not reading every page of every document. Processing volume tripled without adding headcount.',
+    quote:'I was genuinely skeptical. You can\'t have a machine read a 200-page reinsurance treaty and find a buried exclusion clause. Except it did. On day three.',
+    author:'James Oduya, COO — Pinnacle Insurance Group'
+  },
+  meridian:{
+    industry:'manufacturing',tag:'tag--manufacturing',tagLabel:'⚙️ Manufacturing',
+    title:'Meridian Manufacturing eliminated 6 hours of Monday report-building',
+    company:'Meridian Manufacturing · Lagos, Nigeria',
+    results:[{num:'6hrs',label:'Saved per analyst per week'},{num:'100%',label:'Consistent report format'},{num:'3×',label:'More exec reports per month'}],
+    products:['Report Intelligence'],
+    challenge:'Every Monday, Amara Reyes\'s finance team spent from 7 AM to 1 PM building the weekly operations brief for the exec team. This meant pulling data from SAP, their logistics system, and three Excel trackers, formatting charts in PowerPoint, and writing a narrative summary — all before the 2 PM leadership meeting. If the data was wrong, the whole thing had to be rebuilt.',
+    solution:'Report Intelligence connected to Meridian\'s SAP instance, logistics database, and Google Sheets. We defined the report structure, KPI logic, and narrative tone once. Every Sunday at 11 PM the system runs, pulls live data, writes the narrative, generates the charts, and sends the PDF to every exec inbox by 6 AM Monday.',
+    outcome:'The first Monday after go-live, Amara\'s team arrived at 9 AM to find the brief already in everyone\'s inbox — formatted perfectly, with no errors. Six hours freed. The team now uses Monday mornings to analyze the report and prepare recommendations, not build the report itself.',
+    quote:'Monday morning used to be the most stressful part of my week. Now I arrive, read the brief like everyone else, and we spend the first hour actually talking about what to do.',
+    author:'Amara Reyes, Head of Finance Ops — Meridian Manufacturing'
+  },
+  westbridge:{
+    industry:'finance',tag:'tag--finance',tagLabel:'💰 Finance',
+    title:'Westbridge Capital grew pipeline 31% by freeing sales from quotation work',
+    company:'Westbridge Capital · Johannesburg, South Africa',
+    results:[{num:'+31%',label:'Pipeline growth in Q1'},{num:'10s',label:'Average quote generation time'},{num:'3×',label:'More quotes per rep per day'}],
+    products:['Quotation Engine'],
+    challenge:'Westbridge\'s sales team was spending 4+ hours a day building quotations. Each quote required pulling product data from a pricing spreadsheet, checking the CRM for client discounts, formatting the document in Word, and sending it as a PDF. With 15 reps each doing 3–4 quotes per day, the math was brutal: 60+ hours of selling time lost weekly to admin.',
+    solution:'The Quotation Engine connected to Westbridge\'s Salesforce CRM and internal pricing catalog. Reps now open a quote, select a client, choose products, and hit generate. The system pulls live pricing, applies the correct discount tier, suggests relevant upsells based on deal history, and generates a branded PDF — in under 10 seconds.',
+    outcome:'In Q1 after deployment, each rep went from 3 quotes per day to 9. The time saved went directly into prospecting calls. Pipeline grew 31% and average deal size increased 8% — attributed to the AI upsell suggestions that reps were previously too rushed to add manually.',
+    quote:'Our sales team was the most resistant to AI tools I\'ve ever seen. Within two weeks of the Quotation Engine going live, they were its biggest advocates. When a tool makes your job easier and your numbers better, adoption isn\'t a problem.',
+    author:'Nadia Kamau, VP Sales — Westbridge Capital'
+  },
+  hartmann:{
+    industry:'legal',tag:'tag--legal',tagLabel:'⚖️ Legal',
+    title:'Hartmann & Partners cut due diligence from 3 days to 4 hours',
+    company:'Hartmann & Partners LLP · Accra, Ghana',
+    results:[{num:'94%',label:'Time reduction on due diligence'},{num:'2×',label:'More deals reviewed per month'},{num:'0',label:'Missed clauses since go-live'}],
+    products:['Document AI','Decision Assistant'],
+    challenge:'Every M&A due diligence engagement required a team of 3 junior associates to spend 3 days reading contracts, flagging risk clauses, and building a summary memo. At 6–8 engagements per month, this consumed the entire capacity of the junior team — with no room to grow the practice without hiring.',
+    solution:'Document AI was configured with Hartmann\'s risk schema: liability caps, indemnification clauses, IP assignment, change of control, and 24 other clause types. Decision Assistant provides the synthesis layer — given extracted clause data, it produces a risk-ranked summary memo in the firm\'s house style.',
+    outcome:'Due diligence that took 3 days now takes 4 hours: Document AI runs overnight on the uploaded contract bundle, flags all risk clauses with page references, and Decision Assistant writes the draft memo. Associates review and finalize. The practice has taken on 2× more engagements without any new hires.',
+    quote:'The junior team was spending 80% of their time on mechanical reading. Now they spend 80% of their time on judgment — which is what we actually hired them to do, and what clients pay for.',
+    author:'Klaus Hartmann, Managing Partner — Hartmann & Partners LLP'
+  },
+  swiftfreight:{
+    industry:'logistics',tag:'tag--logistics',tagLabel:'🚚 Logistics',
+    title:'Swift Freight automated 800 monthly carrier invoices with zero manual entry',
+    company:'Swift Freight East Africa · Mombasa, Kenya',
+    results:[{num:'800',label:'Invoices/month fully automated'},{num:'-82%',label:'Invoice processing cost'},{num:'$180K',label:'Annual savings documented'}],
+    products:['Document AI','Workflow Automation'],
+    challenge:'Swift Freight received invoices from 40+ carriers in 12 different formats — PDFs, scanned images, Excel files, and even faxes. A 4-person AP team was manually keying data from each invoice into their ERP, matching against purchase orders, and routing for approval. Error rate was 4%, causing constant supplier disputes and delayed payments.',
+    solution:'Document AI was configured to handle all 12 invoice formats, extracting vendor, amount, line items, PO numbers, and payment terms regardless of layout. Workflow Automation then handles the rest: match against open POs, flag discrepancies over 2%, route exceptions to AP, and post clean invoices directly to the ERP.',
+    outcome:'800 invoices per month now process without a single human touch for the 94% that match cleanly. The AP team handles the 6% flagged for exception. Error rate dropped from 4% to 0.3%. The team was reassigned to supplier relationship management — a function that had been neglected for years.',
+    quote:'We calculated $180,000 in annual savings on the first pass. But the number that actually sold this internally was the error rate: 4% down to 0.3%. At our volume, that\'s hundreds of thousands of dollars in disputed invoices we no longer have to manage.',
+    author:'Chief Operating Officer — Swift Freight East Africa'
+  },
+  medix:{
+    industry:'healthcare',tag:'tag--healthcare',tagLabel:'🏥 Healthcare',
+    title:'Medix Clinics reduced patient billing disputes by 67%',
+    company:'Medix Clinics Network · Kampala, Uganda',
+    results:[{num:'-67%',label:'Billing disputes'},{num:'+24%',label:'Collections rate improvement'},{num:'4wks',label:'Full deployment time'}],
+    products:['Insight Mining','Report Intelligence'],
+    challenge:'Medix operated 12 clinics with billing systems that didn\'t talk to each other. Finance had no unified view of billing status, dispute reasons, or collections patterns. Disputes were resolved reactively — one patient at a time — with no system-wide visibility into root causes.',
+    solution:'Insight Mining connected all 12 clinic billing systems and the central EHR. Finance managers can now ask plain-English questions: "Which procedure codes have the highest dispute rate?" or "Which insurers are slowest to pay and why?" Report Intelligence runs a weekly billing health report delivered to the CFO every Monday.',
+    outcome:'The first Insight Mining query revealed that one procedure code — representing 18% of all disputes — was being billed with an outdated modifier that insurers were auto-rejecting. One code fix. Disputes dropped 67% in the following month. Collections rate improved 24% as the team proactively addressed systemic issues instead of chasing individual cases.',
+    quote:'In 4 years of running this network I never had a tool that could tell me *why* disputes were happening — just that they were. Insight Mining gave us that in the first week.',
+    author:'CFO — Medix Clinics Network'
+  },
+  savanna:{
+    industry:'insurance',tag:'tag--insurance',tagLabel:'🛡️ Insurance',
+    title:'Savanna Re connected 6 systems and eliminated the weekly data reconciliation meeting',
+    company:'Savanna Reinsurance · Cape Town, South Africa',
+    results:[{num:'6',label:'Siloed systems unified'},{num:'8hrs',label:'Weekly reconciliation meeting eliminated'},{num:'Real-time',label:'Data across all systems'}],
+    products:['Insight Mining','Workflow Automation'],
+    challenge:'Savanna Re\'s operations team ran an 8-hour weekly meeting every Friday to reconcile data across 6 systems: their reinsurance platform, claims system, financial system, broker portal, document repository, and a legacy actuarial tool. Every discrepancy had to be traced manually. The meeting consistently ran until 6 PM.',
+    solution:'Insight Mining connected all 6 systems into a unified query layer. Workflow Automation runs reconciliation checks every night at midnight: if any system\'s data diverges from expected values, an alert is sent immediately with the specific discrepancy and affected records — before anyone starts work on Friday.',
+    outcome:'The 8-hour Friday meeting was cancelled after week two. Discrepancies are now caught overnight and resolved by the responsible team within hours — not discovered on Friday afternoon. The ops team uses the recovered time for strategic work that had been deferred for 18 months.',
+    quote:'We had normalized the pain of that Friday meeting so thoroughly that we forgot it was a failure mode. Spending 8 hours fixing data every week is not operations. It\'s firefighting.',
+    author:'Head of Operations — Savanna Reinsurance'
+  }
+};
+
+function openModal(id){
+  const c=cases[id];if(!c)return;
+  const overlay=document.getElementById('modalOverlay');
+  document.getElementById('modalContent').innerHTML=`
+    <div class="case-card__industry-tag ${c.tag} modal__industry-tag">${c.tagLabel}</div>
+    <h2 class="modal__title" id="modalTitle">${c.title}</h2>
+    <div class="modal__company">${c.company}</div>
+    <div class="modal__results-row">${c.results.map(r=>`<div class="modal-result"><div class="modal-result__num"><span>${r.num}</span></div><div class="modal-result__label">${r.label}</div></div>`).join('')}</div>
+    <span class="modal__section-label">The Challenge</span>
+    <p class="modal__body-text">${c.challenge}</p>
+    <span class="modal__section-label">The Solution</span>
+    <p class="modal__body-text">${c.solution}</p>
+    <span class="modal__section-label">The Outcome</span>
+    <p class="modal__body-text">${c.outcome}</p>
+    <span class="modal__section-label">Products Used</span>
+    <div class="modal__products">${c.products.map(p=>`<span class="product-tag">${p}</span>`).join('')}</div>
+    <div class="modal__quote">"${c.quote}"<div class="modal__quote-author">— ${c.author}</div></div>
+    <div style="margin-top:2rem;display:flex;gap:.875rem;flex-wrap:wrap">
+      <a href="/#contact" class="btn btn--primary">Book a Similar Demo <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/roi-calculator" class="btn btn--secondary">Calculate My ROI</a>
+    </div>
+  `;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModalDirect(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeModal(e){if(e.target===document.getElementById('modalOverlay'))closeModalDirect();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect();});
+
+function filterCases(industry,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.case-card').forEach(card=>{
+    if(industry==='all'||card.dataset.industry===industry){card.style.display='block';}
+    else{card.style.display='none';}
+  });
+}
+
+const fadeEls=document.querySelectorAll('.fade-up');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+fadeEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

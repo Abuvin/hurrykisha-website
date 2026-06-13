@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23D4A84B'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%2306060A' stroke-width='3' stroke-dasharray='12 40'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="canonical" href="https://hurrykisha.ai/blog">
+  <meta property="og:site_name" content="HurryKisha AI Systems">
+  <meta property="og:url" content="https://hurrykisha.ai/blog">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hurrykisha">
+  <meta name="theme-color" content="#D4A84B">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Resources — HurryKisha AI Systems</title>
+<meta name="description" content="Practical guides for operations leaders on AI automation. How-tos, case study analysis, and industry intelligence from HurryKisha.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-void:#06060A;--bg-surface:#0D0D14;--bg-elevated:#13131E;--bg-overlay:#1A1A28;--bg-border:#242436;--bg-border-strong:#363650;--gold:#D4A84B;--gold-bright:#E8C06A;--gold-dim:#9A7A34;--gold-glow:rgba(212,168,75,0.12);--gold-glow-strong:rgba(212,168,75,0.25);--text-primary:#F0EFEA;--text-secondary:#8C8CA0;--text-muted:#52525F;--success:#3BB07A;--danger:#E05252;--info:#5B8FE8;--font-display:'Sora',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:20px;--radius-pill:100px;--nav-height:68px;--max-w:1200px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-void);color:var(--text-primary);font-family:var(--font-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-void)}::-webkit-scrollbar-thumb{background:var(--bg-border-strong);border-radius:2px}
+::selection{background:var(--gold-glow-strong);color:var(--gold-bright)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15;letter-spacing:-0.02em;color:var(--text-primary)}
+h1{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700}
+h2{font-size:clamp(1.6rem,3vw,2.4rem)}
+h3{font-size:1.125rem;line-height:1.4}
+p{color:var(--text-secondary);font-size:1.0625rem}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold-bright)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-height);display:flex;align-items:center;background:rgba(6,6,10,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--bg-border)}
+.nav__inner{max-width:var(--max-w);width:100%;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nav__logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--text-primary);letter-spacing:-.03em;text-decoration:none}
+.nav__logo-mark{width:30px;height:30px;background:var(--gold);border-radius:var(--radius-sm);position:relative;overflow:hidden}
+.nav__logo-mark::after{content:'';position:absolute;top:50%;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border:2.5px solid var(--bg-void);border-right-color:transparent;border-radius:50%;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nav__links{display:flex;align-items:center;gap:.25rem;list-style:none}
+.nav__links a{color:var(--text-secondary);font-size:.9375rem;padding:.4rem .75rem;border-radius:var(--radius-md);transition:color .2s,background .2s;text-decoration:none}
+.nav__links a:hover,.nav__links a.active{color:var(--text-primary);background:var(--bg-elevated)}
+.nav__actions{display:flex;align-items:center;gap:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-body);font-size:.9375rem;font-weight:500;border-radius:var(--radius-md);padding:.625rem 1.375rem;border:1px solid transparent;cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap}
+.btn--primary{background:var(--gold);color:var(--bg-void);border-color:var(--gold);font-weight:600}
+.btn--primary:hover{background:var(--gold-bright);color:var(--bg-void)}
+.btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--bg-border-strong)}
+.btn--secondary:hover{background:var(--bg-elevated);color:var(--text-primary)}
+.btn--sm{font-size:.875rem;padding:.4rem 1rem}
+.btn--ghost{background:transparent;color:var(--text-secondary);border-color:transparent}
+.btn--ghost:hover{background:var(--bg-elevated);color:var(--text-primary);border-color:var(--bg-border)}
+.arrow-icon{width:16px;height:16px;transition:transform .2s}
+.btn:hover .arrow-icon{transform:translateX(3px)}
+
+/* PAGE HERO */
+.page-hero{padding:calc(var(--nav-height)+5rem) 2rem 4rem;position:relative;overflow:hidden}
+.hero-orb{position:absolute;width:500px;height:500px;border-radius:50%;filter:blur(80px);background:radial-gradient(circle,rgba(212,168,75,.09) 0%,transparent 70%);top:0;right:10%;pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.8125rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;padding:.375rem .875rem;border:1px solid rgba(212,168,75,.25);border-radius:var(--radius-pill);margin-bottom:1.75rem;background:rgba(212,168,75,.05)}
+.eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hero-content{position:relative;z-index:1;max-width:650px}
+
+/* AI SEARCH BAR */
+.ai-search-wrap{padding:1.5rem 0 3rem}
+.ai-search{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);overflow:hidden;position:relative;transition:border-color .2s}
+.ai-search:focus-within{border-color:rgba(212,168,75,.4)}
+.ai-search::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.ai-search:focus-within::before{opacity:1}
+.ai-search__input-row{display:flex;align-items:center;gap:1rem;padding:1rem 1.5rem}
+.ai-search__icon{color:var(--gold);font-size:1.125rem;flex-shrink:0}
+.ai-search__input{flex:1;background:transparent;border:none;outline:none;color:var(--text-primary);font-family:var(--font-body);font-size:1rem;line-height:1.5}
+.ai-search__input::placeholder{color:var(--text-muted)}
+.ai-search__btn{background:var(--gold);color:var(--bg-void);border:none;border-radius:var(--radius-md);padding:.5rem 1rem;font-family:var(--font-body);font-size:.875rem;font-weight:600;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:.375rem;transition:all .18s;flex-shrink:0}
+.ai-search__btn:hover{background:var(--gold-bright)}
+.ai-search__btn:disabled{opacity:.5;cursor:not-allowed}
+.ai-search__result{padding:1.25rem 1.5rem;border-top:1px solid var(--bg-border);font-size:.9375rem;color:var(--text-secondary);line-height:1.7;display:none}
+.ai-search__result.visible{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.ai-search__result-label{font-family:var(--font-mono);font-size:.6875rem;color:var(--gold-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.625rem;display:flex;align-items:center;gap:.375rem}
+.ai-search__result-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+.ai-search__suggestions{display:flex;gap:.5rem;flex-wrap:wrap;padding:.75rem 1.5rem;border-top:1px solid var(--bg-border)}
+.ai-suggestion{font-size:.8125rem;color:var(--text-muted);padding:.3rem .75rem;border:1px solid var(--bg-border);border-radius:var(--radius-pill);cursor:pointer;transition:all .18s;font-family:var(--font-body)}
+.ai-suggestion:hover{color:var(--gold);border-color:rgba(212,168,75,.35);background:var(--gold-glow)}
+
+/* TOPIC FILTERS */
+.topic-row{display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;margin-bottom:3rem}
+.topic-btn{font-size:.875rem;color:var(--text-muted);padding:.375rem .875rem;border:1px solid var(--bg-border);border-radius:var(--radius-pill);background:transparent;cursor:pointer;transition:all .18s;font-family:var(--font-body)}
+.topic-btn:hover{color:var(--text-secondary);border-color:var(--bg-border-strong)}
+.topic-btn.active{color:var(--gold);border-color:rgba(212,168,75,.4);background:var(--gold-glow)}
+
+/* BLOG LAYOUT */
+.blog-layout{display:grid;grid-template-columns:1fr 320px;gap:4rem;padding-bottom:7rem}
+
+/* FEATURED POST */
+.post-featured{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:2rem;transition:border-color .2s}
+.post-featured:hover{border-color:rgba(212,168,75,.25)}
+.post-featured__header{padding:2.5rem;border-bottom:1px solid var(--bg-border)}
+.post-featured__header::before{content:'⭐ Featured';display:inline-block;font-family:var(--font-mono);font-size:.6875rem;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;padding:.25rem .625rem;border:1px solid rgba(212,168,75,.3);border-radius:var(--radius-pill);background:var(--gold-glow);margin-bottom:1rem}
+.post__topic-tag{display:inline-flex;font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .625rem;border-radius:var(--radius-pill);margin-right:.5rem;margin-bottom:1rem}
+.tag--ops{color:var(--gold);background:var(--gold-glow);border:1px solid rgba(212,168,75,.2)}
+.tag--insurance{color:#5B8FE8;background:rgba(91,143,232,.1);border:1px solid rgba(91,143,232,.2)}
+.tag--ai{color:var(--success);background:rgba(59,176,122,.1);border:1px solid rgba(59,176,122,.2)}
+.tag--finance{color:#E8936A;background:rgba(232,147,106,.1);border:1px solid rgba(232,147,106,.2)}
+.tag--guide{color:#A78BFA;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2)}
+.tag--legal{color:#F472B6;background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.2)}
+.post-featured__title{font-size:1.75rem;margin-bottom:.875rem}
+.post-featured__excerpt{font-size:1rem;color:var(--text-secondary);line-height:1.75;max-width:640px}
+.post-featured__footer{padding:1.25rem 2.5rem;display:flex;align-items:center;justify-content:space-between}
+.post__meta{display:flex;align-items:center;gap:1.5rem}
+.post__author{display:flex;align-items:center;gap:.625rem}
+.post__avatar{width:32px;height:32px;border-radius:50%;background:var(--bg-overlay);border:1px solid var(--bg-border);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:.6875rem;font-weight:600;color:var(--gold)}
+.post__author-name{font-size:.875rem;font-weight:500;color:var(--text-primary)}
+.post__date{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted)}
+.post__read-time{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted)}
+
+/* POST GRID */
+.post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.post-card{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);overflow:hidden;transition:border-color .2s,transform .2s;display:flex;flex-direction:column}
+.post-card:hover{border-color:rgba(212,168,75,.25);transform:translateY(-2px)}
+.post-card__body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.post-card__title{font-size:1rem;margin-bottom:.625rem;line-height:1.4;color:var(--text-primary)}
+.post-card__excerpt{font-size:.875rem;color:var(--text-muted);line-height:1.65;flex:1;margin-bottom:1.25rem}
+.post-card__footer{padding:1rem 1.5rem;border-top:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between}
+.post-card__read-more{font-size:.8125rem;color:var(--gold);display:flex;align-items:center;gap:.375rem}
+.post-card:hover .post-card__read-more .arrow-icon{transform:translateX(3px)}
+
+/* SIDEBAR */
+.sidebar{}
+.sidebar-widget{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);padding:1.75rem;margin-bottom:1.5rem}
+.sidebar-widget__title{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:1.25rem}
+.sidebar-links{list-style:none;display:flex;flex-direction:column;gap:.875rem}
+.sidebar-links li a{font-size:.9375rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:.625rem;line-height:1.45}
+.sidebar-links li a:hover{color:var(--text-primary)}
+.sidebar-links .dot{width:5px;height:5px;border-radius:50%;background:var(--gold-dim);flex-shrink:0;margin-top:.55rem}
+.newsletter-input{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.75rem 1rem;width:100%;color:var(--text-primary);font-family:var(--font-body);font-size:.9375rem;outline:none;margin-bottom:.75rem;transition:border-color .2s}
+.newsletter-input:focus{border-color:var(--gold-dim)}
+.newsletter-input::placeholder{color:var(--text-muted)}
+.sidebar-stat{display:flex;justify-content:space-between;align-items:center;padding:.625rem 0;border-bottom:1px solid var(--bg-border)}
+.sidebar-stat:last-child{border-bottom:none}
+.sidebar-stat__label{font-size:.875rem;color:var(--text-muted)}
+.sidebar-stat__val{font-family:var(--font-mono);font-size:.875rem;color:var(--gold);font-weight:500}
+.product-link{display:flex;align-items:center;gap:.75rem;padding:.75rem;border-radius:var(--radius-md);transition:background .2s;margin-bottom:.375rem}
+.product-link:hover{background:var(--bg-elevated)}
+.product-link__icon{font-size:1.25rem;flex-shrink:0}
+.product-link__name{font-size:.9375rem;font-weight:500;color:var(--text-primary)}
+.product-link__desc{font-size:.8125rem;color:var(--text-muted)}
+
+/* ARTICLE READER */
+.article-overlay{position:fixed;inset:0;background:rgba(6,6,10,.96);backdrop-filter:blur(12px);z-index:2000;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s}
+.article-overlay.open{opacity:1;pointer-events:all}
+.article-reader{max-width:700px;margin:0 auto;padding:4rem 2rem 6rem}
+.article-back{display:flex;align-items:center;gap:.5rem;font-size:.875rem;color:var(--text-muted);cursor:pointer;transition:color .2s;margin-bottom:2.5rem;background:none;border:none;font-family:var(--font-body)}
+.article-back:hover{color:var(--text-primary)}
+.article-meta-row{display:flex;align-items:center;gap:1.25rem;margin-bottom:1.75rem;flex-wrap:wrap}
+.article-h1{font-size:clamp(1.75rem,4vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:1.25rem}
+.article-lead{font-size:1.125rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--bg-border)}
+.article-body h2{font-size:1.5rem;margin:2.5rem 0 1rem}
+.article-body h3{font-size:1.125rem;margin:2rem 0 .75rem}
+.article-body p{color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem}
+.article-body ul{margin:0 0 1.25rem 1.5rem;color:var(--text-secondary)}
+.article-body ul li{line-height:1.75;margin-bottom:.375rem}
+.article-callout{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.2);border-left:3px solid var(--gold);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:1.25rem 1.5rem;margin:1.75rem 0;font-size:.9875rem;color:var(--text-secondary);line-height:1.7}
+.article-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.75rem 0}
+.article-stat{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.125rem;text-align:center}
+.article-stat__num{font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--gold);letter-spacing:-.04em}
+.article-stat__label{font-size:.8125rem;color:var(--text-muted);margin-top:.25rem}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(1){transition-delay:0ms}.fade-up:nth-child(2){transition-delay:80ms}.fade-up:nth-child(3){transition-delay:160ms}.fade-up:nth-child(4){transition-delay:240ms}
+
+.footer{background:var(--bg-surface);border-top:1px solid var(--bg-border);padding:3rem 0}
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer__copy{font-size:.875rem;color:var(--text-muted)}
+.footer__links-row{display:flex;gap:1.5rem}
+.footer__links-row a{font-size:.875rem;color:var(--text-muted);text-decoration:none}
+.footer__links-row a:hover{color:var(--text-secondary)}
+
+@media(max-width:1024px){.blog-layout{grid-template-columns:1fr}.sidebar{display:none}}
+@media(max-width:640px){.nav__links,.nav__actions{display:none}.post-grid{grid-template-columns:1fr}.container{padding:0 1.25rem}.page-hero{padding-top:calc(var(--nav-height)+3rem)}.article-reader{padding:3rem 1.25rem 5rem}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.fade-up{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><div class="nav__logo-mark" aria-hidden="true"></div>HurryKisha</a>
+    <ul class="nav__links">
+      <li><a href="/products">Products</a></li>
+      <li><a href="/case-studies">Case Studies</a></li>
+      <li><a href="/roi-calculator">ROI Calculator</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/blog" class="active">Blog</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="/#contact" class="btn btn--secondary btn--sm">Contact Sales</a>
+      <a href="/#demo" class="btn btn--primary btn--sm">Try Live Demo <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-orb" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Resources & Insights</div>
+    <h1>Intelligence for<br>operations leaders.</h1>
+    <p style="font-size:1.125rem;margin-top:1rem;max-width:520px">Practical guides, case analysis, and industry intelligence. No fluff. Written for COOs, VPs of Finance, and Ops Directors who are paid to get things done.</p>
+  </div>
+</section>
+
+<!-- AI SEARCH -->
+<div class="container">
+  <div class="ai-search-wrap">
+    <div class="ai-search">
+      <div class="ai-search__input-row">
+        <span class="ai-search__icon" aria-hidden="true">🔍</span>
+        <input class="ai-search__input" id="searchInput" type="text" placeholder="Ask anything — e.g. 'how do I automate insurance claims processing?'" aria-label="Search articles with AI">
+        <button class="ai-search__btn" id="searchBtn" onclick="doSearch()">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ask AI
+        </button>
+      </div>
+      <div class="ai-search__suggestions" aria-label="Suggested questions">
+        <button class="ai-suggestion" onclick="setSearch(this)">How to automate invoice processing</button>
+        <button class="ai-suggestion" onclick="setSearch(this)">AI for insurance claims</button>
+        <button class="ai-suggestion" onclick="setSearch(this)">Reduce manual reporting time</button>
+        <button class="ai-suggestion" onclick="setSearch(this)">ROI of document automation</button>
+      </div>
+      <div class="ai-search__result" id="searchResult">
+        <div class="ai-search__result-label">HurryKisha AI · Answer</div>
+        <div id="searchResultText"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC FILTERS -->
+  <div class="topic-row" role="navigation" aria-label="Filter by topic">
+    <button class="topic-btn active" onclick="filterPosts('all',this)">All Topics</button>
+    <button class="topic-btn" onclick="filterPosts('operations',this)">Operations</button>
+    <button class="topic-btn" onclick="filterPosts('insurance',this)">Insurance</button>
+    <button class="topic-btn" onclick="filterPosts('finance',this)">Finance</button>
+    <button class="topic-btn" onclick="filterPosts('ai',this)">AI & Automation</button>
+    <button class="topic-btn" onclick="filterPosts('guide',this)">Guides</button>
+  </div>
+</div>
+
+<!-- BLOG LAYOUT -->
+<div class="container">
+  <div class="blog-layout">
+    <div class="blog-main">
+      <!-- FEATURED -->
+      <div class="post-featured fade-up" data-topic="operations" onclick="openArticle('featured')">
+        <div class="post-featured__header">
+          <div><span class="post__topic-tag tag--ops">Operations</span><span class="post__topic-tag tag--guide">Guide</span></div>
+          <h2 class="post-featured__title">The COO's Complete Playbook for AI Back-Office Automation in 2025</h2>
+          <p class="post-featured__excerpt">You've heard the hype. Now here's the operational reality: which processes are genuinely automatable with today's AI, what the implementation actually looks like, and how to measure whether it worked. A no-BS guide for operations leaders who have a team to run and targets to hit.</p>
+        </div>
+        <div class="post-featured__footer">
+          <div class="post__meta">
+            <div class="post__author"><div class="post__avatar">HK</div><div><div class="post__author-name">HurryKisha Editorial</div><div class="post__date">Nov 12, 2025</div></div></div>
+            <span class="post__read-time">12 min read</span>
+          </div>
+          <span class="btn btn--ghost btn--sm">Read Article <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+
+      <!-- POST GRID -->
+      <div class="post-grid" id="postGrid">
+        <div class="post-card fade-up" data-topic="insurance" onclick="openArticle('insurance-claims')">
+          <div class="post-card__body">
+            <div><span class="post__topic-tag tag--insurance">Insurance</span></div>
+            <h3 class="post-card__title">How AI is cutting insurance claims processing from 45 minutes to 7 minutes</h3>
+            <p class="post-card__excerpt">The math is brutal: an analyst spending 45 minutes per document, 400 documents per week. Here's exactly what Document AI does to each document type and why the accuracy is high enough to trust at scale.</p>
+          </div>
+          <div class="post-card__footer">
+            <div class="post__meta">
+              <span class="post__date">Oct 28, 2025</span>
+              <span class="post__read-time">8 min</span>
+            </div>
+            <span class="post-card__read-more">Read <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+        <div class="post-card fade-up" data-topic="finance" onclick="openArticle('report-automation')">
+          <div class="post-card__body">
+            <div><span class="post__topic-tag tag--finance">Finance</span></div>
+            <h3 class="post-card__title">Stop building the Monday report. Start reading it.</h3>
+            <p class="post-card__excerpt">A step-by-step walkthrough of how Report Intelligence connects to your data sources, what the narrative generation looks like under the hood, and how to configure it for your reporting cadence.</p>
+          </div>
+          <div class="post-card__footer">
+            <div class="post__meta"><span class="post__date">Oct 14, 2025</span><span class="post__read-time">6 min</span></div>
+            <span class="post-card__read-more">Read <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+        <div class="post-card fade-up" data-topic="ai" onclick="openArticle('ai-explainability')">
+          <div class="post-card__body">
+            <div><span class="post__topic-tag tag--ai">AI & Automation</span></div>
+            <h3 class="post-card__title">Why your AI system must show its work — and how to build that in</h3>
+            <p class="post-card__excerpt">Enterprise AI adoption fails when people can't trust the outputs. The difference between AI that gets used and AI that gets shelved is explainability. Here's how we build it into every HurryKisha product.</p>
+          </div>
+          <div class="post-card__footer">
+            <div class="post__meta"><span class="post__date">Sep 30, 2025</span><span class="post__read-time">7 min</span></div>
+            <span class="post-card__read-more">Read <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+        <div class="post-card fade-up" data-topic="guide" onclick="openArticle('measuring-roi')">
+          <div class="post-card__body">
+            <div><span class="post__topic-tag tag--guide">Guide</span></div>
+            <h3 class="post-card__title">The only ROI framework that works for AI automation projects</h3>
+            <p class="post-card__excerpt">Most ROI models for AI get rejected in finance review because they're built on assumptions, not measurement. Here's the framework that survives CFO scrutiny — with the metrics, the tracking method, and the reporting cadence.</p>
+          </div>
+          <div class="post-card__footer">
+            <div class="post__meta"><span class="post__date">Sep 18, 2025</span><span class="post__read-time">9 min</span></div>
+            <span class="post-card__read-more">Read <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+        <div class="post-card fade-up" data-topic="operations" onclick="openArticle('workflow-design')">
+          <div class="post-card__body">
+            <div><span class="post__topic-tag tag--ops">Operations</span></div>
+            <h3 class="post-card__title">Designing workflows your team will actually use (and trust)</h3>
+            <p class="post-card__excerpt">The no-code builder is only half the battle. How you design the workflow — where the AI decides, where humans review, how errors get caught — determines whether it runs reliably or falls apart in week two.</p>
+          </div>
+          <div class="post-card__footer">
+            <div class="post__meta"><span class="post__date">Sep 3, 2025</span><span class="post__read-time">8 min</span></div>
+            <span class="post-card__read-more">Read <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+        <div class="post-card fade-up" data-topic="ai" onclick="openArticle('quotation-speed')">
+          <div class="post-card__body">
+            <div><span class="post__topic-tag tag--ai">AI & Automation</span></div>
+            <h3 class="post-card__title">10 seconds or less: the engineering behind the Quotation Engine</h3>
+            <p class="post-card__excerpt">A transparent look at how the Quotation Engine achieves sub-10-second generation while pulling live data from your CRM, catalog, and pricing rules — and why accuracy doesn't trade off against speed.</p>
+          </div>
+          <div class="post-card__footer">
+            <div class="post__meta"><span class="post__date">Aug 22, 2025</span><span class="post__read-time">6 min</span></div>
+            <span class="post-card__read-more">Read <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__title">Weekly Brief</div>
+        <p style="font-size:.875rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.25rem">One insight per week for operations leaders. No marketing. Unsubscribe instantly.</p>
+        <input class="newsletter-input" type="email" placeholder="your@company.com" aria-label="Email for newsletter">
+        <button class="btn btn--primary" style="width:100%;justify-content:center" onclick="subscribeNewsletter(this)">Subscribe</button>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__title">Popular This Month</div>
+        <ul class="sidebar-links">
+          <li><a href="#" onclick="openArticle('featured');return false"><span class="dot" aria-hidden="true"></span>The COO's Complete Playbook for AI Automation</a></li>
+          <li><a href="#" onclick="openArticle('insurance-claims');return false"><span class="dot" aria-hidden="true"></span>Claims processing: 45 min to 7 min</a></li>
+          <li><a href="#" onclick="openArticle('measuring-roi');return false"><span class="dot" aria-hidden="true"></span>ROI framework for AI projects</a></li>
+          <li><a href="#" onclick="openArticle('ai-explainability');return false"><span class="dot" aria-hidden="true"></span>Why AI must show its work</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__title">Platform Stats</div>
+        <div class="sidebar-stat"><span class="sidebar-stat__label">Documents processed</span><span class="sidebar-stat__val">2.4M+</span></div>
+        <div class="sidebar-stat"><span class="sidebar-stat__label">Quotes generated</span><span class="sidebar-stat__val">840K+</span></div>
+        <div class="sidebar-stat"><span class="sidebar-stat__label">Reports automated</span><span class="sidebar-stat__val">96K+</span></div>
+        <div class="sidebar-stat"><span class="sidebar-stat__label">Hours saved total</span><span class="sidebar-stat__val">1.1M+</span></div>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__title">Explore Products</div>
+        <a href="/products#quotation" class="product-link"><span class="product-link__icon">⚡</span><div><div class="product-link__name">Quotation Engine</div><div class="product-link__desc">Quotes in 10 seconds</div></div></a>
+        <a href="/products#document" class="product-link"><span class="product-link__icon">📄</span><div><div class="product-link__name">Document AI</div><div class="product-link__desc">Bulk document processing</div></div></a>
+        <a href="/products#report" class="product-link"><span class="product-link__icon">📊</span><div><div class="product-link__name">Report Intelligence</div><div class="product-link__desc">Automated exec reports</div></div></a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2025 HurryKisha AI Systems</span>
+      <div class="footer__links-row">
+        <a href="/">Home</a><a href="/products">Products</a><a href="/case-studies">Case Studies</a><a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ARTICLE OVERLAY -->
+<div class="article-overlay" id="articleOverlay" role="dialog" aria-modal="true">
+  <div class="article-reader" id="articleContent"></div>
+</div>
+
+<script>
+const articles={
+  featured:{
+    topic:'Operations · Guide',topicClass:'tag--ops',date:'Nov 12, 2025',readTime:'12 min read',
+    title:"The COO's Complete Playbook for AI Back-Office Automation in 2025",
+    lead:"You've heard the hype. Now here's the operational reality: which processes are genuinely automatable with today's AI, what the implementation actually looks like, and how to measure whether it worked.",
+    body:`<h2>Why most AI initiatives fail in operations</h2>
+<p>The failure mode isn't the technology. It's the selection of what to automate. Operations teams that pick the wrong processes first — complex, exception-heavy, people-dependent — end up with systems that frustrate teams and die after six months. The teams that succeed start with high-volume, well-defined, rule-based processes. Document processing. Quotation generation. Scheduled reporting.</p>
+<div class="article-callout">The single best predictor of AI automation success is process clarity before implementation. If your team can't write down exactly what happens in a process step-by-step, the AI can't automate it reliably.</div>
+<h2>The three-tier process audit</h2>
+<p>Before touching any vendor, run this audit on your back-office processes:</p>
+<ul>
+<li><strong>Tier 1 — Automate now:</strong> High volume, well-defined rules, document-in/data-out. Invoice processing, quote generation, scheduled reports.</li>
+<li><strong>Tier 2 — Automate with oversight:</strong> Moderate complexity, clear decision criteria, human review on exceptions. Contract clause extraction, approval routing, anomaly flagging.</li>
+<li><strong>Tier 3 — Augment, don't automate:</strong> High judgment, relationship-dependent, exception-heavy. Client negotiation, complex risk assessment, strategic decisions.</li>
+</ul>
+<div class="article-stat-row">
+<div class="article-stat"><div class="article-stat__num">68%</div><div class="article-stat__label">of back-office volume is Tier 1</div></div>
+<div class="article-stat"><div class="article-stat__num">23%</div><div class="article-stat__label">is Tier 2</div></div>
+<div class="article-stat"><div class="article-stat__num">9%</div><div class="article-stat__label">requires pure human judgment</div></div>
+</div>
+<h2>Implementation sequence that works</h2>
+<p>Start with one Tier 1 process. Measure it religiously — time before, time after, error rate, team satisfaction. Get one win documented with real numbers before expanding. Every COO we've worked with who followed this sequence had an internal champion within 90 days. Every COO who tried to boil the ocean first spent 12 months in implementation purgatory.</p>
+<h2>Measuring success: the only metrics that matter</h2>
+<p>Time saved per transaction. Error rate before vs. after. Staff hours reclaimed (and what those hours went to). Cost per transaction. These four metrics, tracked for 90 days, give you the ROI model that survives CFO scrutiny and builds the internal case for expansion.</p>`
+  },
+  'insurance-claims':{
+    topic:'Insurance',topicClass:'tag--insurance',date:'Oct 28, 2025',readTime:'8 min read',
+    title:'How AI is cutting insurance claims processing from 45 minutes to 7 minutes',
+    lead:'The math is brutal: an analyst spending 45 minutes per document, 400 documents per week. Here\'s exactly what Document AI does to each document type and why the accuracy is high enough to trust at scale.',
+    body:`<h2>The 45-minute problem</h2>
+<p>Insurance document processing is one of the highest-leverage automation opportunities in any industry. The documents are structured (or semi-structured), the extraction rules are well-defined, and the volume is enormous. Yet most insurers are still processing them manually.</p>
+<p>Here's what a typical analyst does with a 200-page policy renewal: reads the declarations page, finds the coverage sections, checks exclusion clauses against underwriting rules, validates premium calculations, flags any deviations, and enters summary data into the policy management system. Forty-five minutes, minimum. For experienced analysts.</p>
+<div class="article-callout">The real cost isn't the time — it's what the analyst isn't doing during those 45 minutes. Client relationship work. Complex risk assessment. Business development. The high-judgment work they were hired for.</div>
+<h2>What Document AI does instead</h2>
+<p>The system processes each document in three parallel tracks: structure recognition (what type of document is this?), extraction (pull defined fields from defined locations), and validation (check extracted values against rules). For a 200-page policy, this takes 90 seconds on average.</p>
+<p>The analyst's job shifts from reading the document to reviewing the extraction results — a 7-minute task for documents that check out, 15–20 minutes for the 6% that are flagged for exceptions.</p>
+<h2>Why accuracy is high enough</h2>
+<p>The honest answer: it's not 100%. Our current extraction accuracy across insurance document types is 99.1%. For a team processing 400 documents per week, that means roughly 3–4 documents per week with an extraction error. Those documents are automatically flagged for human review. The analyst reviews them, corrects if needed. Nothing gets through with an undetected error.</p>
+<p>Compare that to human accuracy on manual extraction: typically 97–98% for experienced analysts, with no systematic flagging of uncertain cases. The AI is more accurate and every uncertainty gets surfaced.</p>`
+  },
+  'report-automation':{
+    topic:'Finance',topicClass:'tag--finance',date:'Oct 14, 2025',readTime:'6 min read',
+    title:'Stop building the Monday report. Start reading it.',
+    lead:'A step-by-step walkthrough of how Report Intelligence connects to your data sources, what the narrative generation looks like under the hood, and how to configure it for your reporting cadence.',
+    body:`<h2>The Monday morning tax</h2><p>Finance and operations teams across every industry pay the same tax: 4–6 hours every week assembling data that already exists, formatting it into a document it will take 10 minutes to read, and sending it to people who have already moved on to other things by the time it arrives.</p><div class="article-callout">Report Intelligence doesn't change what goes into your reports. It changes who builds them — and when they're ready.</div><h2>The connection layer</h2><p>The system connects to your data sources via native connectors or API. For most operations teams, this means: your transactional database, your CRM (Salesforce, HubSpot), your financial system (QuickBooks, Xero, SAP), and any Google Sheets or Excel files that serve as operational trackers. Once connected, you define the report structure once — KPI definitions, narrative sections, chart types — and the system handles the rest.</p><h2>What the narrative looks like</h2><p>The AI doesn't just show numbers. It writes analysis: "Revenue in the East Africa segment grew 18% WoW, driven primarily by the enterprise deals that closed in week 45. The Northern region is soft — down 3% — with four large proposals stalled at the >14-day mark. Recommend a pipeline review for Northern before the next leadership meeting." That's the kind of sentence a good analyst writes after looking at the data for 20 minutes. Report Intelligence writes it at 6 AM Sunday, before anyone is awake.</p>`
+  },
+  'ai-explainability':{
+    topic:'AI & Automation',topicClass:'tag--ai',date:'Sep 30, 2025',readTime:'7 min read',
+    title:'Why your AI system must show its work — and how to build that in',
+    lead:'Enterprise AI adoption fails when people can\'t trust the outputs. The difference between AI that gets used and AI that gets shelved is explainability.',
+    body:`<h2>The black box problem</h2><p>We've seen it happen repeatedly: a sophisticated AI system gets deployed, produces outputs that are correct 95% of the time, and gets abandoned within six months because the team can't tell which 5% to trust. The issue isn't accuracy. It's the absence of reasoning.</p><div class="article-callout">An AI that says "the answer is X" without showing why gets overridden by intuition. An AI that says "the answer is X because of data points A, B, and C from sources Y and Z" gets used, verified, and trusted.</div><h2>What explainability actually looks like</h2><p>In Document AI: every extracted field has a page reference and confidence score. The analyst knows exactly where the system found the data and how certain it is. In Decision Assistant: every recommendation shows the reasoning chain — what data was consulted, what inference was made at each step, what sources were cited. In Insight Mining: every answer shows the data sources queried and the logic applied.</p><h2>The trust compounding effect</h2><p>Teams that can verify AI outputs quickly build trust in the system. Once trust is established, verification frequency drops. The team spot-checks rather than reviews everything. This is the adoption curve that makes AI actually valuable — and it only happens when the system shows its work from day one.</p>`
+  },
+  'measuring-roi':{
+    topic:'Guide',topicClass:'tag--guide',date:'Sep 18, 2025',readTime:'9 min read',
+    title:'The only ROI framework that works for AI automation projects',
+    lead:'Most ROI models for AI get rejected in finance review because they\'re built on assumptions, not measurement. Here\'s the framework that survives CFO scrutiny.',
+    body:`<h2>Why standard ROI models fail</h2><p>The typical AI ROI presentation goes: "We'll save X hours × Y salary = Z dollars." Finance rejects it because it assumes 100% of saved hours translate to cost savings (they don't — people don't disappear, they do other work), it uses fully-loaded salary for every hour (incorrect), and it doesn't account for implementation costs, learning curve, or exception handling overhead.</p><div class="article-callout">The CFO isn't wrong to be skeptical. Build your ROI model the way a CFO would — with conservative assumptions, measured baselines, and a 90-day proof period before claiming the full number.</div><h2>The four-metric framework</h2><p>Measure these four things for 90 days before and after deployment:</p><ul><li><strong>Transaction cost:</strong> Total labor cost to process one unit (one document, one quote, one report). This is the cleanest metric — hard to dispute.</li><li><strong>Throughput:</strong> How many units can the team process per week? This captures capacity gains even when headcount doesn't change.</li><li><strong>Error rate:</strong> Errors per 100 transactions, and the downstream cost of each error (rework, disputes, delays).</li><li><strong>Redeployment value:</strong> What did the freed capacity actually go toward? Sales calls made, relationships managed, strategic work done. This is the hardest to measure but often the largest real value.</li></ul><h2>The 90-day proof model</h2><p>Deploy on one process. Measure all four metrics for 90 days. Build the annualized ROI model from real data, not projections. Present that model to finance with actuals, not assumptions. This approach has a near-100% approval rate because CFOs can verify every number.</p>`
+  },
+  'workflow-design':{
+    topic:'Operations',topicClass:'tag--ops',date:'Sep 3, 2025',readTime:'8 min read',
+    title:'Designing workflows your team will actually use (and trust)',
+    lead:'The no-code builder is only half the battle. How you design the workflow determines whether it runs reliably or falls apart in week two.',
+    body:`<h2>The first principle: human in the loop by default</h2><p>The most common mistake in workflow design is automating too aggressively in V1. The goal in week one is not maximum automation. It's maximum trust. Design every workflow so humans review a meaningful sample — not just exceptions. As confidence builds over 4–6 weeks, reduce the review rate. By week eight, most teams are comfortable reviewing only the flagged exceptions.</p><div class="article-callout">A workflow that processes 80% autonomously with a confident team is more valuable than a workflow that processes 100% autonomously with a nervous team that keeps overriding it.</div><h2>The exception handling architecture</h2><p>Every workflow needs three lanes: the clean path (fully automated, no intervention), the exception path (AI-flagged items that go to human review), and the escalation path (items that humans can't resolve without additional input). Design all three before you go live. The exception path is what most teams get wrong — they handle it reactively instead of building it in from the start.</p><h2>Monitoring and iteration</h2><p>After go-live, review the exception log weekly for the first month. What's getting flagged? If it's the same pattern repeatedly, the AI's rule needs updating. If it's random, it's working correctly — the exceptions are genuinely ambiguous. The workflow builder lets you update rules in real time without redeployment. Use this aggressively in the first four weeks.</p>`
+  },
+  'quotation-speed':{
+    topic:'AI & Automation',topicClass:'tag--ai',date:'Aug 22, 2025',readTime:'6 min read',
+    title:'10 seconds or less: the engineering behind the Quotation Engine',
+    lead:'A transparent look at how the Quotation Engine achieves sub-10-second generation while pulling live data from your CRM, catalog, and pricing rules.',
+    body:`<h2>The 10-second target</h2><p>Ten seconds feels arbitrary until you understand what's happening in those 10 seconds: a CRM lookup for the client's history and discount tier, a catalog query for current product pricing, a rules engine evaluation for applicable promotions and volume thresholds, an AI pass for upsell recommendations, a PDF generation step, and a return to the user's screen. All of that, in sequence, in under 10 seconds.</p><div class="article-callout">Speed isn't a feature — it's the product. A quote that takes 30 minutes isn't a slow quote. It's a workflow that breaks when volume scales, creates bottlenecks in the sales process, and trains your sales team to avoid quoting complex deals.</div><h2>The accuracy trade-off that isn't</h2><p>The common assumption is that speed requires accuracy trade-offs. In this case, it doesn't — because the accuracy comes from data quality, not processing time. If your catalog is clean and your pricing rules are well-defined, the system generates an accurate quote in 8 seconds just as easily as in 8 minutes. The time savings come from eliminating the manual lookup, formatting, and assembly steps — none of which improve accuracy.</p><h2>The upsell layer</h2><p>The AI upsell suggestions are the one element that introduces genuine intelligence beyond rule-following. The system looks at the client's CRM history, compares their current purchase profile against similar clients at similar deal stages, and recommends add-ons with the highest acceptance probability. Average upsell attachment rate increases 34% versus manual quoting, because reps consistently forget or hesitate to upsell manually.</p>`
+  }
+};
+
+function openArticle(id){
+  const a=articles[id];if(!a)return;
+  const overlay=document.getElementById('articleOverlay');
+  document.getElementById('articleContent').innerHTML=`
+    <button class="article-back" onclick="closeArticle()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 12l-4-4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Blog
+    </button>
+    <div class="article-meta-row">
+      <span class="post__topic-tag ${a.topicClass}">${a.topic}</span>
+      <span class="post__date">${a.date}</span>
+      <span class="post__read-time">${a.readTime}</span>
+    </div>
+    <h1 class="article-h1">${a.title}</h1>
+    <p class="article-lead">${a.lead}</p>
+    <div class="article-body">${a.body}</div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--bg-border);display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="/#demo" class="btn btn--primary">Try the Live Demo <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="/roi-calculator" class="btn btn--secondary">Calculate Your ROI</a>
+    </div>
+  `;
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  overlay.scrollTop=0;
+}
+function closeArticle(){
+  document.getElementById('articleOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeArticle();});
+
+function filterPosts(topic,btn){
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.post-card,.post-featured').forEach(card=>{
+    card.style.display=(topic==='all'||card.dataset.topic===topic)?'':'none';
+  });
+}
+
+function setSearch(btn){
+  document.getElementById('searchInput').value=btn.textContent;
+  doSearch();
+}
+
+async function doSearch(){
+  const q=document.getElementById('searchInput').value.trim();
+  if(!q)return;
+  const btn=document.getElementById('searchBtn');
+  const resultEl=document.getElementById('searchResult');
+  const textEl=document.getElementById('searchResultText');
+  btn.disabled=true;btn.textContent='Thinking…';
+  resultEl.classList.remove('visible');
+  const sys=`You are the HurryKisha blog AI assistant. Answer the user's operations/AI automation question concisely (3-5 sentences) with practical insight. Reference HurryKisha products where naturally relevant (Quotation Engine, Document AI, Report Intelligence, Insight Mining, Workflow Automation, Decision Assistant). Be direct and useful — this is for operations leaders, not students. No fluff.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:q}]})});
+    const data=await res.json();
+    const text=data.content&&data.content[0]?data.content[0].text:'Unable to fetch a response. Please try again.';
+    textEl.textContent=text;
+    resultEl.classList.add('visible');
+  }catch(e){
+    textEl.textContent='Having trouble connecting. Please try again in a moment.';
+    resultEl.classList.add('visible');
+  }
+  btn.disabled=false;btn.innerHTML='<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ask AI';
+}
+
+document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
+
+function subscribeNewsletter(btn){
+  const orig=btn.innerHTML;btn.innerHTML='Subscribed ✓';btn.style.background='var(--success)';
+  setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';},3000);
+}
+
+const fadeEls=document.querySelectorAll('.fade-up');
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:.1});
+fadeEls.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

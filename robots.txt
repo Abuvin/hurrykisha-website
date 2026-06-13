@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hurrykisha.ai/sitemap.xml
+
+# Block dashboard from indexing (it's a demo app, not content)
+User-agent: *
+Disallow: /dashboard
+Disallow: /dashboard.html

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23D4A84B'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%2306060A' stroke-width='3' stroke-dasharray='12 40'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="canonical" href="https://hurrykisha.ai/dashboard">
+  <meta property="og:site_name" content="HurryKisha AI Systems">
+  <meta property="og:url" content="https://hurrykisha.ai/dashboard">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hurrykisha">
+  <meta name="theme-color" content="#D4A84B">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Demo — HurryKisha AI Systems</title>
+<meta name="description" content="Interactive demo of the HurryKisha operations platform. Explore the dashboard, workflow builder, document processing, and AI assistant live.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-void:#06060A;--bg-surface:#0D0D14;--bg-elevated:#13131E;--bg-overlay:#1A1A28;--bg-border:#242436;--bg-border-strong:#363650;--gold:#D4A84B;--gold-bright:#E8C06A;--gold-dim:#9A7A34;--gold-glow:rgba(212,168,75,0.12);--text-primary:#F0EFEA;--text-secondary:#8C8CA0;--text-muted:#52525F;--success:#3BB07A;--danger:#E05252;--info:#5B8FE8;--font-display:'Sora',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:20px;--radius-pill:100px;--sidebar-w:220px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg-void);color:var(--text-primary);font-family:var(--font-body);font-size:.875rem;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bg-border-strong);border-radius:2px}
+::selection{background:var(--gold-glow);color:var(--gold-bright)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-0.02em;color:var(--text-primary)}
+a{color:var(--gold);text-decoration:none}
+
+/* ── TOP BAR ── */
+.topbar{height:52px;background:var(--bg-surface);border-bottom:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;flex-shrink:0;z-index:100}
+.topbar__left{display:flex;align-items:center;gap:1.25rem}
+.topbar__logo{display:flex;align-items:center;gap:.625rem;font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text-primary);letter-spacing:-.03em;text-decoration:none}
+.topbar__logo-mark{width:26px;height:26px;background:var(--gold);border-radius:var(--radius-sm);position:relative;overflow:hidden;flex-shrink:0}
+.topbar__logo-mark::after{content:'';position:absolute;top:50%;left:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border:2px solid var(--bg-void);border-right-color:transparent;border-radius:50%;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.topbar__breadcrumb{display:flex;align-items:center;gap:.375rem;font-size:.8125rem;color:var(--text-muted)}
+.topbar__breadcrumb span{color:var(--text-secondary)}
+.topbar__breadcrumb-sep{color:var(--bg-border-strong)}
+.topbar__right{display:flex;align-items:center;gap:.875rem}
+.demo-badge{font-family:var(--font-mono);font-size:.6875rem;color:var(--gold);padding:.25rem .625rem;border:1px solid rgba(212,168,75,.3);border-radius:var(--radius-pill);background:var(--gold-glow);display:flex;align-items:center;gap:.375rem}
+.demo-badge-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.topbar-btn{background:transparent;border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.375rem .875rem;color:var(--text-secondary);font-family:var(--font-body);font-size:.8125rem;cursor:pointer;transition:all .18s;text-decoration:none;display:inline-flex;align-items:center;gap:.375rem}
+.topbar-btn:hover{color:var(--text-primary);border-color:var(--bg-border-strong);background:var(--bg-elevated)}
+.topbar-btn--gold{background:var(--gold);border-color:var(--gold);color:var(--bg-void);font-weight:600}
+.topbar-btn--gold:hover{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--bg-void)}
+.avatar{width:28px;height:28px;border-radius:50%;background:var(--bg-overlay);border:1px solid var(--bg-border);display:flex;align-items:center;justify-content:center;font-size:.6875rem;font-weight:700;color:var(--gold);cursor:pointer}
+
+/* ── LAYOUT ── */
+.app-body{display:flex;flex:1;overflow:hidden}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);background:var(--bg-surface);border-right:1px solid var(--bg-border);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
+.sidebar__section-label{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);padding:.875rem 1rem .375rem;margin-top:.25rem}
+.nav-item{display:flex;align-items:center;gap:.625rem;padding:.5rem 1rem;border-radius:0;color:var(--text-muted);cursor:pointer;transition:all .18s;border-left:2px solid transparent;font-size:.875rem;font-weight:400}
+.nav-item:hover{color:var(--text-secondary);background:var(--bg-elevated)}
+.nav-item.active{color:var(--text-primary);background:var(--bg-elevated);border-left-color:var(--gold)}
+.nav-item__icon{width:16px;text-align:center;font-size:.9rem;flex-shrink:0}
+.nav-item__badge{margin-left:auto;font-family:var(--font-mono);font-size:.625rem;background:var(--danger);color:#fff;padding:.125rem .4rem;border-radius:var(--radius-pill);font-weight:600}
+.nav-item__badge--gold{background:var(--gold);color:var(--bg-void)}
+.sidebar__bottom{margin-top:auto;padding:1rem;border-top:1px solid var(--bg-border)}
+.sidebar__user{display:flex;align-items:center;gap:.75rem}
+.sidebar__user-info{flex:1;min-width:0}
+.sidebar__user-name{font-size:.875rem;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar__user-role{font-size:.75rem;color:var(--text-muted)}
+
+/* ── MAIN CONTENT ── */
+.main{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+.view{display:none;flex:1;flex-direction:column;padding:1.5rem;animation:viewIn .2s ease}
+.view.active{display:flex}
+@keyframes viewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── PAGE HEADER ── */
+.page-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;gap:1rem;flex-wrap:wrap}
+.page-hdr__title{font-size:1.25rem;font-weight:700;letter-spacing:-.03em;margin-bottom:.125rem}
+.page-hdr__sub{font-size:.8125rem;color:var(--text-muted)}
+.page-hdr__actions{display:flex;align-items:center;gap:.625rem;flex-shrink:0}
+.btn{display:inline-flex;align-items:center;gap:.375rem;font-family:var(--font-body);font-size:.8125rem;font-weight:500;border-radius:var(--radius-md);padding:.4375rem .875rem;border:1px solid transparent;cursor:pointer;transition:all .18s;white-space:nowrap;text-decoration:none}
+.btn--primary{background:var(--gold);color:var(--bg-void);border-color:var(--gold);font-weight:600}
+.btn--primary:hover{background:var(--gold-bright)}
+.btn--secondary{background:transparent;color:var(--text-secondary);border-color:var(--bg-border)}
+.btn--secondary:hover{background:var(--bg-elevated);color:var(--text-primary);border-color:var(--bg-border-strong)}
+.btn--ghost{background:transparent;color:var(--text-muted);border-color:transparent;padding:.4375rem .625rem}
+.btn--ghost:hover{background:var(--bg-elevated);color:var(--text-secondary)}
+.btn--danger{background:rgba(224,82,82,.1);color:var(--danger);border-color:rgba(224,82,82,.3)}
+.btn--danger:hover{background:rgba(224,82,82,.2)}
+.btn--success{background:rgba(59,176,122,.1);color:var(--success);border-color:rgba(59,176,122,.3)}
+.btn--success:hover{background:rgba(59,176,122,.2)}
+.btn-icon{font-size:.875rem}
+
+/* ── STAT CARDS ── */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.stat-card{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.125rem 1.25rem}
+.stat-card__label{font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem;display:flex;align-items:center;gap:.375rem}
+.stat-card__icon{font-size:.875rem}
+.stat-card__num{font-family:var(--font-display);font-size:1.625rem;font-weight:700;letter-spacing:-.04em;color:var(--text-primary);line-height:1}
+.stat-card__delta{display:inline-flex;align-items:center;gap:.25rem;font-size:.75rem;margin-top:.375rem;font-family:var(--font-mono)}
+.stat-card__delta.up{color:var(--success)}.stat-card__delta.down{color:var(--danger)}
+
+/* ── GRID LAYOUTS ── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem}
+.two-thirds{display:grid;grid-template-columns:2fr 1fr;gap:1rem;margin-bottom:1rem}
+
+/* ── PANEL ── */
+.panel{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);overflow:hidden}
+.panel__hdr{padding:.875rem 1.25rem;border-bottom:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between}
+.panel__title{font-family:var(--font-display);font-size:.875rem;font-weight:600;color:var(--text-primary)}
+.panel__body{padding:1.25rem}
+.panel__body--pad0{padding:0}
+
+/* ── TABLE ── */
+.data-table{width:100%;border-collapse:collapse;font-size:.8125rem}
+.data-table th{font-family:var(--font-mono);font-size:.625rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);padding:.625rem 1rem;text-align:left;border-bottom:1px solid var(--bg-border);background:var(--bg-elevated);white-space:nowrap}
+.data-table td{padding:.625rem 1rem;color:var(--text-secondary);border-bottom:1px solid rgba(36,36,54,.5);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--bg-elevated);cursor:pointer}
+.data-table tr.selected td{background:rgba(212,168,75,.05)}
+
+/* ── STATUS PILLS ── */
+.pill{display:inline-flex;align-items:center;gap:.3rem;font-family:var(--font-mono);font-size:.6875rem;padding:.2rem .5rem;border-radius:var(--radius-pill);font-weight:500}
+.pill--done{background:rgba(59,176,122,.1);color:var(--success);border:1px solid rgba(59,176,122,.2)}
+.pill--proc{background:rgba(212,168,75,.1);color:var(--gold);border:1px solid rgba(212,168,75,.2)}
+.pill--flag{background:rgba(224,82,82,.1);color:var(--danger);border:1px solid rgba(224,82,82,.2)}
+.pill--pending{background:rgba(91,143,232,.1);color:var(--info);border:1px solid rgba(91,143,232,.2)}
+.pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor}
+
+/* ── MINI CHART ── */
+.mini-chart{display:flex;align-items:flex-end;gap:3px;height:48px}
+.mini-bar{background:var(--bg-border-strong);border-radius:2px 2px 0 0;flex:1;transition:background .2s;cursor:pointer;min-width:6px}
+.mini-bar:hover{background:var(--gold-dim)}
+.mini-bar.highlight{background:var(--gold)}
+
+/* ── SPARKLINE ── */
+.sparkline{width:80px;height:28px}
+
+/* ── ACTIVITY FEED ── */
+.activity-feed{display:flex;flex-direction:column;gap:0}
+.activity-item{display:flex;align-items:flex-start;gap:.875rem;padding:.75rem 1.25rem;border-bottom:1px solid var(--bg-border);transition:background .15s}
+.activity-item:last-child{border-bottom:none}
+.activity-item:hover{background:var(--bg-elevated)}
+.activity-icon{width:28px;height:28px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:.875rem;flex-shrink:0}
+.activity-icon--gold{background:var(--gold-glow);border:1px solid rgba(212,168,75,.2)}
+.activity-icon--green{background:rgba(59,176,122,.1);border:1px solid rgba(59,176,122,.2)}
+.activity-icon--red{background:rgba(224,82,82,.1);border:1px solid rgba(224,82,82,.2)}
+.activity-icon--blue{background:rgba(91,143,232,.1);border:1px solid rgba(91,143,232,.2)}
+.activity-text{flex:1;font-size:.8125rem;color:var(--text-secondary);line-height:1.5}
+.activity-text strong{color:var(--text-primary);font-weight:500}
+.activity-time{font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);white-space:nowrap;margin-top:.125rem}
+
+/* ── CHAT (Decision Assistant) ── */
+.chat-wrap{display:flex;flex-direction:column;flex:1;overflow:hidden}
+.chat-messages{flex:1;overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:.875rem}
+.chat-msg{max-width:85%;border-radius:var(--radius-lg);padding:.75rem 1rem;font-size:.875rem;line-height:1.65;animation:msgIn .2s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg--user{background:var(--bg-overlay);border:1px solid var(--bg-border);color:var(--text-primary);align-self:flex-end;border-radius:var(--radius-lg) var(--radius-lg) var(--radius-sm) var(--radius-lg)}
+.chat-msg--ai{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.15);color:var(--text-secondary);align-self:flex-start;border-radius:var(--radius-lg) var(--radius-lg) var(--radius-lg) var(--radius-sm);position:relative}
+.chat-msg--ai::before{content:'HK';position:absolute;top:-9px;left:-9px;width:20px;height:20px;background:var(--gold);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:var(--bg-void);font-family:var(--font-display)}
+.chat-sources{display:flex;gap:.375rem;flex-wrap:wrap;margin-top:.5rem}
+.chat-source{font-family:var(--font-mono);font-size:.6rem;padding:.15rem .4rem;border:1px solid rgba(212,168,75,.2);border-radius:2px;color:var(--gold-dim)}
+.typing-indicator{display:flex;gap:3px;align-items:center;padding:.625rem 1rem;background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.15);border-radius:var(--radius-lg);align-self:flex-start;width:fit-content}
+.typing-dot{width:5px;height:5px;border-radius:50%;background:var(--gold-dim);animation:tp 1.2s infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes tp{0%,80%,100%{transform:scale(.7);opacity:.5}40%{transform:scale(1);opacity:1}}
+.chat-input-row{padding:.875rem 1.25rem;border-top:1px solid var(--bg-border);display:flex;gap:.625rem;align-items:flex-end}
+.chat-input{flex:1;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.625rem .875rem;color:var(--text-primary);font-family:var(--font-body);font-size:.875rem;resize:none;outline:none;transition:border-color .2s;min-height:36px;max-height:120px;line-height:1.5}
+.chat-input:focus{border-color:var(--gold-dim)}
+.chat-input::placeholder{color:var(--text-muted)}
+.chat-send{background:var(--gold);color:var(--bg-void);border:none;border-radius:var(--radius-md);width:34px;height:34px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;flex-shrink:0}
+.chat-send:hover{background:var(--gold-bright)}
+.chat-send:disabled{opacity:.4;cursor:not-allowed}
+.chat-presets{padding:.625rem 1.25rem;border-top:1px solid var(--bg-border);display:flex;gap:.375rem;flex-wrap:wrap}
+.chat-preset{font-size:.75rem;color:var(--text-muted);padding:.25rem .625rem;border:1px solid var(--bg-border);border-radius:var(--radius-pill);background:transparent;cursor:pointer;transition:all .18s;font-family:var(--font-body);white-space:nowrap}
+.chat-preset:hover{color:var(--gold);border-color:rgba(212,168,75,.3);background:var(--gold-glow)}
+
+/* ── WORKFLOW BUILDER ── */
+.wf-canvas{flex:1;background:var(--bg-void);position:relative;overflow:hidden;cursor:default}
+.wf-grid{position:absolute;inset:0;background-image:linear-gradient(var(--bg-border) 1px,transparent 1px),linear-gradient(90deg,var(--bg-border) 1px,transparent 1px);background-size:32px 32px;opacity:.3}
+.wf-nodes{position:absolute;top:50%;left:50%;transform:translate(-50%,-54%);display:flex;flex-direction:column;align-items:center;gap:0}
+.wf-node{width:260px;padding:.875rem 1rem;border-radius:var(--radius-lg);border:1.5px solid;display:flex;align-items:center;gap:.75rem;cursor:pointer;transition:all .2s;position:relative;background:var(--bg-surface)}
+.wf-node:hover{transform:scale(1.02);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.wf-node.selected{transform:scale(1.03)}
+.wf-node--trigger{border-color:rgba(91,143,232,.4);background:rgba(91,143,232,.06)}
+.wf-node--action{border-color:var(--bg-border-strong);background:var(--bg-surface)}
+.wf-node--ai{border-color:rgba(212,168,75,.4);background:rgba(212,168,75,.05)}
+.wf-node--end{border-color:rgba(59,176,122,.4);background:rgba(59,176,122,.06)}
+.wf-node__icon{font-size:1.125rem;flex-shrink:0}
+.wf-node__text{flex:1}
+.wf-node__name{font-size:.875rem;font-weight:500;color:var(--text-primary)}
+.wf-node__desc{font-size:.75rem;color:var(--text-muted);margin-top:.125rem}
+.wf-node__type{font-family:var(--font-mono);font-size:.5625rem;text-transform:uppercase;letter-spacing:.08em;padding:.15rem .4rem;border-radius:var(--radius-pill);margin-left:auto;flex-shrink:0}
+.wf-node--trigger .wf-node__type{color:#5B8FE8;background:rgba(91,143,232,.1);border:1px solid rgba(91,143,232,.2)}
+.wf-node--action .wf-node__type{color:var(--text-muted);background:var(--bg-elevated);border:1px solid var(--bg-border)}
+.wf-node--ai .wf-node__type{color:var(--gold);background:var(--gold-glow);border:1px solid rgba(212,168,75,.2)}
+.wf-node--end .wf-node__type{color:var(--success);background:rgba(59,176,122,.1);border:1px solid rgba(59,176,122,.2)}
+.wf-connector{display:flex;flex-direction:column;align-items:center;width:2px;background:var(--bg-border-strong);height:24px;position:relative}
+.wf-connector::after{content:'';width:8px;height:8px;border-right:2px solid var(--bg-border-strong);border-bottom:2px solid var(--bg-border-strong);transform:rotate(45deg) translateX(-50%);position:absolute;bottom:-4px;left:50%;margin-left:-4px}
+.wf-toolbar{position:absolute;top:1rem;right:1rem;display:flex;gap:.5rem;flex-direction:column}
+.wf-tool-btn{width:32px;height:32px;background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.875rem;color:var(--text-muted);transition:all .18s}
+.wf-tool-btn:hover{color:var(--text-primary);border-color:var(--bg-border-strong)}
+.wf-stats{position:absolute;bottom:1rem;left:1rem;display:flex;gap:.625rem}
+.wf-stat-chip{font-family:var(--font-mono);font-size:.6875rem;padding:.3rem .75rem;border-radius:var(--radius-pill);background:var(--bg-surface);border:1px solid var(--bg-border);color:var(--text-muted)}
+.wf-stat-chip span{color:var(--text-secondary);font-weight:500}
+
+/* NODE INSPECTOR */
+.node-inspector{width:280px;background:var(--bg-surface);border-left:1px solid var(--bg-border);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto;transition:width .3s}
+.node-inspector.hidden{width:0;overflow:hidden}
+.inspector__hdr{padding:1rem;border-bottom:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between}
+.inspector__title{font-size:.875rem;font-weight:600}
+.inspector__close{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1rem;padding:.25rem;transition:color .18s}
+.inspector__close:hover{color:var(--text-primary)}
+.inspector__body{padding:1rem;display:flex;flex-direction:column;gap:1rem}
+.inspector-field{display:flex;flex-direction:column;gap:.375rem}
+.inspector-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)}
+.inspector-input{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.5rem .75rem;color:var(--text-primary);font-family:var(--font-body);font-size:.8125rem;outline:none;width:100%;transition:border-color .2s}
+.inspector-input:focus{border-color:var(--gold-dim)}
+.inspector-select{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.5rem .75rem;color:var(--text-secondary);font-family:var(--font-body);font-size:.8125rem;outline:none;width:100%;appearance:none;cursor:pointer}
+.inspector-select option{background:var(--bg-surface)}
+.run-log{font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);background:var(--bg-void);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.75rem;line-height:1.7;max-height:120px;overflow-y:auto}
+.run-log .ok{color:var(--success)}.run-log .warn{color:var(--gold)}.run-log .info{color:var(--info)}
+
+/* ── DOCUMENT VIEW ── */
+.doc-layout{display:grid;grid-template-columns:1fr 320px;gap:1rem;flex:1;overflow:hidden;min-height:0}
+.doc-list{display:flex;flex-direction:column;overflow:hidden}
+.doc-preview{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);display:flex;flex-direction:column;overflow:hidden}
+.doc-preview__hdr{padding:.875rem 1.25rem;border-bottom:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between}
+.doc-preview__body{padding:1.25rem;overflow-y:auto;flex:1}
+.extracted-field{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(36,36,54,.6);font-size:.8125rem}
+.extracted-field:last-child{border-bottom:none}
+.ef-key{color:var(--text-muted)}
+.ef-val{color:var(--text-secondary);font-family:var(--font-mono);font-size:.75rem;text-align:right;max-width:55%}
+.ef-val.flagged{color:var(--danger)}
+.ef-val.verified{color:var(--success)}
+.confidence-bar{height:4px;background:var(--bg-border);border-radius:2px;margin-top:.25rem;overflow:hidden}
+.confidence-fill{height:100%;background:var(--success);border-radius:2px}
+.confidence-fill.medium{background:var(--gold)}
+.confidence-fill.low{background:var(--danger)}
+
+/* ── REPORT VIEW ── */
+.report-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.report-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.875rem;margin-bottom:1.25rem}
+.rk{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1rem;text-align:center}
+.rk__num{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.rk__num.up{color:var(--success)}.rk__num.down{color:var(--danger)}.rk__num.neutral{color:var(--text-primary)}
+.rk__label{font-size:.75rem;color:var(--text-muted);margin-top:.25rem}
+.rk__delta{font-family:var(--font-mono);font-size:.6875rem;margin-top:.125rem}
+.chart-area{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1rem}
+.chart-title{font-size:.875rem;font-weight:600;margin-bottom:1rem}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:120px;padding-top:.5rem}
+.chart-b{flex:1;border-radius:3px 3px 0 0;cursor:pointer;transition:all .2s;position:relative}
+.chart-b:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--bg-overlay);border:1px solid var(--bg-border);border-radius:var(--radius-sm);padding:.25rem .5rem;font-family:var(--font-mono);font-size:.625rem;color:var(--text-secondary);white-space:nowrap;pointer-events:none}
+.chart-labels{display:flex;gap:6px;margin-top:.375rem}
+.chart-label{flex:1;text-align:center;font-family:var(--font-mono);font-size:.5625rem;color:var(--text-muted)}
+.narrative-box{background:var(--bg-elevated);border-left:2px solid var(--gold);border-radius:0 var(--radius-md) var(--radius-md) 0;padding:.875rem 1.125rem;font-size:.875rem;color:var(--text-secondary);line-height:1.7}
+.narrative-box strong{color:var(--text-primary)}
+
+/* ── QUOTE BUILDER ── */
+.quote-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.375rem}
+.form-label{font-size:.75rem;font-weight:500;color:var(--text-secondary);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em}
+.form-input,.form-select{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.5rem .75rem;color:var(--text-primary);font-family:var(--font-body);font-size:.875rem;outline:none;transition:border-color .2s;width:100%}
+.form-input:focus,.form-select:focus{border-color:var(--gold-dim)}
+.form-input::placeholder{color:var(--text-muted)}
+.form-select{appearance:none;cursor:pointer}
+.form-select option{background:var(--bg-surface)}
+.quote-line-table{width:100%;border-collapse:collapse;font-size:.8125rem;margin-bottom:1rem}
+.quote-line-table th{font-family:var(--font-mono);font-size:.5625rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);padding:.5rem .75rem;border-bottom:1px solid var(--bg-border);background:var(--bg-elevated);text-align:left}
+.quote-line-table td{padding:.5rem .75rem;color:var(--text-secondary);border-bottom:1px solid rgba(36,36,54,.4)}
+.quote-line-table td input{background:transparent;border:none;outline:none;color:var(--text-primary);font-family:var(--font-body);font-size:.8125rem;width:100%}
+.quote-upsell-banner{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.2);border-radius:var(--radius-md);padding:.75rem 1rem;font-size:.8125rem;color:var(--gold-dim);margin-bottom:1rem;display:flex;align-items:flex-start;gap:.625rem}
+.quote-total-area{display:flex;justify-content:flex-end;margin-bottom:1.25rem}
+.quote-total-box{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1rem 1.5rem;min-width:220px}
+.quote-total-line{display:flex;justify-content:space-between;font-size:.8125rem;margin-bottom:.375rem;color:var(--text-muted)}
+.quote-total-line.grand{font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--text-primary);border-top:1px solid var(--bg-border);padding-top:.625rem;margin-top:.375rem}
+.quote-total-line.grand span{color:var(--gold)}
+.generating{display:flex;align-items:center;gap:.625rem;font-size:.875rem;color:var(--text-muted)}
+.generating-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1s infinite}
+
+/* ── TABS (within view) ── */
+.view-tabs{display:flex;border-bottom:1px solid var(--bg-border);margin-bottom:1.25rem;gap:0}
+.view-tab{padding:.625rem 1rem;font-size:.875rem;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .18s;font-family:var(--font-body);margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none}
+.view-tab:hover{color:var(--text-secondary)}
+.view-tab.active{color:var(--text-primary);border-bottom-color:var(--gold)}
+
+/* ── TOAST ── */
+.toast-stack{position:fixed;bottom:1.5rem;right:1.5rem;z-index:9999;display:flex;flex-direction:column;gap:.625rem;pointer-events:none}
+.toast{background:var(--bg-elevated);border:1px solid var(--bg-border-strong);border-radius:var(--radius-lg);padding:.875rem 1.125rem;display:flex;align-items:flex-start;gap:.625rem;max-width:320px;animation:toastIn .25s ease;box-shadow:0 4px 20px rgba(0,0,0,.5);pointer-events:all}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.toast--success{border-left:3px solid var(--success)}
+.toast--gold{border-left:3px solid var(--gold)}
+.toast__icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.toast__body{font-size:.8125rem;color:var(--text-secondary);line-height:1.5}
+.toast__title{font-weight:500;color:var(--text-primary);margin-bottom:.125rem;font-size:.875rem}
+
+/* ── INSIGHT INPUT ── */
+.insight-bar{display:flex;gap:.625rem;margin-bottom:1.25rem}
+.insight-input{flex:1;background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:.75rem 1.125rem;color:var(--text-primary);font-family:var(--font-body);font-size:.9375rem;outline:none;transition:border-color .2s}
+.insight-input:focus{border-color:var(--gold-dim)}
+.insight-input::placeholder{color:var(--text-muted)}
+.insight-result-card{background:var(--bg-surface);border:1px solid rgba(212,168,75,.2);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:1rem;animation:viewIn .25s ease}
+.insight-result-card__hdr{padding:.875rem 1.25rem;border-bottom:1px solid var(--bg-border);display:flex;align-items:center;gap:.625rem;background:rgba(212,168,75,.04)}
+.insight-result-card__body{padding:1.25rem;font-size:.9375rem;color:var(--text-secondary);line-height:1.75}
+.insight-sources-row{display:flex;gap:.375rem;flex-wrap:wrap;margin-top:.875rem}
+.insight-src{font-family:var(--font-mono);font-size:.625rem;padding:.175rem .5rem;border:1px solid rgba(212,168,75,.2);border-radius:var(--radius-sm);color:var(--gold-dim)}
+.insight-prev-queries{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.insight-prev{font-size:.8125rem;color:var(--text-muted);padding:.375rem .875rem;border:1px solid var(--bg-border);border-radius:var(--radius-pill);cursor:pointer;transition:all .18s;background:transparent;font-family:var(--font-body)}
+.insight-prev:hover{color:var(--gold);border-color:rgba(212,168,75,.35);background:var(--gold-glow)}
+
+/* ── SCROLLBAR within main ── */
+.main::-webkit-scrollbar,.chat-messages::-webkit-scrollbar,.doc-list::-webkit-scrollbar{width:4px}
+
+@media(max-width:1100px){.stat-row{grid-template-columns:repeat(2,1fr)}.report-kpi-grid{grid-template-columns:repeat(2,1fr)}.quote-form{grid-template-columns:1fr}}
+@media(max-width:768px){.sidebar{display:none}.two-col,.two-thirds,.three-col,.doc-layout{grid-template-columns:1fr}.node-inspector{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar__left">
+    <a href="/" class="topbar__logo"><div class="topbar__logo-mark" aria-hidden="true"></div>HurryKisha</a>
+    <div class="topbar__breadcrumb" id="breadcrumb">
+      <span>Operations</span><span class="topbar__breadcrumb-sep">/</span><span>Overview</span>
+    </div>
+  </div>
+  <div class="topbar__right">
+    <div class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span>Interactive Demo</div>
+    <a href="/#contact" class="topbar-btn">Book Real Demo</a>
+    <a href="/" class="topbar-btn topbar-btn--gold">← Back to Site</a>
+    <div class="avatar" title="Demo User — Ops Manager">JO</div>
+  </div>
+</div>
+
+<div class="app-body">
+  <!-- SIDEBAR -->
+  <nav class="sidebar" aria-label="Platform navigation">
+    <div class="sidebar__section-label">Overview</div>
+    <div class="nav-item active" onclick="switchView('overview',this,'Operations / Overview')">
+      <span class="nav-item__icon">📊</span> Dashboard
+    </div>
+    <div class="nav-item" onclick="switchView('report',this,'Reports / Weekly Brief')">
+      <span class="nav-item__icon">📈</span> Reports
+      <span class="nav-item__badge nav-item__badge--gold">1</span>
+    </div>
+
+    <div class="sidebar__section-label">Products</div>
+    <div class="nav-item" onclick="switchView('quotation',this,'Quotation Engine')">
+      <span class="nav-item__icon">⚡</span> Quotation Engine
+    </div>
+    <div class="nav-item" onclick="switchView('documents',this,'Document AI / Inbox')">
+      <span class="nav-item__icon">📄</span> Document AI
+      <span class="nav-item__badge">3</span>
+    </div>
+    <div class="nav-item" onclick="switchView('insight',this,'Insight Mining')">
+      <span class="nav-item__icon">🔍</span> Insight Mining
+    </div>
+    <div class="nav-item" onclick="switchView('workflow',this,'Workflow Builder')">
+      <span class="nav-item__icon">⚙️</span> Workflow Builder
+    </div>
+    <div class="nav-item" onclick="switchView('assistant',this,'Decision Assistant')">
+      <span class="nav-item__icon">🧠</span> Decision Assistant
+    </div>
+
+    <div class="sidebar__section-label">System</div>
+    <div class="nav-item" onclick="switchView('overview',this,'Operations / Overview')">
+      <span class="nav-item__icon">🔗</span> Integrations
+    </div>
+    <div class="nav-item" onclick="switchView('overview',this,'Operations / Overview')">
+      <span class="nav-item__icon">⚙️</span> Settings
+    </div>
+
+    <div class="sidebar__bottom">
+      <div class="sidebar__user">
+        <div class="avatar">JO</div>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">James Oduya</div>
+          <div class="sidebar__user-role">COO · Pinnacle Insurance</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main" id="mainContent">
+
+    <!-- ── OVERVIEW ── -->
+    <div class="view active" id="view-overview">
+      <div class="page-hdr">
+        <div><h1 class="page-hdr__title">Good morning, James ☀️</h1><p class="page-hdr__sub">Operations snapshot · Week 47 · Mon Nov 18, 2025</p></div>
+        <div class="page-hdr__actions">
+          <button class="btn btn--secondary" onclick="toast('Report exported','Weekly brief sent to your inbox.','success')">Export Report</button>
+          <button class="btn btn--primary" onclick="switchView('assistant',document.querySelector('.nav-item:nth-child(8)'),'Decision Assistant')">Ask AI <span>🧠</span></button>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-card__label"><span class="stat-card__icon">⚡</span> Quotes Generated Today</div>
+          <div class="stat-card__num">142</div>
+          <div class="stat-card__delta up">↑ 23% vs yesterday</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label"><span class="stat-card__icon">📄</span> Documents Processed</div>
+          <div class="stat-card__num">1,847</div>
+          <div class="stat-card__delta up">↑ 11% this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label"><span class="stat-card__icon">⚠️</span> Flagged for Review</div>
+          <div class="stat-card__num" style="color:var(--gold)">7</div>
+          <div class="stat-card__delta" style="color:var(--text-muted)">Down from 12 last week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card__label"><span class="stat-card__icon">⏱</span> Hours Saved This Week</div>
+          <div class="stat-card__num">84h</div>
+          <div class="stat-card__delta up">↑ Equiv. 2.1 FTE days</div>
+        </div>
+      </div>
+
+      <div class="two-thirds">
+        <div class="panel">
+          <div class="panel__hdr">
+            <span class="panel__title">Quote Volume — Last 7 Days</span>
+            <button class="btn btn--ghost btn--sm" onclick="switchView('quotation',null,'Quotation Engine')">View all</button>
+          </div>
+          <div class="panel__body">
+            <div class="chart-bars" role="img" aria-label="Quote volume bar chart last 7 days">
+              <div class="chart-b" style="height:55%;background:var(--bg-border-strong)" data-tip="Mon: 98"></div>
+              <div class="chart-b" style="height:72%;background:var(--bg-border-strong)" data-tip="Tue: 119"></div>
+              <div class="chart-b" style="height:64%;background:var(--bg-border-strong)" data-tip="Wed: 106"></div>
+              <div class="chart-b" style="height:80%;background:var(--bg-border-strong)" data-tip="Thu: 132"></div>
+              <div class="chart-b" style="height:68%;background:var(--bg-border-strong)" data-tip="Fri: 113"></div>
+              <div class="chart-b" style="height:45%;background:var(--bg-border-strong)" data-tip="Sat: 74"></div>
+              <div class="chart-b" style="height:88%;background:var(--gold)" data-tip="Today: 142"></div>
+            </div>
+            <div class="chart-labels"><span class="chart-label">Mon</span><span class="chart-label">Tue</span><span class="chart-label">Wed</span><span class="chart-label">Thu</span><span class="chart-label">Fri</span><span class="chart-label">Sat</span><span class="chart-label">Today</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel__hdr"><span class="panel__title">System Status</span></div>
+          <div class="panel__body" style="display:flex;flex-direction:column;gap:.75rem">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:.8125rem;color:var(--text-secondary)">Quotation Engine</span>
+              <span class="pill pill--done"><span class="pill-dot"></span>Operational</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:.8125rem;color:var(--text-secondary)">Document AI</span>
+              <span class="pill pill--done"><span class="pill-dot"></span>Operational</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:.8125rem;color:var(--text-secondary)">Report Intelligence</span>
+              <span class="pill pill--done"><span class="pill-dot"></span>Operational</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:.8125rem;color:var(--text-secondary)">Workflow Engine</span>
+              <span class="pill pill--proc"><span class="pill-dot"></span>2 Running</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span style="font-size:.8125rem;color:var(--text-secondary)">Decision Assistant</span>
+              <span class="pill pill--done"><span class="pill-dot"></span>Operational</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__hdr"><span class="panel__title">Activity Feed</span><button class="btn btn--ghost btn--sm">See all</button></div>
+        <div class="panel__body--pad0">
+          <div class="activity-feed" role="log" aria-label="Recent activity">
+            <div class="activity-item"><div class="activity-icon activity-icon--gold">⚡</div><div class="activity-text"><strong>Quote QT-2024-0851</strong> generated for Apex Manufacturing — $14,200 · Upsell attached</div><div class="activity-time">2m ago</div></div>
+            <div class="activity-item"><div class="activity-icon activity-icon--red">⚠️</div><div class="activity-text"><strong>Invoice INV-KE-003851</strong> flagged — Amount $48,200 vs expected $21,000 · Awaiting review</div><div class="activity-time">14m ago</div></div>
+            <div class="activity-item"><div class="activity-icon activity-icon--green">✓</div><div class="activity-text"><strong>Workflow "Invoice Approval"</strong> processed 84 invoices overnight · 3 exceptions routed</div><div class="activity-time">6h ago</div></div>
+            <div class="activity-item"><div class="activity-icon activity-icon--blue">📊</div><div class="activity-text"><strong>Weekly Ops Brief</strong> generated and delivered to 8 recipients · 6:00 AM</div><div class="activity-time">8h ago</div></div>
+            <div class="activity-item"><div class="activity-icon activity-icon--gold">🧠</div><div class="activity-text"><strong>Anomaly detected</strong> — Logistics cost per unit up 31% this week · Above 2σ threshold</div><div class="activity-time">1d ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── REPORT VIEW ── -->
+    <div class="view" id="view-report">
+      <div class="page-hdr">
+        <div><h1 class="page-hdr__title">Weekly Operations Brief</h1><p class="page-hdr__sub">Generated automatically · Mon Nov 18, 2025 · 06:00 AM</p></div>
+        <div class="page-hdr__actions">
+          <button class="btn btn--secondary" onclick="toast('Exported','PDF sent to your email.','success')">Export PDF</button>
+          <button class="btn btn--secondary" onclick="toast('Scheduled','Next report: Mon Nov 25 at 06:00 AM','gold')">Schedule</button>
+        </div>
+      </div>
+      <div class="report-kpi-grid">
+        <div class="rk"><div class="rk__num up">+12.4%</div><div class="rk__label">Revenue WoW</div><div class="rk__delta" style="color:var(--success)">↑ 12.4%</div></div>
+        <div class="rk"><div class="rk__num up">142</div><div class="rk__label">Quotes Today</div><div class="rk__delta" style="color:var(--success)">↑ 23%</div></div>
+        <div class="rk"><div class="rk__num down">7</div><div class="rk__label">Docs Flagged</div><div class="rk__delta" style="color:var(--success)">↓ Down from 12</div></div>
+        <div class="rk"><div class="rk__num up">98.2%</div><div class="rk__label">SLA Compliance</div><div class="rk__delta" style="color:var(--success)">↑ +1.4pts</div></div>
+      </div>
+      <div class="chart-area">
+        <div class="chart-title">Revenue by Week (Oct–Nov 2025)</div>
+        <div class="chart-bars" style="height:140px" role="img" aria-label="Revenue trend chart">
+          <div class="chart-b" style="height:52%;background:var(--bg-border-strong)" data-tip="Wk41: $420K"></div>
+          <div class="chart-b" style="height:61%;background:var(--bg-border-strong)" data-tip="Wk42: $492K"></div>
+          <div class="chart-b" style="height:55%;background:var(--bg-border-strong)" data-tip="Wk43: $444K"></div>
+          <div class="chart-b" style="height:70%;background:var(--bg-border-strong)" data-tip="Wk44: $566K"></div>
+          <div class="chart-b" style="height:66%;background:var(--bg-border-strong)" data-tip="Wk45: $532K"></div>
+          <div class="chart-b" style="height:75%;background:var(--gold-dim)" data-tip="Wk46: $606K"></div>
+          <div class="chart-b" style="height:88%;background:var(--gold)" data-tip="Wk47: $712K ← This week"></div>
+        </div>
+        <div class="chart-labels"><span class="chart-label">Wk41</span><span class="chart-label">Wk42</span><span class="chart-label">Wk43</span><span class="chart-label">Wk44</span><span class="chart-label">Wk45</span><span class="chart-label">Wk46</span><span class="chart-label">Wk47</span></div>
+      </div>
+      <div class="panel">
+        <div class="panel__hdr"><span class="panel__title">AI Narrative Analysis</span><span class="pill pill--done"><span class="pill-dot"></span>Auto-generated</span></div>
+        <div class="panel__body">
+          <div class="narrative-box">
+            <strong>Revenue growth is driven primarily by the East Africa segment (+18% WoW)</strong>, offset by a slight softening in the Northern region (−3%). The East Africa surge correlates with the Q4 renewal cycle — 14 enterprise policy renewals processed this week vs 8 last week. <br><br>
+            <strong>Northern region requires attention:</strong> four large deals are stalled at proposal stage for more than 14 days. Recommend a pipeline review call with the Northern sales lead before Wednesday. Quote acceptance rate in Northern is 61% vs 78% company average — potentially a pricing or competitive issue worth examining.<br><br>
+            <strong>Document processing efficiency is improving:</strong> average processing time dropped from 12 minutes to 9.4 minutes per document following the extraction rule update on Nov 14. Exception rate is 5.8% — within target range.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── QUOTATION ENGINE ── -->
+    <div class="view" id="view-quotation">
+      <div class="page-hdr">
+        <div><h1 class="page-hdr__title">Quotation Engine</h1><p class="page-hdr__sub">142 generated today · Average time: 8.3 seconds</p></div>
+        <div class="page-hdr__actions">
+          <button class="btn btn--primary" onclick="generateQuote()">⚡ Generate New Quote</button>
+        </div>
+      </div>
+      <div class="view-tabs">
+        <button class="view-tab active" onclick="switchTab(this,'qt-new')">New Quote</button>
+        <button class="view-tab" onclick="switchTab(this,'qt-history')">History</button>
+      </div>
+      <div id="qt-new" class="tab-content">
+        <div class="panel" style="margin-bottom:1rem">
+          <div class="panel__hdr"><span class="panel__title">Quote Details</span></div>
+          <div class="panel__body">
+            <div class="quote-form">
+              <div class="form-group"><label class="form-label">Client</label><select class="form-select" id="qClient"><option>Pinnacle Insurance Group</option><option>Apex Manufacturing</option><option>Westbridge Capital</option><option>Swift Freight EA</option></select></div>
+              <div class="form-group"><label class="form-label">Currency</label><select class="form-select"><option>USD</option><option>KES</option><option>ZAR</option><option>NGN</option></select></div>
+              <div class="form-group"><label class="form-label">Valid For</label><select class="form-select"><option>30 days</option><option>14 days</option><option>60 days</option></select></div>
+              <div class="form-group"><label class="form-label">Discount Tier</label><select class="form-select" id="qDiscount"><option>Auto (from CRM)</option><option>Standard (0%)</option><option>Volume (10%)</option><option>Strategic (15%)</option></select></div>
+            </div>
+            <table class="quote-line-table">
+              <thead><tr><th>Product / Service</th><th>Qty</th><th>Unit Price</th><th>Total</th></tr></thead>
+              <tbody id="quoteLines">
+                <tr><td><input value="Enterprise License" aria-label="Product name"></td><td><input value="500" style="width:60px" type="number" aria-label="Quantity" oninput="recalcQuote()"></td><td><input value="2.40" style="width:80px" type="number" step="0.01" aria-label="Unit price" oninput="recalcQuote()"></td><td id="line0">$1,200</td></tr>
+                <tr><td><input value="Onboarding Package" aria-label="Product name"></td><td><input value="1" style="width:60px" type="number" aria-label="Quantity" oninput="recalcQuote()"></td><td><input value="800" style="width:80px" type="number" step="0.01" aria-label="Unit price" oninput="recalcQuote()"></td><td id="line1">$800</td></tr>
+                <tr><td><input value="Priority Support (12mo)" aria-label="Product name"></td><td><input value="1" style="width:60px" type="number" aria-label="Quantity" oninput="recalcQuote()"></td><td><input value="600" style="width:80px" type="number" step="0.01" aria-label="Unit price" oninput="recalcQuote()"></td><td id="line2">$600</td></tr>
+              </tbody>
+            </table>
+            <div class="quote-upsell-banner">🧠 <div><strong style="color:var(--gold)">AI Upsell Suggestion:</strong> Add Data Migration Service ($400) — 85% of similar clients at this deal stage include this. <a href="#" onclick="addUpsell(event)" style="color:var(--gold);font-weight:500;margin-left:.5rem">Add to quote →</a></div></div>
+            <div class="quote-total-area">
+              <div class="quote-total-box">
+                <div class="quote-total-line"><span>Subtotal</span><span id="qSubtotal">$2,600</span></div>
+                <div class="quote-total-line"><span>Volume Discount (10%)</span><span id="qDiscount2" style="color:var(--success)">−$260</span></div>
+                <div class="quote-total-line grand"><span>Total</span><span id="qTotal"><span>$2,340</span></span></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:.75rem">
+              <button class="btn btn--primary" onclick="generateQuote()">⚡ Generate PDF Quote</button>
+              <button class="btn btn--secondary" onclick="toast('Saved','Draft saved successfully.','success')">Save Draft</button>
+              <button class="btn btn--secondary" onclick="toast('Sent','Quote sent to client email.','success')">Send to Client</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="qt-history" class="tab-content" style="display:none">
+        <div class="panel"><div class="panel__body--pad0">
+          <table class="data-table">
+            <thead><tr><th>Quote #</th><th>Client</th><th>Amount</th><th>Created</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr onclick="toast('Opening quote…','QT-2024-0851 loaded.','gold')"><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--gold)">QT-2024-0851</td><td>Apex Manufacturing</td><td style="font-family:var(--font-mono)">$14,200</td><td style="color:var(--text-muted)">Today 09:14</td><td><span class="pill pill--pending"><span class="pill-dot"></span>Sent</span></td><td><button class="btn btn--ghost btn--sm">View</button></td></tr>
+              <tr onclick="toast('Opening quote…','QT-2024-0850 loaded.','gold')"><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--gold)">QT-2024-0850</td><td>Pinnacle Insurance</td><td style="font-family:var(--font-mono)">$2,340</td><td style="color:var(--text-muted)">Today 08:52</td><td><span class="pill pill--done"><span class="pill-dot"></span>Accepted</span></td><td><button class="btn btn--ghost btn--sm">View</button></td></tr>
+              <tr onclick="toast('Opening quote…','QT-2024-0849 loaded.','gold')"><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--gold)">QT-2024-0849</td><td>Swift Freight EA</td><td style="font-family:var(--font-mono)">$8,900</td><td style="color:var(--text-muted)">Yesterday</td><td><span class="pill pill--flag"><span class="pill-dot"></span>Expired</span></td><td><button class="btn btn--ghost btn--sm">Renew</button></td></tr>
+              <tr onclick="toast('Opening quote…','QT-2024-0848 loaded.','gold')"><td style="font-family:var(--font-mono);font-size:.75rem;color:var(--gold)">QT-2024-0848</td><td>Westbridge Capital</td><td style="font-family:var(--font-mono)">$31,500</td><td style="color:var(--text-muted)">Nov 15</td><td><span class="pill pill--done"><span class="pill-dot"></span>Accepted</span></td><td><button class="btn btn--ghost btn--sm">View</button></td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ── DOCUMENTS ── -->
+    <div class="view" id="view-documents">
+      <div class="page-hdr">
+        <div><h1 class="page-hdr__title">Document AI</h1><p class="page-hdr__sub">1,847 processed this week · 7 flagged · 94% fully automated</p></div>
+        <div class="page-hdr__actions">
+          <button class="btn btn--primary" onclick="toast('Upload started','Drag files here or click to select.','gold')">⬆ Upload Batch</button>
+        </div>
+      </div>
+      <div class="doc-layout" style="flex:1;min-height:0">
+        <div class="doc-list panel" style="overflow:hidden;display:flex;flex-direction:column">
+          <div class="panel__hdr"><span class="panel__title">Recent Documents</span>
+            <div style="display:flex;gap:.5rem">
+              <button class="btn btn--ghost btn--sm" onclick="filterDocs('all',this)">All</button>
+              <button class="btn btn--ghost btn--sm" onclick="filterDocs('flag',this)">⚠ Flagged</button>
+            </div>
+          </div>
+          <div style="overflow-y:auto;flex:1">
+            <table class="data-table" id="docTable">
+              <thead><tr><th>Document</th><th>Type</th><th>Status</th><th>Time</th></tr></thead>
+              <tbody>
+                <tr onclick="selectDoc(this,'inv3851')" class="selected"><td style="font-family:var(--font-mono);font-size:.75rem">INV-KE-003851</td><td style="color:var(--text-muted)">Invoice</td><td><span class="pill pill--flag"><span class="pill-dot"></span>Flagged</span></td><td style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem">14m ago</td></tr>
+                <tr onclick="selectDoc(this,'pol001')"><td style="font-family:var(--font-mono);font-size:.75rem">Policy_PKG_2024_112</td><td style="color:var(--text-muted)">Policy</td><td><span class="pill pill--done"><span class="pill-dot"></span>Extracted</span></td><td style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem">22m ago</td></tr>
+                <tr onclick="selectDoc(this,'rfp004')"><td style="font-family:var(--font-mono);font-size:.75rem">RFP_Logistics_Q4</td><td style="color:var(--text-muted)">RFP</td><td><span class="pill pill--proc"><span class="pill-dot"></span>Processing</span></td><td style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem">1h ago</td></tr>
+                <tr onclick="selectDoc(this,'con202')"><td style="font-family:var(--font-mono);font-size:.75rem">Contract_Meridian_v3</td><td style="color:var(--text-muted)">Contract</td><td><span class="pill pill--done"><span class="pill-dot"></span>Extracted</span></td><td style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem">2h ago</td></tr>
+                <tr onclick="selectDoc(this,'inv3850')"><td style="font-family:var(--font-mono);font-size:.75rem">INV-KE-003850</td><td style="color:var(--text-muted)">Invoice</td><td><span class="pill pill--done"><span class="pill-dot"></span>Extracted</span></td><td style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem">3h ago</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="doc-preview" id="docPreview">
+          <div class="panel__hdr">
+            <span class="panel__title" id="docPreviewTitle">INV-KE-003851 · Flagged</span>
+            <div style="display:flex;gap:.5rem">
+              <button class="btn btn--success btn--sm" onclick="toast('Approved','Invoice approved and posted to QuickBooks.','success')">✓ Approve</button>
+              <button class="btn btn--danger btn--sm" onclick="toast('Rejected','Invoice rejected and vendor notified.','success')">✕ Reject</button>
+            </div>
+          </div>
+          <div class="panel__body" id="docPreviewBody" style="overflow-y:auto;flex:1">
+            <div style="margin-bottom:1rem"><span class="pill pill--flag"><span class="pill-dot"></span>2 Anomalies Detected</span></div>
+            <div style="font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:.625rem">Extracted Fields</div>
+            <div class="extracted-field"><span class="ef-key">Vendor</span><span class="ef-val">Apex Supplies Ltd</span></div>
+            <div style="padding:.25rem 0;font-size:.6875rem;color:var(--text-muted)">Confidence <div class="confidence-bar"><div class="confidence-fill" style="width:98%"></div></div></div>
+            <div class="extracted-field"><span class="ef-key">Invoice Date</span><span class="ef-val">2024-10-31</span></div>
+            <div style="padding:.25rem 0;font-size:.6875rem;color:var(--text-muted)">Confidence <div class="confidence-bar"><div class="confidence-fill" style="width:99%"></div></div></div>
+            <div class="extracted-field"><span class="ef-key">Invoice Amount</span><span class="ef-val flagged">$48,200 ← Expected $21,000</span></div>
+            <div style="padding:.25rem 0;font-size:.6875rem;color:var(--danger)">⚠ Amount 2.3× above expected range</div>
+            <div class="extracted-field"><span class="ef-key">PO Number</span><span class="ef-val flagged">Not found</span></div>
+            <div style="padding:.25rem 0;font-size:.6875rem;color:var(--danger)">⚠ No matching PO in system</div>
+            <div class="extracted-field"><span class="ef-key">Payment Terms</span><span class="ef-val">Net 30</span></div>
+            <div class="extracted-field"><span class="ef-key">Line Items</span><span class="ef-val verified">7 items extracted</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INSIGHT MINING ── -->
+    <div class="view" id="view-insight">
+      <div class="page-hdr">
+        <div><h1 class="page-hdr__title">Insight Mining</h1><p class="page-hdr__sub">Ask any business question in plain English</p></div>
+      </div>
+      <div class="insight-bar">
+        <input class="insight-input" id="insightInput" type="text" placeholder="Ask a business question — e.g. 'Which product lines are underperforming and why?'" aria-label="Business question">
+        <button class="btn btn--primary" onclick="askInsight()">Ask AI <svg style="width:14px;height:14px" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="insight-prev-queries" aria-label="Suggested questions">
+        <button class="insight-prev" onclick="setInsight(this)">Why is Q3 revenue down?</button>
+        <button class="insight-prev" onclick="setInsight(this)">Which clients are at churn risk?</button>
+        <button class="insight-prev" onclick="setInsight(this)">What's driving the spike in logistics costs?</button>
+        <button class="insight-prev" onclick="setInsight(this)">Compare Q3 vs Q4 pipeline health</button>
+      </div>
+      <div id="insightResults"></div>
+    </div>
+
+    <!-- ── WORKFLOW BUILDER ── -->
+    <div class="view" id="view-workflow" style="padding:0;overflow:hidden">
+      <div style="display:flex;flex-direction:column;height:100%">
+        <div style="padding:1rem 1.5rem;border-bottom:1px solid var(--bg-border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--bg-surface)">
+          <div style="display:flex;align-items:center;gap:1rem">
+            <h1 style="font-size:1.125rem;font-weight:700;letter-spacing:-.03em">Workflow Builder</h1>
+            <span class="pill pill--proc"><span class="pill-dot"></span>Invoice Approval · Running</span>
+          </div>
+          <div style="display:flex;gap:.625rem">
+            <button class="btn btn--secondary" onclick="toast('Saved','Workflow saved successfully.','success')">Save</button>
+            <button class="btn btn--secondary" onclick="toast('Test run started','Testing with last 5 invoices…','gold')">Test Run</button>
+            <button class="btn btn--primary" onclick="toast('Deployed','Workflow is now live.','success')">Deploy</button>
+          </div>
+        </div>
+        <div style="display:flex;flex:1;overflow:hidden">
+          <div class="wf-canvas" id="wfCanvas">
+            <div class="wf-grid" aria-hidden="true"></div>
+            <div class="wf-nodes" role="list" aria-label="Workflow nodes">
+              <div class="wf-node wf-node--trigger" onclick="selectNode(this,'trigger')" role="listitem" tabindex="0">
+                <span class="wf-node__icon">📨</span>
+                <div class="wf-node__text"><div class="wf-node__name">Invoice Email Received</div><div class="wf-node__desc">Gmail · matches "invoice" in subject</div></div>
+                <span class="wf-node__type">Trigger</span>
+              </div>
+              <div class="wf-connector" aria-hidden="true"></div>
+              <div class="wf-node wf-node--ai" onclick="selectNode(this,'docai')" role="listitem" tabindex="0">
+                <span class="wf-node__icon">📄</span>
+                <div class="wf-node__text"><div class="wf-node__name">Document AI: Extract</div><div class="wf-node__desc">Extract vendor, amount, PO, terms</div></div>
+                <span class="wf-node__type">AI</span>
+              </div>
+              <div class="wf-connector" aria-hidden="true"></div>
+              <div class="wf-node wf-node--ai" onclick="selectNode(this,'validate')" role="listitem" tabindex="0">
+                <span class="wf-node__icon">🧠</span>
+                <div class="wf-node__text"><div class="wf-node__name">AI Validate vs PO</div><div class="wf-node__desc">Flag if amount mismatch &gt; 5%</div></div>
+                <span class="wf-node__type">AI Decision</span>
+              </div>
+              <div class="wf-connector" aria-hidden="true"></div>
+              <div class="wf-node wf-node--action" onclick="selectNode(this,'notify')" role="listitem" tabindex="0">
+                <span class="wf-node__icon">💬</span>
+                <div class="wf-node__text"><div class="wf-node__name">Slack: Notify Finance</div><div class="wf-node__desc">Send summary + approval link</div></div>
+                <span class="wf-node__type">Action</span>
+              </div>
+              <div class="wf-connector" aria-hidden="true"></div>
+              <div class="wf-node wf-node--end" onclick="selectNode(this,'post')" role="listitem" tabindex="0">
+                <span class="wf-node__icon">✓</span>
+                <div class="wf-node__text"><div class="wf-node__name">QuickBooks: Post Invoice</div><div class="wf-node__desc">On approval — post to AP ledger</div></div>
+                <span class="wf-node__type">End</span>
+              </div>
+            </div>
+            <div class="wf-toolbar" aria-label="Canvas tools">
+              <button class="wf-tool-btn" title="Zoom in" onclick="toast('','Zoom in','gold')">+</button>
+              <button class="wf-tool-btn" title="Zoom out" onclick="toast('','Zoom out','gold')">−</button>
+              <button class="wf-tool-btn" title="Fit to screen" onclick="toast('','Reset view','gold')">⊡</button>
+              <button class="wf-tool-btn" title="Add node" onclick="toast('Node added','New action node added to canvas.','gold')">+○</button>
+            </div>
+            <div class="wf-stats" aria-label="Workflow stats">
+              <div class="wf-stat-chip">Runs today: <span>84</span></div>
+              <div class="wf-stat-chip">Success rate: <span>96.4%</span></div>
+              <div class="wf-stat-chip">Avg time: <span>2.1s</span></div>
+            </div>
+          </div>
+          <div class="node-inspector" id="nodeInspector">
+            <div class="inspector__hdr">
+              <span class="inspector__title" id="inspectorTitle">Node Inspector</span>
+              <button class="inspector__close" onclick="closeInspector()" aria-label="Close inspector">✕</button>
+            </div>
+            <div class="inspector__body" id="inspectorBody"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── DECISION ASSISTANT ── -->
+    <div class="view" id="view-assistant">
+      <div class="page-hdr">
+        <div><h1 class="page-hdr__title">Decision Assistant</h1><p class="page-hdr__sub">Senior analyst · 24/7 availability · Sources always cited</p></div>
+      </div>
+      <div class="panel" style="flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0">
+        <div class="chat-wrap">
+          <div class="chat-messages" id="assistantChat" role="log" aria-live="polite" aria-label="Decision Assistant conversation">
+            <div class="chat-msg chat-msg--ai">
+              Hello, James. I'm your Decision Assistant. I have full context on Pinnacle Insurance's operations — CRM, financials, document processing, and workflow history. Ask me anything about your business and I'll reason through it with sources.
+            </div>
+          </div>
+          <div class="chat-presets" aria-label="Suggested questions">
+            <button class="chat-preset" onclick="setAssistant(this)">Should we renew the Westbridge contract?</button>
+            <button class="chat-preset" onclick="setAssistant(this)">What's driving the logistics cost spike?</button>
+            <button class="chat-preset" onclick="setAssistant(this)">Which clients are at churn risk this quarter?</button>
+            <button class="chat-preset" onclick="setAssistant(this)">Where should I focus next week?</button>
+          </div>
+          <div class="chat-input-row">
+            <textarea class="chat-input" id="assistantInput" placeholder="Ask a business question…" rows="1" aria-label="Your question"></textarea>
+            <button class="chat-send" id="assistantSend" onclick="sendAssistant()" aria-label="Send">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app-body -->
+
+<!-- TOAST CONTAINER -->
+<div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+<script>
+// ── VIEW SWITCHING ──
+function switchView(id, navEl, crumb){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const v=document.getElementById('view-'+id);
+  if(v)v.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(navEl)navEl.classList.add('active');
+  if(crumb){const p=crumb.split(' / ');document.getElementById('breadcrumb').innerHTML=p.map((s,i)=>i<p.length-1?`<span>${s}</span><span class="topbar__breadcrumb-sep">/</span>`:`<span>${s}</span>`).join('');}
+}
+
+// ── TAB SWITCHING ──
+function switchTab(btn,tabId){
+  const parent=btn.closest('.view');
+  parent.querySelectorAll('.view-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  parent.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');
+  const t=document.getElementById(tabId);
+  if(t)t.style.display='';
+}
+
+// ── TOAST ──
+function toast(title,msg,type='success'){
+  const stack=document.getElementById('toastStack');
+  const el=document.createElement('div');
+  el.className=`toast toast--${type}`;
+  el.innerHTML=`<div class="toast__icon">${type==='success'?'✓':'⚡'}</div><div class="toast__body"><div class="toast__title">${title}</div>${msg}</div>`;
+  stack.appendChild(el);
+  setTimeout(()=>{el.style.opacity='0';el.style.transform='translateY(8px)';el.style.transition='all .3s';setTimeout(()=>el.remove(),300);},3500);
+}
+
+// ── QUOTE BUILDER ──
+function recalcQuote(){
+  const rows=document.querySelectorAll('#quoteLines tr');
+  let sub=0;
+  rows.forEach((row,i)=>{
+    const inputs=row.querySelectorAll('input');
+    const qty=+inputs[1].value||0,price=+inputs[2].value||0;
+    const t=qty*price;sub+=t;
+    const td=document.getElementById('line'+i);
+    if(td)td.textContent='$'+t.toLocaleString();
+  });
+  const disc=sub*0.1;
+  document.getElementById('qSubtotal').textContent='$'+sub.toLocaleString();
+  document.getElementById('qDiscount2').textContent='−$'+disc.toLocaleString();
+  document.getElementById('qTotal').innerHTML='<span>$'+(sub-disc).toLocaleString()+'</span>';
+}
+
+function addUpsell(e){
+  e.preventDefault();
+  const tbody=document.getElementById('quoteLines');
+  const tr=document.createElement('tr');
+  tr.innerHTML='<td><input value="Data Migration Service" aria-label="Product name"></td><td><input value="1" style="width:60px" type="number" aria-label="Quantity" oninput="recalcQuote()"></td><td><input value="400" style="width:80px" type="number" step="0.01" aria-label="Unit price" oninput="recalcQuote()"></td><td id="line3">$400</td>';
+  tbody.appendChild(tr);
+  document.querySelector('.quote-upsell-banner').style.display='none';
+  recalcQuote();
+  toast('Upsell added','Data Migration Service added to quote.','gold');
+}
+
+function generateQuote(){
+  const btn=event.target||document.querySelector('.btn--primary');
+  const orig=btn.textContent;
+  btn.innerHTML='<span class="generating"><span class="generating-dot"></span> Generating…</span>';
+  btn.disabled=true;
+  setTimeout(()=>{
+    btn.textContent=orig;btn.disabled=false;
+    toast('Quote generated','QT-2024-0852 ready in 8.3 seconds.','gold');
+  },1200);
+}
+
+// ── DOCUMENT PREVIEW ──
+const docData={
+  inv3851:{title:'INV-KE-003851 · ⚠ Flagged',html:'<div style="margin-bottom:1rem"><span class="pill pill--flag"><span class="pill-dot"></span>2 Anomalies Detected</span></div><div style="font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:.625rem">Extracted Fields</div><div class="extracted-field"><span class="ef-key">Vendor</span><span class="ef-val">Apex Supplies Ltd</span></div><div style="padding:.25rem 0;font-size:.6875rem;color:var(--text-muted)">Confidence <div class="confidence-bar"><div class="confidence-fill" style="width:98%"></div></div></div><div class="extracted-field"><span class="ef-key">Invoice Amount</span><span class="ef-val flagged">$48,200 ← Expected $21,000</span></div><div style="padding:.25rem 0;font-size:.6875rem;color:var(--danger)">⚠ Amount 2.3× above expected range</div><div class="extracted-field"><span class="ef-key">PO Number</span><span class="ef-val flagged">Not found</span></div><div style="padding:.25rem 0;font-size:.6875rem;color:var(--danger)">⚠ No matching PO in system</div><div class="extracted-field"><span class="ef-key">Payment Terms</span><span class="ef-val">Net 30</span></div>'},
+  pol001:{title:'Policy_PKG_2024_112 · Extracted',html:'<div style="margin-bottom:1rem"><span class="pill pill--done"><span class="pill-dot"></span>All fields extracted</span></div><div style="font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:.625rem">Extracted Fields</div><div class="extracted-field"><span class="ef-key">Policyholder</span><span class="ef-val verified">Pinnacle Insurance</span></div><div class="extracted-field"><span class="ef-key">Policy No.</span><span class="ef-val">PKG-2024-1147</span></div><div class="extracted-field"><span class="ef-key">Coverage Amount</span><span class="ef-val verified">$2,000,000</span></div><div class="extracted-field"><span class="ef-key">Effective Date</span><span class="ef-val">2025-01-01</span></div><div class="extracted-field"><span class="ef-key">Exclusions</span><span class="ef-val verified">14 clauses verified</span></div>'},
+  rfp004:{title:'RFP_Logistics_Q4 · Processing',html:'<div style="margin-bottom:1rem"><span class="pill pill--proc"><span class="pill-dot"></span>Processing — 67%</span></div><div style="font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);margin:.5rem 0">Extracting sections…</div><div class="extracted-field"><span class="ef-key">Issuer</span><span class="ef-val verified">Swift Freight EA</span></div><div class="extracted-field"><span class="ef-key">Submission Deadline</span><span class="ef-val">Dec 1, 2025</span></div><div class="extracted-field"><span class="ef-key">Estimated Value</span><span class="ef-val proc" style="color:var(--gold)">Extracting…</span></div>'},
+  con202:{title:'Contract_Meridian_v3 · Extracted',html:'<div style="margin-bottom:1rem"><span class="pill pill--done"><span class="pill-dot"></span>All clauses reviewed</span></div><div class="extracted-field"><span class="ef-key">Counterparty</span><span class="ef-val verified">Meridian Manufacturing</span></div><div class="extracted-field"><span class="ef-key">Contract Value</span><span class="ef-val">$840,000/yr</span></div><div class="extracted-field"><span class="ef-key">Term</span><span class="ef-val">3 years from Jan 2025</span></div><div class="extracted-field"><span class="ef-key">Renewal Notice</span><span class="ef-val verified">90 days</span></div><div class="extracted-field"><span class="ef-key">Liability Cap</span><span class="ef-val">$500,000</span></div>'},
+  inv3850:{title:'INV-KE-003850 · Extracted',html:'<div style="margin-bottom:1rem"><span class="pill pill--done"><span class="pill-dot"></span>Clean — auto-posted</span></div><div class="extracted-field"><span class="ef-key">Vendor</span><span class="ef-val verified">OfficeMax Supplies</span></div><div class="extracted-field"><span class="ef-key">Amount</span><span class="ef-val verified">$3,240</span></div><div class="extracted-field"><span class="ef-key">PO Match</span><span class="ef-val verified">PO-2024-0341 ✓</span></div><div class="extracted-field"><span class="ef-key">Posted to</span><span class="ef-val">QuickBooks AP</span></div>'}
+};
+function selectDoc(row,id){
+  document.querySelectorAll('#docTable tr').forEach(r=>r.classList.remove('selected'));
+  row.classList.add('selected');
+  const d=docData[id];if(!d)return;
+  document.getElementById('docPreviewTitle').textContent=d.title;
+  document.getElementById('docPreviewBody').innerHTML=d.html;
+}
+
+// ── WORKFLOW NODES ──
+const nodeConfigs={
+  trigger:{name:'Invoice Email Received',type:'Trigger',fields:[{label:'Connection',val:'Gmail · james@pinnacle.com'},{label:'Filter',val:'Subject contains "invoice"'},{label:'Run Condition',val:'Always'}]},
+  docai:{name:'Document AI · Extract',type:'AI Node',fields:[{label:'Schema',val:'Invoice v2.1'},{label:'Output Fields',val:'vendor, amount, PO, terms'},{label:'Confidence Threshold',val:'85%'}]},
+  validate:{name:'AI Validate vs PO',type:'AI Decision',fields:[{label:'Condition',val:'Amount mismatch > 5%'},{label:'If True',val:'Flag → Notify Finance'},{label:'If False',val:'Continue → Post to QB'}]},
+  notify:{name:'Slack: Notify Finance',type:'Action',fields:[{label:'Channel',val:'#finance-approvals'},{label:'Message Template',val:'Invoice {id} flagged…'},{label:'Assignee',val:'@james.oduya'}]},
+  post:{name:'QuickBooks: Post Invoice',type:'End Action',fields:[{label:'Account',val:'Accounts Payable'},{label:'Trigger',val:'On approval from Slack'},{label:'Reference',val:'Invoice #{id}'}]}
+};
+function selectNode(el,id){
+  document.querySelectorAll('.wf-node').forEach(n=>n.classList.remove('selected'));
+  el.classList.add('selected');
+  const c=nodeConfigs[id];if(!c)return;
+  const inspector=document.getElementById('nodeInspector');
+  inspector.classList.remove('hidden');
+  document.getElementById('inspectorTitle').textContent=c.name;
+  document.getElementById('inspectorBody').innerHTML=
+    c.fields.map(f=>`<div class="inspector-field"><label class="inspector-label">${f.label}</label><input class="inspector-input" value="${f.val}" aria-label="${f.label}"></div>`).join('')+
+    `<div class="inspector-field"><div class="inspector-label">Run Log</div><div class="run-log"><span class="ok">✓</span> 09:14:22 — Processed INV-003851\n<span class="warn">⚠</span> 09:14:23 — Flagged: amount mismatch\n<span class="info">→</span> 09:14:24 — Notified #finance-approvals\n<span class="ok">✓</span> 08:52:11 — Processed INV-003850\n<span class="ok">✓</span> 08:52:12 — Posted to QuickBooks</div></div>`;
+}
+function closeInspector(){document.getElementById('nodeInspector').classList.add('hidden');document.querySelectorAll('.wf-node').forEach(n=>n.classList.remove('selected'));}
+
+// ── INSIGHT MINING ──
+function setInsight(btn){document.getElementById('insightInput').value=btn.textContent;askInsight();}
+async function askInsight(){
+  const q=document.getElementById('insightInput').value.trim();if(!q)return;
+  const container=document.getElementById('insightResults');
+  const loadingEl=document.createElement('div');
+  loadingEl.className='insight-result-card';
+  loadingEl.innerHTML='<div class="insight-result-card__hdr"><div style="display:flex;gap:4px;align-items:center"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div><span style="font-size:.8125rem;color:var(--text-muted);margin-left:.5rem">Querying data sources…</span></div>';
+  container.insertBefore(loadingEl,container.firstChild);
+  const sys=`You are an AI business analyst embedded in HurryKisha's operations platform for Pinnacle Insurance Group. The user is James Oduya, COO. Answer business questions with specific, data-informed analysis (2-4 sentences). Reference fictional but realistic business data. End with a brief recommendation. Always include a "Sources:" line listing 2-3 data sources consulted.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:q}]})});
+    const data=await res.json();
+    const text=data.content&&data.content[0]?data.content[0].text:'Unable to fetch response.';
+    const srcMatch=text.match(/Sources?:([^\n]+)/i);
+    const sources=srcMatch?srcMatch[1].trim().split(',').map(s=>s.trim()):['Salesforce CRM','Operations DB','Financial System'];
+    const bodyText=text.replace(/Sources?:[^\n]*/i,'').trim();
+    loadingEl.innerHTML=`<div class="insight-result-card__hdr" style="justify-content:space-between"><div style="display:flex;align-items:center;gap:.625rem"><span style="font-size:.875rem">🔍</span><span style="font-size:.8125rem;font-weight:500;color:var(--text-primary)">${q}</span></div><span class="pill pill--done" style="flex-shrink:0"><span class="pill-dot"></span>Answered</span></div><div class="insight-result-card__body">${bodyText}<div class="insight-sources-row">${sources.map(s=>`<span class="insight-src">${s}</span>`).join('')}</div></div>`;
+  }catch(e){
+    loadingEl.innerHTML=`<div class="insight-result-card__hdr"><span style="color:var(--danger)">Connection error</span></div><div class="insight-result-card__body">Unable to connect. Please try again.</div>`;
+  }
+}
+
+// ── DECISION ASSISTANT ──
+function setAssistant(btn){document.getElementById('assistantInput').value=btn.textContent;sendAssistant();}
+document.addEventListener('DOMContentLoaded',()=>{
+  const input=document.getElementById('assistantInput');
+  if(input){
+    input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendAssistant();}});
+    input.addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px';});
+  }
+});
+async function sendAssistant(){
+  const input=document.getElementById('assistantInput');
+  const q=input.value.trim();if(!q)return;
+  const chat=document.getElementById('assistantChat');
+  const sendBtn=document.getElementById('assistantSend');
+  input.value='';input.style.height='auto';
+  const uMsg=document.createElement('div');
+  uMsg.className='chat-msg chat-msg--user';uMsg.textContent=q;
+  chat.appendChild(uMsg);
+  const typing=document.createElement('div');
+  typing.className='typing-indicator';typing.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  chat.appendChild(typing);
+  chat.scrollTop=chat.scrollHeight;
+  sendBtn.disabled=true;
+  const sys=`You are the HurryKisha Decision Assistant embedded in Pinnacle Insurance Group's operations platform. James Oduya (COO) is asking. You have access to the company's CRM, financial data, documents, and workflow history. Provide specific, multi-step reasoned answers (3-5 sentences). Always end with 2-4 source citations in this format on a new line: [Source: name1] [Source: name2]. Be direct and analytical.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:[{role:'user',content:q}]})});
+    const data=await res.json();
+    const text=data.content&&data.content[0]?data.content[0].text:'Unable to connect.';
+    typing.remove();
+    const srcs=[];const cleanText=text.replace(/\[Source:\s*([^\]]+)\]/g,(m,s)=>{srcs.push(s.trim());return '';}).trim();
+    const aiMsg=document.createElement('div');
+    aiMsg.className='chat-msg chat-msg--ai';
+    aiMsg.innerHTML=cleanText+(srcs.length?`<div class="chat-sources">${srcs.map(s=>`<span class="chat-source">${s}</span>`).join('')}</div>`:'');
+    chat.appendChild(aiMsg);
+  }catch(e){
+    typing.remove();
+    const aiMsg=document.createElement('div');
+    aiMsg.className='chat-msg chat-msg--ai';
+    aiMsg.textContent='Connection issue. In production this queries your live business data across all connected systems.';
+    chat.appendChild(aiMsg);
+  }
+  sendBtn.disabled=false;
+  chat.scrollTop=chat.scrollHeight;
+}
+</script>
+</body>
+</html>

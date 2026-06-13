@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23D4A84B'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%2306060A' stroke-width='3' stroke-dasharray='12 40'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="canonical" href="https://hurrykisha.ai/products">
+  <meta property="og:site_name" content="HurryKisha AI Systems">
+  <meta property="og:url" content="https://hurrykisha.ai/products">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hurrykisha">
+  <meta name="theme-color" content="#D4A84B">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — HurryKisha AI Systems</title>
+<meta name="description" content="Six AI products for back-office automation. Quotation Engine, Report Intelligence, Insight Mining, Document AI, Workflow Automation, Decision Assistant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-void:#06060A;--bg-surface:#0D0D14;--bg-elevated:#13131E;--bg-overlay:#1A1A28;--bg-border:#242436;--bg-border-strong:#363650;--gold:#D4A84B;--gold-bright:#E8C06A;--gold-dim:#9A7A34;--gold-glow:rgba(212,168,75,0.12);--gold-glow-strong:rgba(212,168,75,0.25);--text-primary:#F0EFEA;--text-secondary:#8C8CA0;--text-muted:#52525F;--success:#3BB07A;--danger:#E05252;--info:#5B8FE8;--font-display:'Sora',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:20px;--radius-pill:100px;--nav-height:68px;--max-w:1200px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg-void);color:var(--text-primary);font-family:var(--font-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-void)}::-webkit-scrollbar-thumb{background:var(--bg-border-strong);border-radius:2px}
+::selection{background:var(--gold-glow-strong);color:var(--gold-bright)}
+h1,h2,h3,h4,h5{font-family:var(--font-display);font-weight:600;line-height:1.15;letter-spacing:-0.02em;color:var(--text-primary)}
+h1{font-size:clamp(2.4rem,5vw,4.5rem);font-weight:700}
+h2{font-size:clamp(1.8rem,3.5vw,2.8rem)}
+h3{font-size:clamp(1.2rem,2vw,1.5rem)}
+h4{font-size:1.0625rem;font-weight:500}
+p{color:var(--text-secondary);font-size:1.0625rem}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold-bright)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-height);display:flex;align-items:center;background:rgba(6,6,10,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--bg-border)}
+.nav__inner{max-width:var(--max-w);width:100%;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nav__logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--text-primary);letter-spacing:-.03em;text-decoration:none}
+.nav__logo-mark{width:30px;height:30px;background:var(--gold);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.nav__logo-mark::after{content:'';position:absolute;width:12px;height:12px;border:2.5px solid var(--bg-void);border-right-color:transparent;border-radius:50%;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nav__links{display:flex;align-items:center;gap:.25rem;list-style:none}
+.nav__links a{color:var(--text-secondary);font-size:.9375rem;padding:.4rem .75rem;border-radius:var(--radius-md);transition:color .2s,background .2s;text-decoration:none}
+.nav__links a:hover,.nav__links a.active{color:var(--text-primary);background:var(--bg-elevated)}
+.nav__actions{display:flex;align-items:center;gap:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-body);font-size:.9375rem;font-weight:500;border-radius:var(--radius-md);padding:.625rem 1.375rem;border:1px solid transparent;cursor:pointer;transition:all .18s ease;white-space:nowrap;text-decoration:none;line-height:1.4}
+.btn:active{transform:scale(.98)}
+.btn--primary{background:var(--gold);color:var(--bg-void);border-color:var(--gold);font-weight:600}
+.btn--primary:hover{background:var(--gold-bright);border-color:var(--gold-bright);color:var(--bg-void);box-shadow:0 0 40px rgba(212,168,75,.15)}
+.btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--bg-border-strong)}
+.btn--secondary:hover{background:var(--bg-elevated);border-color:var(--text-muted);color:var(--text-primary)}
+.btn--sm{font-size:.875rem;padding:.4rem 1rem}
+.arrow-icon{width:16px;height:16px;transition:transform .2s}
+.btn:hover .arrow-icon{transform:translateX(3px)}
+
+/* HERO */
+.page-hero{padding:calc(var(--nav-height) + 5rem) 2rem 5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero__orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.page-hero__orb--1{width:500px;height:500px;background:radial-gradient(circle,rgba(212,168,75,.1) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%)}
+.page-hero__content{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.8125rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;padding:.375rem .875rem;border:1px solid rgba(212,168,75,.25);border-radius:var(--radius-pill);margin-bottom:1.75rem;background:rgba(212,168,75,.05)}
+.eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+
+/* PRODUCT NAV TABS */
+.product-tabs{border-bottom:1px solid var(--bg-border);background:var(--bg-surface);position:sticky;top:var(--nav-height);z-index:100}
+.product-tabs__inner{display:flex;gap:0;overflow-x:auto;scrollbar-width:none;max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+.product-tabs__inner::-webkit-scrollbar{display:none}
+.product-tab{flex-shrink:0;padding:1rem 1.25rem;font-size:.875rem;font-weight:500;color:var(--text-muted);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;font-family:var(--font-body);display:flex;align-items:center;gap:.5rem;margin-bottom:-1px}
+.product-tab:hover{color:var(--text-secondary)}
+.product-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.product-tab__icon{font-size:1rem}
+
+/* PRODUCT SECTIONS */
+.product-section{padding:7rem 0;border-bottom:1px solid var(--bg-border)}
+.product-section:last-child{border-bottom:none}
+.product-section--alt{background:var(--bg-surface)}
+
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.product-layout--reverse .product-visual{order:-1}
+
+.product__label{font-family:var(--font-mono);font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem;display:block}
+.product__title{margin-bottom:1.25rem}
+.product__title span{color:var(--gold)}
+.product__desc{font-size:1.0625rem;line-height:1.75;margin-bottom:2rem}
+.product__features{list-style:none;display:flex;flex-direction:column;gap:.875rem;margin-bottom:2.5rem}
+.product__features li{display:flex;align-items:flex-start;gap:.875rem;font-size:.9625rem;color:var(--text-secondary);line-height:1.6}
+.product__feature-icon{width:28px;height:28px;border-radius:var(--radius-sm);background:var(--gold-glow);border:1px solid rgba(212,168,75,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:.875rem;margin-top:.1rem}
+.product__stat-row{display:flex;gap:2rem;margin-bottom:2.5rem;padding:1.5rem;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg)}
+.product__stat{text-align:center}
+.product__stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--text-primary);letter-spacing:-.04em;line-height:1}
+.product__stat-num span{color:var(--gold)}
+.product__stat-label{font-size:.8125rem;color:var(--text-muted);margin-top:.25rem}
+
+/* VISUAL MOCKUP PANEL */
+.product-visual{position:relative}
+.mockup-window{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.mockup-window::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:1}
+.mockup-titlebar{padding:.75rem 1rem;border-bottom:1px solid var(--bg-border);display:flex;align-items:center;gap:.75rem;background:var(--bg-elevated)}
+.mockup-dots{display:flex;gap:5px}
+.mockup-dot{width:9px;height:9px;border-radius:50%}
+.mockup-dot--r{background:#E05252}
+.mockup-dot--y{background:var(--gold)}
+.mockup-dot--g{background:var(--success)}
+.mockup-tabname{font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);flex:1;text-align:center}
+.mockup-body{padding:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+
+/* quote mockup */
+.quote-header{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:1rem;border-bottom:1px solid var(--bg-border);margin-bottom:.25rem}
+.quote-logo{font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--text-primary)}
+.quote-meta{text-align:right;font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted)}
+.quote-meta span{display:block;color:var(--gold);margin-bottom:.25rem}
+.quote-to{padding:.75rem 0;border-bottom:1px solid var(--bg-border);margin-bottom:.5rem}
+.quote-to-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:.25rem}
+.quote-to-name{font-size:.9375rem;font-weight:500;color:var(--text-primary)}
+.quote-to-company{font-size:.8125rem;color:var(--text-secondary)}
+.quote-table{width:100%;font-size:.8125rem;border-collapse:collapse}
+.quote-table th{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);padding:.5rem .25rem;text-align:left;border-bottom:1px solid var(--bg-border)}
+.quote-table td{padding:.5rem .25rem;color:var(--text-secondary);border-bottom:1px solid rgba(36,36,54,.5)}
+.quote-table td:last-child{text-align:right;font-family:var(--font-mono)}
+.quote-upsell{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.2);border-radius:var(--radius-md);padding:.625rem .875rem;font-size:.8125rem;color:var(--gold-dim);margin:.5rem 0;display:flex;align-items:center;gap:.5rem}
+.quote-total-row{display:flex;justify-content:space-between;padding:.75rem .25rem 0;border-top:1px solid var(--bg-border);margin-top:.25rem}
+.quote-total-label{font-size:.875rem;color:var(--text-secondary)}
+.quote-total-amount{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--text-primary)}
+.quote-pdf-btn{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:.625rem;background:var(--gold);color:var(--bg-void);border-radius:var(--radius-md);font-size:.8125rem;font-weight:600;margin-top:.75rem;font-family:var(--font-body)}
+.quote-time-badge{display:flex;align-items:center;gap:.375rem;font-family:var(--font-mono);font-size:.6875rem;color:var(--success);position:absolute;top:.625rem;right:.625rem;background:rgba(59,176,122,.08);border:1px solid rgba(59,176,122,.2);padding:.2rem .5rem;border-radius:var(--radius-pill)}
+
+/* report mockup */
+.report-header-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.report-title-text{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--text-primary)}
+.report-date{font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted)}
+.report-kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.875rem}
+.report-kpi{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.625rem;text-align:center}
+.report-kpi-num{font-family:var(--font-display);font-size:1.125rem;font-weight:700;line-height:1;color:var(--text-primary)}
+.report-kpi-num.up{color:var(--success)}.report-kpi-num.down{color:var(--danger)}
+.report-kpi-label{font-size:.6875rem;color:var(--text-muted);margin-top:.2rem}
+.report-narrative{font-size:.8125rem;color:var(--text-secondary);line-height:1.6;background:var(--bg-elevated);border-left:2px solid var(--gold);padding:.625rem .875rem;border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin-bottom:.875rem}
+.report-chart-placeholder{height:80px;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);display:flex;align-items:flex-end;padding:.5rem;gap:3px;overflow:hidden}
+.chart-bar{background:var(--gold-dim);border-radius:2px 2px 0 0;flex:1;transition:background .2s}
+.chart-bar:hover{background:var(--gold)}
+.chart-bar.highlight{background:var(--gold)}
+
+/* insight mockup */
+.insight-query{background:var(--bg-overlay);border:1px solid var(--bg-border);border-radius:var(--radius-md);padding:.625rem .875rem;font-size:.875rem;color:var(--text-primary);margin-bottom:.75rem;font-family:var(--font-body)}
+.insight-thinking{display:flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.75rem;color:var(--text-muted);margin-bottom:.5rem}
+.insight-thinking-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:pulse 1s infinite}
+.insight-thinking-dot:nth-child(2){animation-delay:.15s}.insight-thinking-dot:nth-child(3){animation-delay:.3s}
+.insight-result{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.15);border-radius:var(--radius-lg);padding:.875rem;margin-bottom:.75rem}
+.insight-answer{font-size:.875rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.625rem}
+.insight-sources{display:flex;gap:.375rem;flex-wrap:wrap}
+.insight-source{font-family:var(--font-mono);font-size:.625rem;color:var(--gold-dim);padding:.15rem .45rem;border:1px solid rgba(212,168,75,.2);border-radius:var(--radius-sm)}
+.insight-alert{background:rgba(224,82,82,.06);border:1px solid rgba(224,82,82,.2);border-radius:var(--radius-md);padding:.5rem .75rem;font-size:.75rem;color:#E05252;display:flex;gap:.5rem;align-items:flex-start}
+
+/* doc mockup */
+.doc-drop{border:1.5px dashed var(--bg-border-strong);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;margin-bottom:.75rem}
+.doc-drop-icon{font-size:1.75rem;margin-bottom:.5rem}
+.doc-drop-label{font-size:.8125rem;color:var(--text-muted)}
+.doc-processing{display:flex;flex-direction:column;gap:.5rem}
+.doc-item{display:flex;align-items:center;gap:.75rem;padding:.5rem .75rem;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md);font-size:.8125rem}
+.doc-icon{font-size:1rem;flex-shrink:0}
+.doc-name{color:var(--text-secondary);flex:1}
+.doc-status{font-family:var(--font-mono);font-size:.6875rem;padding:.175rem .5rem;border-radius:var(--radius-pill)}
+.doc-status--done{background:rgba(59,176,122,.1);color:var(--success);border:1px solid rgba(59,176,122,.2)}
+.doc-status--proc{background:rgba(212,168,75,.1);color:var(--gold);border:1px solid rgba(212,168,75,.2)}
+.doc-status--flag{background:rgba(224,82,82,.1);color:var(--danger);border:1px solid rgba(224,82,82,.2)}
+.doc-extracted{margin-top:.75rem;padding:.75rem;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-md)}
+.doc-extracted-title{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:.5rem}
+.doc-field-row{display:flex;justify-content:space-between;font-size:.8125rem;padding:.2rem 0;border-bottom:1px solid rgba(36,36,54,.5)}
+.doc-field-row:last-child{border-bottom:none}
+.doc-field-key{color:var(--text-muted)}
+.doc-field-val{color:var(--text-secondary);font-family:var(--font-mono);font-size:.75rem}
+.doc-field-val.flagged{color:var(--danger)}
+
+/* workflow mockup */
+.flow-canvas{display:flex;flex-direction:column;gap:.5rem;padding:.5rem 0}
+.flow-node{display:flex;align-items:center;gap:.75rem;padding:.625rem .875rem;border-radius:var(--radius-md);font-size:.8125rem;position:relative}
+.flow-node--trigger{background:rgba(91,143,232,.08);border:1px solid rgba(91,143,232,.25);color:#5B8FE8}
+.flow-node--action{background:var(--bg-elevated);border:1px solid var(--bg-border);color:var(--text-secondary)}
+.flow-node--ai{background:rgba(212,168,75,.08);border:1px solid rgba(212,168,75,.25);color:var(--gold)}
+.flow-node--end{background:rgba(59,176,122,.08);border:1px solid rgba(59,176,122,.25);color:var(--success)}
+.flow-arrow{display:flex;align-items:center;padding-left:1.25rem}
+.flow-arrow-line{width:1px;height:20px;background:var(--bg-border-strong);margin-left:.875rem}
+.flow-node-icon{font-size:1rem;flex-shrink:0}
+.flow-node-text{flex:1}
+.flow-node-label{font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);margin-left:auto}
+
+/* decision mockup */
+.decision-prompt{background:var(--bg-overlay);border:1px solid var(--bg-border);border-radius:var(--radius-md) var(--radius-md) var(--radius-sm) var(--radius-sm);padding:.75rem 1rem;font-size:.875rem;color:var(--text-secondary);margin-bottom:2px}
+.decision-thinking-bar{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.15);border-radius:var(--radius-sm);padding:.5rem .875rem;font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);margin-bottom:2px;display:flex;gap:.625rem;align-items:center}
+.decision-step{font-size:.75rem;padding:.2rem .5rem;border-radius:var(--radius-sm);border:1px solid var(--bg-border);background:var(--bg-elevated);color:var(--text-muted)}
+.decision-answer{background:rgba(212,168,75,.06);border:1px solid rgba(212,168,75,.2);border-radius:var(--radius-sm) var(--radius-sm) var(--radius-md) var(--radius-md);padding:.875rem 1rem;font-size:.875rem;color:var(--text-secondary);line-height:1.65}
+.decision-citation{font-family:var(--font-mono);font-size:.6875rem;color:var(--gold-dim);margin-top:.5rem;display:flex;gap:.375rem;flex-wrap:wrap}
+.decision-cite{padding:.15rem .45rem;border:1px solid rgba(212,168,75,.2);border-radius:2px}
+
+/* SECTION GENERAL */
+.section{padding:7rem 0}
+.section--surface{background:var(--bg-surface)}
+.section__label{font-family:var(--font-mono);font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:1rem;display:block}
+.section__title{margin-bottom:1.25rem}
+.section__sub{font-size:1.0625rem;color:var(--text-secondary);max-width:540px;line-height:1.7;margin-bottom:3rem}
+
+/* CTA BAND */
+.cta-band{padding:6rem 0;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:900px;height:400px;background:radial-gradient(ellipse,rgba(212,168,75,.07) 0%,transparent 60%);pointer-events:none}
+.cta-band__content{position:relative;z-index:1}
+.cta-band p{max-width:500px;margin:.75rem auto 2.5rem}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+
+/* INTEGRATIONS MARQUEE */
+.integrations-track{overflow:hidden;padding:2rem 0;border-top:1px solid var(--bg-border);border-bottom:1px solid var(--bg-border);background:var(--bg-surface);margin:4rem 0}
+.integrations-inner{display:flex;gap:1.5rem;animation:marquee 25s linear infinite;width:max-content}
+@keyframes marquee{to{transform:translateX(-50%)}}
+.integration-chip{display:flex;align-items:center;gap:.625rem;padding:.5rem 1rem;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-pill);white-space:nowrap;font-size:.875rem;color:var(--text-muted);flex-shrink:0}
+.integration-chip-icon{font-size:1rem}
+
+/* FADE ANIMATION */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(1){transition-delay:0ms}.fade-up:nth-child(2){transition-delay:80ms}.fade-up:nth-child(3){transition-delay:160ms}.fade-up:nth-child(4){transition-delay:240ms}
+
+/* FOOTER */
+.footer{background:var(--bg-surface);border-top:1px solid var(--bg-border);padding:3rem 0}
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer__copy{font-size:.875rem;color:var(--text-muted)}
+.footer__links-row{display:flex;gap:1.5rem}
+.footer__links-row a{font-size:.875rem;color:var(--text-muted);text-decoration:none}
+.footer__links-row a:hover{color:var(--text-secondary)}
+
+/* MOBILE */
+@media(max-width:900px){.product-layout,.product-layout--reverse{grid-template-columns:1fr}.product-layout--reverse .product-visual{order:0}.product-visual{margin-top:2rem}}
+@media(max-width:768px){.nav__links,.nav__actions{display:none}.page-hero{padding-top:calc(var(--nav-height) + 3rem)}.product-tabs__inner{padding:0 1rem}.section{padding:4rem 0}.product__stat-row{flex-wrap:wrap;gap:1rem}.container{padding:0 1.25rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}.fade-up{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <div class="nav__logo-mark" aria-hidden="true"></div>
+      HurryKisha
+    </a>
+    <ul class="nav__links">
+      <li><a href="/products" class="active">Products</a></li>
+      <li><a href="/case-studies">Case Studies</a></li>
+      <li><a href="/roi-calculator">ROI Calculator</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="/#contact" class="btn btn--secondary btn--sm">Contact Sales</a>
+      <a href="/#demo" class="btn btn--primary btn--sm">Try Live Demo <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero__orb page-hero__orb--1" aria-hidden="true"></div>
+  <div class="page-hero__content">
+    <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> The Platform</div>
+    <h1>Six products.<br>One intelligence layer.</h1>
+    <p style="font-size:1.2rem;max-width:600px;margin:1.25rem auto 0;color:var(--text-secondary)">Each product automates a specific back-office function. Together, they form a connected stack that runs your operations autonomously.</p>
+  </div>
+</section>
+
+<!-- PRODUCT TABS -->
+<div class="product-tabs" role="tablist" aria-label="Products">
+  <div class="product-tabs__inner">
+    <button class="product-tab active" onclick="scrollToProduct('quotation')" role="tab">
+      <span class="product-tab__icon" aria-hidden="true">⚡</span> Quotation Engine
+    </button>
+    <button class="product-tab" onclick="scrollToProduct('report')" role="tab">
+      <span class="product-tab__icon" aria-hidden="true">📊</span> Report Intelligence
+    </button>
+    <button class="product-tab" onclick="scrollToProduct('insight')" role="tab">
+      <span class="product-tab__icon" aria-hidden="true">🔍</span> Insight Mining
+    </button>
+    <button class="product-tab" onclick="scrollToProduct('document')" role="tab">
+      <span class="product-tab__icon" aria-hidden="true">📄</span> Document AI
+    </button>
+    <button class="product-tab" onclick="scrollToProduct('workflow')" role="tab">
+      <span class="product-tab__icon" aria-hidden="true">⚙️</span> Workflow Automation
+    </button>
+    <button class="product-tab" onclick="scrollToProduct('decision')" role="tab">
+      <span class="product-tab__icon" aria-hidden="true">🧠</span> Decision Assistant
+    </button>
+  </div>
+</div>
+
+<!-- INTEGRATIONS MARQUEE -->
+<div class="integrations-track" aria-label="Supported integrations">
+  <div class="integrations-inner" aria-hidden="true">
+    <div class="integration-chip"><span class="integration-chip-icon">🔗</span>Salesforce</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📦</span>HubSpot</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📊</span>Google Sheets</div>
+    <div class="integration-chip"><span class="integration-chip-icon">💳</span>QuickBooks</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📬</span>Gmail</div>
+    <div class="integration-chip"><span class="integration-chip-icon">💬</span>Slack</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📁</span>SharePoint</div>
+    <div class="integration-chip"><span class="integration-chip-icon">⚡</span>Zapier</div>
+    <div class="integration-chip"><span class="integration-chip-icon">🗄️</span>PostgreSQL</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📄</span>DocuSign</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📞</span>Twilio</div>
+    <div class="integration-chip"><span class="integration-chip-icon">☁️</span>AWS S3</div>
+    <div class="integration-chip"><span class="integration-chip-icon">🔗</span>Salesforce</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📦</span>HubSpot</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📊</span>Google Sheets</div>
+    <div class="integration-chip"><span class="integration-chip-icon">💳</span>QuickBooks</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📬</span>Gmail</div>
+    <div class="integration-chip"><span class="integration-chip-icon">💬</span>Slack</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📁</span>SharePoint</div>
+    <div class="integration-chip"><span class="integration-chip-icon">⚡</span>Zapier</div>
+    <div class="integration-chip"><span class="integration-chip-icon">🗄️</span>PostgreSQL</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📄</span>DocuSign</div>
+    <div class="integration-chip"><span class="integration-chip-icon">📞</span>Twilio</div>
+    <div class="integration-chip"><span class="integration-chip-icon">☁️</span>AWS S3</div>
+  </div>
+</div>
+
+<!-- ── 1. QUOTATION ENGINE ── -->
+<section class="product-section" id="quotation">
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-copy fade-up">
+        <span class="product__label">01 — Quotation Engine</span>
+        <h2 class="product__title">Quotes in <span>10 seconds</span>,<br>not 10 minutes.</h2>
+        <p class="product__desc">Your sales team should be selling, not building spreadsheets. The Quotation Engine pulls from your live product catalog, CRM data, and pricing rules to generate a fully branded, accurate quote — then exports a signed PDF — faster than you can open Excel.</p>
+        <div class="product__stat-row">
+          <div class="product__stat"><div class="product__stat-num"><span>10</span>s</div><div class="product__stat-label">Avg. generation time</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>94</span>%</div><div class="product__stat-label">First-quote accuracy</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>3×</span></div><div class="product__stat-label">More quotes per rep/day</div></div>
+        </div>
+        <ul class="product__features">
+          <li><div class="product__feature-icon" aria-hidden="true">⚡</div><div>Live catalog sync — pricing always reflects your current rules, not yesterday's spreadsheet</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🧠</div><div>AI-powered upsell suggestions based on CRM history and deal context</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🌍</div><div>Multi-currency support with real-time FX rates baked in</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📄</div><div>PDF generation — branded, signed, ready to send in one click</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🔗</div><div>Pushes accepted quotes directly into your CRM as won opportunities</div></li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/#demo" class="btn btn--primary">See It Live <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#contact" class="btn btn--secondary">Request a Demo</a>
+        </div>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="mockup-window" style="position:relative">
+          <div class="quote-time-badge"><span style="width:5px;height:5px;background:var(--success);border-radius:50%;display:inline-block"></span> Generated in 8s</div>
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><div class="mockup-dot mockup-dot--r"></div><div class="mockup-dot mockup-dot--y"></div><div class="mockup-dot mockup-dot--g"></div></div>
+            <div class="mockup-tabname">Quotation Engine · QT-2024-0847</div>
+          </div>
+          <div class="mockup-body">
+            <div class="quote-header">
+              <div>
+                <div class="quote-logo">Acme Corp</div>
+                <div style="font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted);margin-top:.25rem">acmecorp.com</div>
+              </div>
+              <div class="quote-meta"><span>QUOTATION</span>QT-2024-0847<br>Valid: 30 days</div>
+            </div>
+            <div class="quote-to">
+              <div class="quote-to-label">Prepared for</div>
+              <div class="quote-to-name">Sarah Kimani</div>
+              <div class="quote-to-company">Pinnacle Insurance Group · Nairobi</div>
+            </div>
+            <table class="quote-table">
+              <thead><tr><th>Item</th><th>Qty</th><th>Unit</th><th>Total</th></tr></thead>
+              <tbody>
+                <tr><td>Enterprise License</td><td>500</td><td>$2.40</td><td>$1,200</td></tr>
+                <tr><td>Onboarding Package</td><td>1</td><td>$800</td><td>$800</td></tr>
+                <tr><td>Priority Support (yr)</td><td>1</td><td>$600</td><td>$600</td></tr>
+              </tbody>
+            </table>
+            <div class="quote-upsell">🧠 AI Suggestion: Add Data Migration Service (+$400) — 85% of similar clients include this</div>
+            <div class="quote-total-row">
+              <div><div class="quote-total-label">Subtotal (USD)</div><div style="font-size:.75rem;color:var(--success)">10% volume discount applied</div></div>
+              <div class="quote-total-amount">$2,340</div>
+            </div>
+            <div class="quote-pdf-btn">📥 Download PDF Quote</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. REPORT INTELLIGENCE ── -->
+<section class="product-section product-section--alt" id="report">
+  <div class="container">
+    <div class="product-layout product-layout--reverse">
+      <div class="product-copy fade-up">
+        <span class="product__label">02 — Report Intelligence</span>
+        <h2 class="product__title">Executive briefings,<br>written <span>overnight</span>.</h2>
+        <p class="product__desc">Monday morning reports used to take your best analyst 6 hours. Report Intelligence connects to your databases, SaaS tools, and spreadsheets, then generates a full narrative report — with charts, trend analysis, and recommendations — while your team sleeps.</p>
+        <div class="product__stat-row">
+          <div class="product__stat"><div class="product__stat-num"><span>6</span>hrs</div><div class="product__stat-label">Saved per report</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>100</span>%</div><div class="product__stat-label">Consistent format</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>∞</span></div><div class="product__stat-label">Reports on autopilot</div></div>
+        </div>
+        <ul class="product__features">
+          <li><div class="product__feature-icon" aria-hidden="true">🔗</div><div>Connects to PostgreSQL, MySQL, BigQuery, Snowflake, Google Sheets, Salesforce</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">✍️</div><div>Writes narrative analysis — not just tables, actual executive prose with context</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📈</div><div>Auto-generates charts: trend lines, comparisons, forecasts — no BI tool needed</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">⏰</div><div>Schedule weekly, daily, or monthly — delivered to inbox at 6 AM every time</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📎</div><div>Exports to PDF, Word, or PowerPoint — board-ready in one step</div></li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/#demo" class="btn btn--primary">See It Live <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#contact" class="btn btn--secondary">Request a Demo</a>
+        </div>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><div class="mockup-dot mockup-dot--r"></div><div class="mockup-dot mockup-dot--y"></div><div class="mockup-dot mockup-dot--g"></div></div>
+            <div class="mockup-tabname">Report Intelligence · Weekly Ops Brief</div>
+          </div>
+          <div class="mockup-body">
+            <div class="report-header-row">
+              <div class="report-title-text">Operations Brief — Week 47</div>
+              <div class="report-date">Generated 06:00 AM Mon</div>
+            </div>
+            <div class="report-kpi-row">
+              <div class="report-kpi"><div class="report-kpi-num up">+12.4%</div><div class="report-kpi-label">Revenue WoW</div></div>
+              <div class="report-kpi"><div class="report-kpi-num down">-8%</div><div class="report-kpi-label">Processing Time</div></div>
+              <div class="report-kpi"><div class="report-kpi-num up">98.2%</div><div class="report-kpi-label">SLA Compliance</div></div>
+            </div>
+            <div class="report-narrative">Revenue growth is driven primarily by the East Africa segment (+18%), offset by a slight softening in Northern region (-3%). Recommend reviewing Northern pipeline — 4 large deals are stalled at proposal stage for &gt;14 days.</div>
+            <div class="report-chart-placeholder" role="img" aria-label="Weekly revenue trend bar chart">
+              <div class="chart-bar" style="height:40%"></div>
+              <div class="chart-bar" style="height:55%"></div>
+              <div class="chart-bar" style="height:48%"></div>
+              <div class="chart-bar" style="height:62%"></div>
+              <div class="chart-bar highlight" style="height:75%"></div>
+              <div class="chart-bar" style="height:58%"></div>
+              <div class="chart-bar highlight" style="height:88%"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:.625rem;color:var(--text-muted);padding:.25rem .25rem 0">
+              <span>Wk 41</span><span>Wk 42</span><span>Wk 43</span><span>Wk 44</span><span>Wk 45</span><span>Wk 46</span><span>Wk 47</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. INSIGHT MINING ── -->
+<section class="product-section" id="insight">
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-copy fade-up">
+        <span class="product__label">03 — Insight Mining</span>
+        <h2 class="product__title">Ask your data<br>in <span>plain English</span>.</h2>
+        <p class="product__desc">Stop waiting for the data team. Insight Mining lets any business leader ask complex questions about their operations and get a reasoned, sourced answer in seconds. It queries across all connected data sources simultaneously, shows its reasoning, and monitors for anomalies continuously in the background.</p>
+        <div class="product__stat-row">
+          <div class="product__stat"><div class="product__stat-num"><span>&lt;5</span>s</div><div class="product__stat-label">Query response time</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>All</span></div><div class="product__stat-label">Sources queried at once</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>24/7</span></div><div class="product__stat-label">Anomaly monitoring</div></div>
+        </div>
+        <ul class="product__features">
+          <li><div class="product__feature-icon" aria-hidden="true">💬</div><div>Natural language interface — no SQL, no BI training, no IT ticket needed</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🔍</div><div>Multi-source reasoning — queries CRM, database, and spreadsheets in one pass</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📎</div><div>Every answer shows its source — full auditability, no black boxes</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🔔</div><div>Continuous monitoring alerts you when metrics deviate from normal ranges</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📊</div><div>Follow-up questions supported — drill down without restarting the query</div></li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/#demo" class="btn btn--primary">See It Live <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#contact" class="btn btn--secondary">Request a Demo</a>
+        </div>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><div class="mockup-dot mockup-dot--r"></div><div class="mockup-dot mockup-dot--y"></div><div class="mockup-dot mockup-dot--g"></div></div>
+            <div class="mockup-tabname">Insight Mining</div>
+          </div>
+          <div class="mockup-body">
+            <div class="insight-query">"Which product lines are underperforming vs. last quarter and why?"</div>
+            <div class="insight-thinking">
+              <div class="insight-thinking-dot"></div><div class="insight-thinking-dot"></div><div class="insight-thinking-dot"></div>
+              <span>Querying 4 data sources…</span>
+            </div>
+            <div class="insight-result">
+              <div class="insight-answer">Industrial Components is down 23% QoQ. The drop correlates with a 40-day increase in average quote turnaround time in that segment — likely causing prospect drop-off. Consumer Electronics is flat but margin is improving (+4pts) due to supplier renegotiation.</div>
+              <div class="insight-sources">
+                <span class="insight-source">Salesforce CRM</span>
+                <span class="insight-source">Sales DB Q3</span>
+                <span class="insight-source">Pricing Rules v2.1</span>
+                <span class="insight-source">Ops Log Oct</span>
+              </div>
+            </div>
+            <div class="insight-alert">
+              <span>⚠</span>
+              <span><strong>Anomaly detected:</strong> Logistics cost per unit up 31% this week. Above 2σ threshold — flagged for review.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. DOCUMENT AI ── -->
+<section class="product-section product-section--alt" id="document">
+  <div class="container">
+    <div class="product-layout product-layout--reverse">
+      <div class="product-copy fade-up">
+        <span class="product__label">04 — Document AI</span>
+        <h2 class="product__title">Thousands of documents.<br>Zero <span>manual reading</span>.</h2>
+        <p class="product__desc">Contracts, invoices, insurance policies, RFPs, claims forms — Document AI reads, extracts, validates, and flags them all. Drop in 5,000 documents at 9 PM and have structured, auditable data in your systems by morning. A clause your team would have missed on page 47 of a 200-page policy? Caught. Every time.</p>
+        <div class="product__stat-row">
+          <div class="product__stat"><div class="product__stat-num"><span>1000s</span></div><div class="product__stat-label">Docs processed at once</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>99</span>%</div><div class="product__stat-label">Extraction accuracy</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>0</span></div><div class="product__stat-label">Manual data entry</div></div>
+        </div>
+        <ul class="product__features">
+          <li><div class="product__feature-icon" aria-hidden="true">📄</div><div>Handles contracts, invoices, RFPs, insurance docs, claims, purchase orders</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🔍</div><div>Validates extracted data against your business rules — flags discrepancies automatically</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">⚡</div><div>Bulk processing — thousands of documents processed in a single overnight batch</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🔗</div><div>Feeds structured data downstream into your CRM, ERP, or database</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🛡️</div><div>Full audit trail — every extraction logged with page reference and confidence score</div></li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/#demo" class="btn btn--primary">See It Live <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#contact" class="btn btn--secondary">Request a Demo</a>
+        </div>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><div class="mockup-dot mockup-dot--r"></div><div class="mockup-dot mockup-dot--y"></div><div class="mockup-dot mockup-dot--g"></div></div>
+            <div class="mockup-tabname">Document AI · Batch 2024-1147</div>
+          </div>
+          <div class="mockup-body">
+            <div class="doc-processing">
+              <div class="doc-item"><span class="doc-icon">📄</span><span class="doc-name">Policy_PKG_2024_001.pdf</span><span class="doc-status doc-status--done">Extracted</span></div>
+              <div class="doc-item"><span class="doc-icon">🧾</span><span class="doc-name">INV-KE-003847.pdf</span><span class="doc-status doc-status--flag">⚠ Flagged</span></div>
+              <div class="doc-item"><span class="doc-icon">📋</span><span class="doc-name">Contract_Meridian_v3.pdf</span><span class="doc-status doc-status--done">Extracted</span></div>
+              <div class="doc-item"><span class="doc-icon">📄</span><span class="doc-name">RFP_Logistics_Q4.pdf</span><span class="doc-status doc-status--proc">Processing…</span></div>
+            </div>
+            <div class="doc-extracted">
+              <div class="doc-extracted-title">Extracted · INV-KE-003847 · ⚠ Anomaly</div>
+              <div class="doc-field-row"><span class="doc-field-key">Vendor</span><span class="doc-field-val">Apex Supplies Ltd</span></div>
+              <div class="doc-field-row"><span class="doc-field-key">Invoice Date</span><span class="doc-field-val">2024-10-31</span></div>
+              <div class="doc-field-row"><span class="doc-field-key">Amount</span><span class="doc-field-val flagged">$48,200 ← vs $21,000 expected</span></div>
+              <div class="doc-field-row"><span class="doc-field-key">PO Match</span><span class="doc-field-val flagged">No matching PO found</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. WORKFLOW AUTOMATION ── -->
+<section class="product-section" id="workflow">
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-copy fade-up">
+        <span class="product__label">05 — Workflow Automation</span>
+        <h2 class="product__title">When X happens,<br><span>Y happens</span>. Automatically.</h2>
+        <p class="product__desc">Connect 100+ tools and put AI in the middle. The visual no-code builder lets your operations team build multi-step workflows with AI decision points — no engineering team required. Build it in an afternoon. Run it forever.</p>
+        <div class="product__stat-row">
+          <div class="product__stat"><div class="product__stat-num"><span>100</span>+</div><div class="product__stat-label">Tool connectors</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>0</span></div><div class="product__stat-label">Lines of code needed</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>∞</span></div><div class="product__stat-label">Parallel workflows</div></div>
+        </div>
+        <ul class="product__features">
+          <li><div class="product__feature-icon" aria-hidden="true">🎨</div><div>Visual no-code builder — drag, drop, connect. No engineering team required</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🧠</div><div>AI decision nodes — the workflow asks the AI, gets an answer, routes accordingly</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">⚡</div><div>Event-driven triggers: new invoice, email received, form submitted, schedule</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🔗</div><div>100+ pre-built connectors: Salesforce, HubSpot, Slack, QuickBooks, Gmail, and more</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📊</div><div>Live workflow monitoring — see every run, every decision, every outcome in real time</div></li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/dashboard" class="btn btn--primary">Try the Builder <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#contact" class="btn btn--secondary">Request a Demo</a>
+        </div>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><div class="mockup-dot mockup-dot--r"></div><div class="mockup-dot mockup-dot--y"></div><div class="mockup-dot mockup-dot--g"></div></div>
+            <div class="mockup-tabname">Workflow Builder · Invoice Approval</div>
+          </div>
+          <div class="mockup-body">
+            <div class="flow-canvas">
+              <div class="flow-node flow-node--trigger"><span class="flow-node-icon">⚡</span><span class="flow-node-text">Invoice email received</span><span class="flow-node-label">TRIGGER</span></div>
+              <div class="flow-arrow"><div class="flow-arrow-line"></div></div>
+              <div class="flow-node flow-node--action"><span class="flow-node-icon">📄</span><span class="flow-node-text">Document AI: Extract invoice data</span><span class="flow-node-label">ACTION</span></div>
+              <div class="flow-arrow"><div class="flow-arrow-line"></div></div>
+              <div class="flow-node flow-node--ai"><span class="flow-node-icon">🧠</span><span class="flow-node-text">AI: Validate vs PO — flag if mismatch &gt;5%</span><span class="flow-node-label">AI NODE</span></div>
+              <div class="flow-arrow"><div class="flow-arrow-line"></div></div>
+              <div class="flow-node flow-node--action"><span class="flow-node-icon">💬</span><span class="flow-node-text">Slack: Notify Finance Manager</span><span class="flow-node-label">ACTION</span></div>
+              <div class="flow-arrow"><div class="flow-arrow-line"></div></div>
+              <div class="flow-node flow-node--end"><span class="flow-node-icon">✓</span><span class="flow-node-text">QuickBooks: Post approved invoice</span><span class="flow-node-label">END</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. DECISION ASSISTANT ── -->
+<section class="product-section product-section--alt" id="decision">
+  <div class="container">
+    <div class="product-layout product-layout--reverse">
+      <div class="product-copy fade-up">
+        <span class="product__label">06 — Decision Assistant</span>
+        <h2 class="product__title">A senior analyst,<br><span>on call 24/7</span>.</h2>
+        <p class="product__desc">Every C-suite leader has questions that take three days to answer — because the analysis has to cross four teams and twelve data sources. Decision Assistant does that in under a minute. Multi-step reasoning. Every source cited. Full context memory across conversations. It shows its work so your team can trust it.</p>
+        <div class="product__stat-row">
+          <div class="product__stat"><div class="product__stat-num"><span>&lt;60</span>s</div><div class="product__stat-label">Complex analysis time</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>100%</span></div><div class="product__stat-label">Sources cited</div></div>
+          <div class="product__stat"><div class="product__stat-num"><span>24/7</span></div><div class="product__stat-label">Always available</div></div>
+        </div>
+        <ul class="product__features">
+          <li><div class="product__feature-icon" aria-hidden="true">🔗</div><div>Multi-step reasoning — breaks complex questions into steps and solves them in sequence</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">📎</div><div>Every claim is sourced — no hallucination risk, full auditability for boardroom use</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🧠</div><div>Context memory — remembers your business, your KPIs, and prior conversations</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🌍</div><div>Cross-platform — reads from your CRM, ERP, documents, reports all in one question</div></li>
+          <li><div class="product__feature-icon" aria-hidden="true">🛡️</div><div>Enterprise-grade explainability — every recommendation comes with a reasoning chain</div></li>
+        </ul>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="/#demo" class="btn btn--primary">See It Live <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="/#contact" class="btn btn--secondary">Request a Demo</a>
+        </div>
+      </div>
+      <div class="product-visual fade-up">
+        <div class="mockup-window">
+          <div class="mockup-titlebar">
+            <div class="mockup-dots"><div class="mockup-dot mockup-dot--r"></div><div class="mockup-dot mockup-dot--y"></div><div class="mockup-dot mockup-dot--g"></div></div>
+            <div class="mockup-tabname">Decision Assistant</div>
+          </div>
+          <div class="mockup-body">
+            <div class="decision-prompt">"Should we renew the Westbridge contract at current terms or renegotiate?"</div>
+            <div class="decision-thinking-bar">
+              <span class="decision-step">Step 1: Contract review</span>
+              <span class="decision-step">Step 2: Revenue analysis</span>
+              <span class="decision-step">Step 3: Risk scoring</span>
+            </div>
+            <div class="decision-answer">
+              Recommend renegotiating. Westbridge's revenue contribution has declined 18% YoY while support costs increased 34%. Current contract margin is estimated at 12% vs. 28% client average. The renewal presents leverage — they have no active alternatives in our category per CRM notes from last call. Suggested position: +15% pricing or reduce SLA scope to restore margin.
+              <div class="decision-citation">
+                <span class="decision-cite">Westbridge_Contract_2023.pdf</span>
+                <span class="decision-cite">CRM · Revenue Q1-Q3</span>
+                <span class="decision-cite">Support Log 2024</span>
+                <span class="decision-cite">Sales Call Notes Oct 4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-band__content">
+      <div class="eyebrow" style="justify-content:center"><span class="eyebrow-dot" aria-hidden="true"></span> Ready to automate</div>
+      <h2>Pick one product. See ROI in week one.</h2>
+      <p>Most teams start with Quotation Engine or Document AI — high volume, immediate time savings, easy to measure. We'll help you pick the right starting point.</p>
+      <div class="cta-actions">
+        <a href="/roi-calculator" class="btn btn--primary btn--lg">Calculate Your ROI <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="/#contact" class="btn btn--secondary btn--lg">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2025 HurryKisha AI Systems</span>
+      <div class="footer__links-row">
+        <a href="/">Home</a>
+        <a href="/case-studies">Case Studies</a>
+        <a href="/roi-calculator">ROI Calculator</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function scrollToProduct(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  const offset=document.querySelector('.product-tabs').offsetHeight+document.querySelector('.nav').offsetHeight;
+  window.scrollTo({top:el.offsetTop-offset-20,behavior:'smooth'});
+}
+const tabs=document.querySelectorAll('.product-tab');
+const sections=document.querySelectorAll('.product-section');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      tabs.forEach(t=>t.classList.remove('active'));
+      const idx=['quotation','report','insight','document','workflow','decision'].indexOf(id);
+      if(idx>-1&&tabs[idx])tabs[idx].classList.add('active');
+    }
+  });
+},{threshold:.3});
+sections.forEach(s=>observer.observe(s));
+const fadeEls=document.querySelectorAll('.fade-up');
+const fadeObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+fadeEls.forEach(el=>fadeObs.observe(el));
+</script>
+</body>
+</html>

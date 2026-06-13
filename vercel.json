@@ -1,0 +1,81 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/",               "destination": "/hurrykisha.html" },
+    { "source": "/home",           "destination": "/hurrykisha.html" },
+    { "source": "/products",       "destination": "/products.html" },
+    { "source": "/case-studies",   "destination": "/case-studies.html" },
+    { "source": "/roi-calculator", "destination": "/roi-calculator.html" },
+    { "source": "/pricing",        "destination": "/pricing.html" },
+    { "source": "/blog",           "destination": "/blog.html" },
+    { "source": "/dashboard",      "destination": "/dashboard.html" },
+    { "source": "/contact",        "destination": "/contact.html" },
+    { "source": "/legal",          "destination": "/legal.html" },
+    { "source": "/privacy",        "destination": "/legal.html" },
+    { "source": "/terms",          "destination": "/legal.html" }
+  ],
+  "redirects": [
+    { "source": "/demo",           "destination": "/dashboard", "permanent": false },
+    { "source": "/book",           "destination": "/contact",   "permanent": false },
+    { "source": "/security",       "destination": "/legal",     "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.anthropic.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(html|css|js|json)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(woff2|woff|ttf|eot)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/404.html", "status": 404 }
+  ]
+}

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23D4A84B'/%3E%3Ccircle cx='16' cy='16' r='8' fill='none' stroke='%2306060A' stroke-width='3' stroke-dasharray='12 40'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="canonical" href="https://hurrykisha.ai/roi-calculator">
+  <meta property="og:site_name" content="HurryKisha AI Systems">
+  <meta property="og:url" content="https://hurrykisha.ai/roi-calculator">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@hurrykisha">
+  <meta name="theme-color" content="#D4A84B">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROI Calculator — HurryKisha AI Systems</title>
+<meta name="description" content="Calculate how much time and money your team could save with HurryKisha AI automation. Interactive ROI calculator for operations teams.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-void:#06060A;--bg-surface:#0D0D14;--bg-elevated:#13131E;--bg-overlay:#1A1A28;--bg-border:#242436;--bg-border-strong:#363650;--gold:#D4A84B;--gold-bright:#E8C06A;--gold-dim:#9A7A34;--gold-glow:rgba(212,168,75,0.12);--gold-glow-strong:rgba(212,168,75,0.25);--text-primary:#F0EFEA;--text-secondary:#8C8CA0;--text-muted:#52525F;--success:#3BB07A;--danger:#E05252;--info:#5B8FE8;--font-display:'Sora',system-ui,sans-serif;--font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono','Fira Code',monospace;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:20px;--radius-pill:100px;--nav-height:68px;--max-w:1200px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg-void);color:var(--text-primary);font-family:var(--font-body);font-size:1rem;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg-void)}::-webkit-scrollbar-thumb{background:var(--bg-border-strong);border-radius:2px}
+::selection{background:var(--gold-glow-strong);color:var(--gold-bright)}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.15;letter-spacing:-0.02em;color:var(--text-primary)}
+h1{font-size:clamp(2.2rem,5vw,4rem);font-weight:700}
+h2{font-size:clamp(1.6rem,3vw,2.4rem)}
+h3{font-size:1.25rem}
+p{color:var(--text-secondary);font-size:1.0625rem}
+a{color:var(--gold);text-decoration:none;transition:color .2s}
+a:hover{color:var(--gold-bright)}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 2rem}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-height);display:flex;align-items:center;background:rgba(6,6,10,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--bg-border)}
+.nav__inner{max-width:var(--max-w);width:100%;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nav__logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.125rem;font-weight:700;color:var(--text-primary);letter-spacing:-.03em;text-decoration:none}
+.nav__logo-mark{width:30px;height:30px;background:var(--gold);border-radius:var(--radius-sm);position:relative;overflow:hidden}
+.nav__logo-mark::after{content:'';position:absolute;top:50%;left:50%;width:12px;height:12px;margin:-6px 0 0 -6px;border:2.5px solid var(--bg-void);border-right-color:transparent;border-radius:50%;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nav__links{display:flex;align-items:center;gap:.25rem;list-style:none}
+.nav__links a{color:var(--text-secondary);font-size:.9375rem;padding:.4rem .75rem;border-radius:var(--radius-md);transition:color .2s,background .2s;text-decoration:none}
+.nav__links a:hover,.nav__links a.active{color:var(--text-primary);background:var(--bg-elevated)}
+.nav__actions{display:flex;align-items:center;gap:.75rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--font-body);font-size:.9375rem;font-weight:500;border-radius:var(--radius-md);padding:.625rem 1.375rem;border:1px solid transparent;cursor:pointer;transition:all .18s;text-decoration:none;white-space:nowrap}
+.btn--primary{background:var(--gold);color:var(--bg-void);border-color:var(--gold);font-weight:600}
+.btn--primary:hover{background:var(--gold-bright);color:var(--bg-void)}
+.btn--secondary{background:transparent;color:var(--text-primary);border-color:var(--bg-border-strong)}
+.btn--secondary:hover{background:var(--bg-elevated);color:var(--text-primary)}
+.btn--sm{font-size:.875rem;padding:.4rem 1rem}
+.btn--lg{font-size:1.0625rem;padding:.875rem 2rem;border-radius:var(--radius-lg)}
+.arrow-icon{width:16px;height:16px;transition:transform .2s}
+.btn:hover .arrow-icon{transform:translateX(3px)}
+
+/* PAGE HERO */
+.page-hero{padding:calc(var(--nav-height) + 5rem) 2rem 4rem;text-align:center;position:relative;overflow:hidden}
+.hero-orb{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(80px);background:radial-gradient(circle,rgba(212,168,75,.09) 0%,transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.8125rem;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;padding:.375rem .875rem;border:1px solid rgba(212,168,75,.25);border-radius:var(--radius-pill);margin-bottom:1.75rem;background:rgba(212,168,75,.05)}
+.eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+
+/* CALCULATOR LAYOUT */
+.calc-wrapper{padding:0 0 7rem}
+.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.calc-panel{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);padding:2.5rem;position:sticky;top:calc(var(--nav-height) + 2rem)}
+.calc-panel__title{font-family:var(--font-display);font-size:1.125rem;font-weight:600;color:var(--text-primary);margin-bottom:.375rem}
+.calc-panel__sub{font-size:.875rem;color:var(--text-muted);margin-bottom:2rem}
+.calc-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:var(--radius-xl) var(--radius-xl) 0 0}
+
+/* RESULTS */
+.result-highlight{background:var(--bg-void);border:1px solid rgba(212,168,75,.3);border-radius:var(--radius-lg);padding:1.75rem;text-align:center;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.result-highlight::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(212,168,75,.1) 0%,transparent 70%);pointer-events:none}
+.result-main-label{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:.5rem}
+.result-main-num{font-family:var(--font-display);font-size:3.5rem;font-weight:700;letter-spacing:-.05em;color:var(--gold);line-height:1;position:relative;z-index:1}
+.result-main-sub{font-size:.875rem;color:var(--text-secondary);margin-top:.375rem}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+.result-item{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.125rem;text-align:center}
+.result-item__num{font-family:var(--font-display);font-size:1.625rem;font-weight:700;letter-spacing:-.04em;color:var(--text-primary);line-height:1}
+.result-item__num.positive{color:var(--success)}
+.result-item__label{font-size:.75rem;color:var(--text-muted);margin-top:.25rem;line-height:1.4}
+.payback-bar{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.125rem;margin-bottom:1.5rem}
+.payback-bar__label{font-size:.8125rem;color:var(--text-secondary);margin-bottom:.75rem;display:flex;justify-content:space-between}
+.payback-bar__label span{font-family:var(--font-mono);font-size:.75rem;color:var(--gold)}
+.payback-track{height:8px;background:var(--bg-border);border-radius:var(--radius-pill);overflow:hidden}
+.payback-fill{height:100%;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:var(--radius-pill);transition:width .6s cubic-bezier(.16,1,.3,1)}
+.breakdown-title{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:.875rem}
+.breakdown-row{display:flex;align-items:center;justify-content:space-between;padding:.625rem 0;border-bottom:1px solid var(--bg-border);font-size:.9rem}
+.breakdown-row:last-child{border-bottom:none}
+.breakdown-label{color:var(--text-secondary);display:flex;align-items:center;gap:.5rem}
+.breakdown-label-icon{font-size:.875rem}
+.breakdown-value{font-family:var(--font-mono);font-size:.875rem;color:var(--text-primary);font-weight:500}
+.breakdown-value.savings{color:var(--success)}
+
+/* INPUTS */
+.inputs-section{}
+.inputs-section__group{background:var(--bg-surface);border:1px solid var(--bg-border);border-radius:var(--radius-xl);padding:2rem;margin-bottom:1.5rem}
+.inputs-section__group-title{font-family:var(--font-display);font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:.25rem;display:flex;align-items:center;gap:.625rem}
+.inputs-section__group-title-icon{font-size:1.125rem}
+.inputs-section__group-desc{font-size:.875rem;color:var(--text-muted);margin-bottom:1.75rem}
+.input-row{margin-bottom:1.5rem}
+.input-row:last-child{margin-bottom:0}
+.input-label-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.625rem}
+.input-label{font-size:.875rem;font-weight:500;color:var(--text-secondary)}
+.input-value-badge{font-family:var(--font-mono);font-size:.875rem;font-weight:600;color:var(--gold);min-width:80px;text-align:right}
+.range-track{position:relative}
+input[type=range]{-webkit-appearance:none;width:100%;height:5px;border-radius:var(--radius-pill);background:var(--bg-border);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--bg-void);box-shadow:0 0 0 2px var(--gold-dim);transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer;border:2px solid var(--bg-void)}
+.range-fill{position:absolute;top:50%;left:0;height:5px;background:linear-gradient(90deg,var(--gold-dim),var(--gold));border-radius:var(--radius-pill);pointer-events:none;transform:translateY(-50%);transition:width .15s}
+.input-hints{display:flex;justify-content:space-between;margin-top:.375rem;font-family:var(--font-mono);font-size:.6875rem;color:var(--text-muted)}
+
+/* PRODUCT TOGGLES */
+.product-toggles{display:flex;flex-direction:column;gap:.75rem}
+.product-toggle{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg);cursor:pointer;transition:all .18s}
+.product-toggle.active{border-color:rgba(212,168,75,.4);background:rgba(212,168,75,.05)}
+.product-toggle__left{display:flex;align-items:center;gap:.875rem}
+.product-toggle__icon{font-size:1.25rem}
+.product-toggle__name{font-size:.9375rem;font-weight:500;color:var(--text-primary)}
+.product-toggle__impact{font-size:.8125rem;color:var(--text-muted);margin-top:.125rem}
+.toggle-switch{width:40px;height:22px;border-radius:var(--radius-pill);background:var(--bg-border);position:relative;transition:background .2s;flex-shrink:0}
+.toggle-switch.on{background:var(--gold)}
+.toggle-switch::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
+.toggle-switch.on::after{transform:translateX(18px)}
+
+/* ASSUMPTIONS NOTE */
+.assumptions{background:var(--bg-elevated);border:1px solid var(--bg-border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-top:1.5rem}
+.assumptions__title{font-family:var(--font-mono);font-size:.6875rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:.75rem}
+.assumptions__list{list-style:none;display:flex;flex-direction:column;gap:.375rem}
+.assumptions__list li{font-size:.8125rem;color:var(--text-muted);display:flex;gap:.5rem;line-height:1.5}
+.assumptions__list li::before{content:'·';color:var(--gold-dim)}
+
+/* FOOTER */
+.footer{background:var(--bg-surface);border-top:1px solid var(--bg-border);padding:3rem 0}
+.footer__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer__copy{font-size:.875rem;color:var(--text-muted)}
+.footer__links-row{display:flex;gap:1.5rem}
+.footer__links-row a{font-size:.875rem;color:var(--text-muted);text-decoration:none}
+.footer__links-row a:hover{color:var(--text-secondary)}
+
+/* ANIMATE */
+.count-anim{transition:all .5s cubic-bezier(.16,1,.3,1)}
+
+@media(max-width:900px){.calc-layout{grid-template-columns:1fr}.calc-panel{position:static;order:-1}}
+@media(max-width:640px){.nav__links,.nav__actions{display:none}.result-grid{grid-template-columns:1fr}.container{padding:0 1.25rem}.page-hero{padding-top:calc(var(--nav-height)+3rem)}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo"><div class="nav__logo-mark" aria-hidden="true"></div>HurryKisha</a>
+    <ul class="nav__links">
+      <li><a href="/products">Products</a></li>
+      <li><a href="/case-studies">Case Studies</a></li>
+      <li><a href="/roi-calculator" class="active">ROI Calculator</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="/#contact" class="btn btn--secondary btn--sm">Contact Sales</a>
+      <a href="/#demo" class="btn btn--primary btn--sm">Try Live Demo <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-orb" aria-hidden="true"></div>
+  <div style="position:relative;z-index:1;max-width:680px;margin:0 auto">
+    <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>ROI Calculator</div>
+    <h1>What's your team's time<br>actually worth?</h1>
+    <p style="font-size:1.125rem;max-width:520px;margin:1.25rem auto 0">Adjust the sliders below to match your team's situation. The calculator shows your projected annual savings in real time — no email required.</p>
+  </div>
+</section>
+
+<div class="calc-wrapper">
+  <div class="container">
+    <div class="calc-layout">
+
+      <!-- LEFT: INPUTS -->
+      <div class="inputs-section">
+
+        <!-- Team & Cost -->
+        <div class="inputs-section__group">
+          <div class="inputs-section__group-title"><span class="inputs-section__group-title-icon">👥</span> Your Team</div>
+          <div class="inputs-section__group-desc">Tell us about the people doing the manual work today.</div>
+
+          <div class="input-row">
+            <div class="input-label-row">
+              <label class="input-label" for="teamSize">Operations staff doing manual processing</label>
+              <span class="input-value-badge" id="teamSizeVal">8 people</span>
+            </div>
+            <div class="range-track">
+              <div class="range-fill" id="teamSizeFill"></div>
+              <input type="range" id="teamSize" min="1" max="50" value="8" oninput="calc()">
+            </div>
+            <div class="input-hints"><span>1</span><span>50</span></div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-label-row">
+              <label class="input-label" for="avgSalary">Average annual salary per person (USD)</label>
+              <span class="input-value-badge" id="avgSalaryVal">$45,000</span>
+            </div>
+            <div class="range-track">
+              <div class="range-fill" id="avgSalaryFill"></div>
+              <input type="range" id="avgSalary" min="15000" max="150000" step="5000" value="45000" oninput="calc()">
+            </div>
+            <div class="input-hints"><span>$15K</span><span>$150K</span></div>
+          </div>
+        </div>
+
+        <!-- Volume -->
+        <div class="inputs-section__group">
+          <div class="inputs-section__group-title"><span class="inputs-section__group-title-icon">📊</span> Your Volume</div>
+          <div class="inputs-section__group-desc">How much manual work flows through your team each month?</div>
+
+          <div class="input-row">
+            <div class="input-label-row">
+              <label class="input-label" for="quotesPerMonth">Quotations generated per month</label>
+              <span class="input-value-badge" id="quotesVal">200 / mo</span>
+            </div>
+            <div class="range-track">
+              <div class="range-fill" id="quotesFill"></div>
+              <input type="range" id="quotesPerMonth" min="0" max="2000" step="50" value="200" oninput="calc()">
+            </div>
+            <div class="input-hints"><span>0</span><span>2,000</span></div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-label-row">
+              <label class="input-label" for="docsPerMonth">Documents processed per month (invoices, contracts, etc.)</label>
+              <span class="input-value-badge" id="docsVal">400 / mo</span>
+            </div>
+            <div class="range-track">
+              <div class="range-fill" id="docsFill"></div>
+              <input type="range" id="docsPerMonth" min="0" max="10000" step="100" value="400" oninput="calc()">
+            </div>
+            <div class="input-hints"><span>0</span><span>10,000</span></div>
+          </div>
+
+          <div class="input-row">
+            <div class="input-label-row">
+              <label class="input-label" for="reportsPerMonth">Reports built manually per month</label>
+              <span class="input-value-badge" id="reportsVal">8 / mo</span>
+            </div>
+            <div class="range-track">
+              <div class="range-fill" id="reportsFill"></div>
+              <input type="range" id="reportsPerMonth" min="0" max="100" step="1" value="8" oninput="calc()">
+            </div>
+            <div class="input-hints"><span>0</span><span>100</span></div>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div class="inputs-section__group">
+          <div class="inputs-section__group-title"><span class="inputs-section__group-title-icon">⚡</span> Products You'd Use</div>
+          <div class="inputs-section__group-desc">Toggle on the products relevant to your operations.</div>
+          <div class="product-toggles">
+            <div class="product-toggle active" onclick="toggleProduct(this,'quotation')" data-product="quotation">
+              <div class="product-toggle__left">
+                <span class="product-toggle__icon">⚡</span>
+                <div><div class="product-toggle__name">Quotation Engine</div><div class="product-toggle__impact">Saves ~25 min per quote vs manual</div></div>
+              </div>
+              <div class="toggle-switch on" aria-label="Enabled"></div>
+            </div>
+            <div class="product-toggle active" onclick="toggleProduct(this,'document')" data-product="document">
+              <div class="product-toggle__left">
+                <span class="product-toggle__icon">📄</span>
+                <div><div class="product-toggle__name">Document AI</div><div class="product-toggle__impact">Saves ~33 min per document vs manual</div></div>
+              </div>
+              <div class="toggle-switch on" aria-label="Enabled"></div>
+            </div>
+            <div class="product-toggle active" onclick="toggleProduct(this,'report')" data-product="report">
+              <div class="product-toggle__left">
+                <span class="product-toggle__icon">📊</span>
+                <div><div class="product-toggle__name">Report Intelligence</div><div class="product-toggle__impact">Saves ~5 hrs per report vs manual</div></div>
+              </div>
+              <div class="toggle-switch on" aria-label="Enabled"></div>
+            </div>
+            <div class="product-toggle" onclick="toggleProduct(this,'workflow')" data-product="workflow">
+              <div class="product-toggle__left">
+                <span class="product-toggle__icon">⚙️</span>
+                <div><div class="product-toggle__name">Workflow Automation</div><div class="product-toggle__impact">Saves ~15% of total ops time</div></div>
+              </div>
+              <div class="toggle-switch" aria-label="Disabled"></div>
+            </div>
+            <div class="product-toggle" onclick="toggleProduct(this,'insight')" data-product="insight">
+              <div class="product-toggle__left">
+                <span class="product-toggle__icon">🔍</span>
+                <div><div class="product-toggle__name">Insight Mining</div><div class="product-toggle__impact">Saves ~3 hrs per analyst per week</div></div>
+              </div>
+              <div class="toggle-switch" aria-label="Disabled"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="assumptions">
+          <div class="assumptions__title">Calculation Assumptions</div>
+          <ul class="assumptions__list">
+            <li>Manual quote time: 30 min avg · Automated: 5 min review</li>
+            <li>Manual document processing: 40 min avg · Automated: 7 min review</li>
+            <li>Manual report build: 5 hrs avg · Automated: 30 min review</li>
+            <li>Working hours: 2,080 per person per year</li>
+            <li>Fully loaded salary cost used (1.3× base for benefits/overhead)</li>
+            <li>Conservative automation rate: 80% of tasks fully automated</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT: RESULTS (sticky) -->
+      <div>
+        <div class="calc-panel" id="resultsPanel">
+          <div class="calc-panel__title">Your Estimated ROI</div>
+          <div class="calc-panel__sub">Updates as you adjust the inputs</div>
+
+          <div class="result-highlight">
+            <div class="result-main-label">Annual Savings</div>
+            <div class="result-main-num" id="annualSavings">$0</div>
+            <div class="result-main-sub" id="annualSavingsSub">—</div>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-item">
+              <div class="result-item__num positive" id="hoursSaved">0</div>
+              <div class="result-item__label">Hours saved<br>per year</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item__num" id="fteEquiv">0.0</div>
+              <div class="result-item__label">FTE equivalent<br>reclaimed</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item__num positive" id="monthSavings">$0</div>
+              <div class="result-item__label">Monthly<br>savings</div>
+            </div>
+            <div class="result-item">
+              <div class="result-item__num" id="roiPct">0×</div>
+              <div class="result-item__label">ROI multiple<br>on plan cost</div>
+            </div>
+          </div>
+
+          <div class="payback-bar">
+            <div class="payback-bar__label">Payback period <span id="paybackLabel">—</span></div>
+            <div class="payback-track"><div class="payback-fill" id="paybackFill" style="width:0%"></div></div>
+          </div>
+
+          <div class="breakdown-title">Savings Breakdown</div>
+          <div class="breakdown-row" id="rowQuotation">
+            <span class="breakdown-label"><span class="breakdown-label-icon">⚡</span> Quotation Engine</span>
+            <span class="breakdown-value savings" id="valQuotation">$0</span>
+          </div>
+          <div class="breakdown-row" id="rowDocument">
+            <span class="breakdown-label"><span class="breakdown-label-icon">📄</span> Document AI</span>
+            <span class="breakdown-value savings" id="valDocument">$0</span>
+          </div>
+          <div class="breakdown-row" id="rowReport">
+            <span class="breakdown-label"><span class="breakdown-label-icon">📊</span> Report Intelligence</span>
+            <span class="breakdown-value savings" id="valReport">$0</span>
+          </div>
+          <div class="breakdown-row" id="rowWorkflow">
+            <span class="breakdown-label"><span class="breakdown-label-icon">⚙️</span> Workflow Automation</span>
+            <span class="breakdown-value savings" id="valWorkflow">—</span>
+          </div>
+          <div class="breakdown-row" id="rowInsight">
+            <span class="breakdown-label"><span class="breakdown-label-icon">🔍</span> Insight Mining</span>
+            <span class="breakdown-value savings" id="valInsight">—</span>
+          </div>
+          <div class="breakdown-row" style="margin-top:.5rem;padding-top:.75rem;border-top:1px solid var(--bg-border-strong)">
+            <span class="breakdown-label" style="color:var(--text-primary);font-weight:500">Est. Annual Plan Cost</span>
+            <span class="breakdown-value" id="planCost" style="color:var(--text-muted)">$29,880</span>
+          </div>
+
+          <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.875rem">
+            <a href="/#contact" class="btn btn--primary btn--lg" style="justify-content:center">
+              Get My Custom ROI Analysis
+              <svg class="arrow-icon" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <p style="font-size:.8125rem;color:var(--text-muted);text-align:center">A free 30-min session where we build your actual savings model based on your real process data.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <span class="footer__copy">© 2025 HurryKisha AI Systems</span>
+      <div class="footer__links-row">
+        <a href="/">Home</a><a href="/products">Products</a><a href="/case-studies">Case Studies</a><a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const productActive={quotation:true,document:true,report:true,workflow:false,insight:false};
+const PLAN_COST=2490*12; // Operations tier annual
+
+function fmt(n){if(n>=1000000)return'$'+(n/1000000).toFixed(1)+'M';if(n>=1000)return'$'+(n/1000).toFixed(0)+'K';return'$'+Math.round(n).toLocaleString();}
+function fmtN(n){if(n>=1000)return(n/1000).toFixed(1)+'K';return Math.round(n).toLocaleString();}
+
+function updateFill(inputId,fillId){
+  const inp=document.getElementById(inputId);
+  const fill=document.getElementById(fillId);
+  const pct=(inp.value-inp.min)/(inp.max-inp.min)*100;
+  fill.style.width=pct+'%';
+}
+
+function calc(){
+  // read inputs
+  const teamSize=+document.getElementById('teamSize').value;
+  const avgSalary=+document.getElementById('avgSalary').value;
+  const quotes=+document.getElementById('quotesPerMonth').value;
+  const docs=+document.getElementById('docsPerMonth').value;
+  const reports=+document.getElementById('reportsPerMonth').value;
+
+  // update display values
+  document.getElementById('teamSizeVal').textContent=teamSize+' '+(teamSize===1?'person':'people');
+  document.getElementById('avgSalaryVal').textContent='$'+avgSalary.toLocaleString();
+  document.getElementById('quotesVal').textContent=quotes+' / mo';
+  document.getElementById('docsVal').textContent=docs.toLocaleString()+' / mo';
+  document.getElementById('reportsVal').textContent=reports+' / mo';
+
+  // update fills
+  updateFill('teamSize','teamSizeFill');
+  updateFill('avgSalary','avgSalaryFill');
+  updateFill('quotesPerMonth','quotesFill');
+  updateFill('docsPerMonth','docsFill');
+  updateFill('reportsPerMonth','reportsFill');
+
+  // hourly rate (fully loaded 1.3×)
+  const hrRate=(avgSalary*1.3)/2080;
+
+  // savings per product (annual)
+  const quoteSavingsHrs=productActive.quotation ? (quotes*12)*(25/60)*0.8 : 0; // 25 min saved/quote, 80% automated
+  const docSavingsHrs=productActive.document ? (docs*12)*(33/60)*0.8 : 0;
+  const reportSavingsHrs=productActive.report ? (reports*12)*(4.5)*0.8 : 0; // 4.5 hrs saved/report
+  const workflowSavingsHrs=productActive.workflow ? (teamSize*2080*0.12) : 0; // 12% of total ops time
+  const insightSavingsHrs=productActive.insight ? (teamSize*3*52*0.7) : 0; // 3 hrs/person/week
+
+  const quoteSavings=quoteSavingsHrs*hrRate;
+  const docSavings=docSavingsHrs*hrRate;
+  const reportSavings=reportSavingsHrs*hrRate;
+  const workflowSavings=workflowSavingsHrs*hrRate;
+  const insightSavings=insightSavingsHrs*hrRate;
+
+  const totalSavings=quoteSavings+docSavings+reportSavings+workflowSavings+insightSavings;
+  const totalHrs=quoteSavingsHrs+docSavingsHrs+reportSavingsHrs+workflowSavingsHrs+insightSavingsHrs;
+  const fteEquiv=totalHrs/2080;
+  const roi=totalSavings/PLAN_COST;
+  const paybackMonths=totalSavings>0 ? Math.max(1,Math.round((PLAN_COST/totalSavings)*12)) : 99;
+
+  // update display
+  document.getElementById('annualSavings').textContent=fmt(totalSavings);
+  document.getElementById('annualSavingsSub').textContent=totalHrs>0?fmtN(totalHrs)+' hours reclaimed annually':'Add volume above to calculate';
+  document.getElementById('hoursSaved').textContent=fmtN(totalHrs);
+  document.getElementById('fteEquiv').textContent=fteEquiv.toFixed(1);
+  document.getElementById('monthSavings').textContent=fmt(totalSavings/12);
+  document.getElementById('roiPct').textContent=roi>0?roi.toFixed(1)+'×':'—';
+  document.getElementById('planCost').textContent=fmt(PLAN_COST)+'/yr';
+
+  // payback
+  const pbLabel=paybackMonths>=99?'N/A':paybackMonths<=1?'< 1 month':paybackMonths+' months';
+  document.getElementById('paybackLabel').textContent=pbLabel;
+  const pbPct=paybackMonths>=99?0:Math.max(5,100-((paybackMonths/12)*100));
+  document.getElementById('paybackFill').style.width=Math.min(100,pbPct)+'%';
+
+  // breakdown
+  document.getElementById('valQuotation').textContent=productActive.quotation&&quoteSavings>0?fmt(quoteSavings):'—';
+  document.getElementById('valDocument').textContent=productActive.document&&docSavings>0?fmt(docSavings):'—';
+  document.getElementById('valReport').textContent=productActive.report&&reportSavings>0?fmt(reportSavings):'—';
+  document.getElementById('valWorkflow').textContent=productActive.workflow&&workflowSavings>0?fmt(workflowSavings):'—';
+  document.getElementById('valInsight').textContent=productActive.insight&&insightSavings>0?fmt(insightSavings):'—';
+
+  ['valQuotation','valDocument','valReport','valWorkflow','valInsight'].forEach(id=>{
+    const el=document.getElementById(id);
+    el.className='breakdown-value '+(el.textContent!=='—'?'savings':'');
+  });
+}
+
+function toggleProduct(el,product){
+  productActive[product]=!productActive[product];
+  el.classList.toggle('active',productActive[product]);
+  el.querySelector('.toggle-switch').classList.toggle('on',productActive[product]);
+  el.querySelector('.toggle-switch').setAttribute('aria-label',productActive[product]?'Enabled':'Disabled');
+  calc();
+}
+
+// init
+calc();
+</script>
+</body>
+</html>
